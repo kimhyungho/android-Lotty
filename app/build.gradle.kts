@@ -140,7 +140,6 @@ dependencies {
     implementation (Libs.glide)
     implementation(Libs.glideTransformations)
 
-    // kapt
     kapt(KaptLibs.glide)
 
     implementation(Libs.rxBinding)
@@ -155,4 +154,5 @@ dependencies {
     coreLibraryDesugaring(CoreLibs.coreDesugaring)
 
     implementation(Libs.gmsLocation)
+
 }

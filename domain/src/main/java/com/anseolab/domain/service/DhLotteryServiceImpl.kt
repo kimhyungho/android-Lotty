@@ -1,0 +1,14 @@
+package com.anseolab.domain.service
+
+import com.anseolab.domain.model.Lottery
+import com.anseolab.domain.repositories.DhLotteryRepository
+import io.reactivex.rxjava3.core.Single
+import javax.inject.Inject
+
+class DhLotteryServiceImpl @Inject constructor(
+    private val dhLotteryRepository: DhLotteryRepository
+): DhLotteryService {
+    override fun fetchLotteryNumber(drwNo: Long): Single<Lottery> {
+        return dhLotteryRepository.fetchLotteryNumber(drwNo)
+    }
+}

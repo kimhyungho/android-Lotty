@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/menu_arround"
+        android:id="@+id/menu_around"
+        android:icon="@drawable/ic_around_24x24"
         android:title="내 주변" />
 
     <item
         android:id="@+id/menu_search"
+        android:icon="@drawable/ic_search_24x24"
         android:title="번호 조회" />
 
     <item
@@ -14,5 +16,6 @@
 
     <item
         android:id="@+id/menu_setting"
+        android:icon="@drawable/ic_setting_24x24"
         android:title="설정" />
 </menu>

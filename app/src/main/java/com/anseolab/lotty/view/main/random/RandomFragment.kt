@@ -13,7 +13,7 @@ import kotlin.reflect.KClass
 
 @AndroidEntryPoint
 class RandomFragment: ViewModelFragment<FragmentRandomBinding, RandomViewModelType>(
-    R.layout.fragment_around
+    R.layout.fragment_random
 ) {
     private val _viewModel: RandomViewModel by viewModels()
     override val viewModel: RandomViewModelType get() = _viewModel

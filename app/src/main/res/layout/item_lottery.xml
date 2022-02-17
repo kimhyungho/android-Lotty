@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.anseolab.lotty.view.model.LotteryUiModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.anseolab.lotty.view.widget.CheckableTextView
+            android:id="@+id/tv_round"
+            style="@style/Theme.Lotty.TextView.SemiBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="#F4F5F8"
+            android:checked="@{item.isExpanded()}"
+            android:drawableRight="@drawable/selector_arrow_down_up"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:text="@{@string/round_format(item.drwNo)}"
+            android:textColor="#0D0F14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="997회" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            visibleOrGone="@{item.isExpanded()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_round">
+
+            <TextView
+                android:id="@+id/drwNum1"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="32sp"
+                android:layout_height="32sp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/bg_white_ring"
+                android:backgroundTint="#000000"
+                android:gravity="center"
+                android:text="17"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@+id/drwNum2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/drwNum2"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="32sp"
+                android:layout_height="32sp"
+                android:background="@drawable/bg_white_ring"
+                android:backgroundTint="#000000"
+                android:gravity="center"
+                android:text="17"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/drwNum1"
+                app:layout_constraintEnd_toStartOf="@+id/drwNum3"
+                app:layout_constraintStart_toEndOf="@+id/drwNum1"
+                app:layout_constraintTop_toTopOf="@+id/drwNum1" />
+
+            <TextView
+                android:id="@+id/drwNum3"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="32sp"
+                android:layout_height="32sp"
+                android:background="@drawable/bg_white_ring"
+                android:backgroundTint="#000000"
+                android:gravity="center"
+                android:text="17"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/drwNum2"
+                app:layout_constraintEnd_toStartOf="@+id/drwNum4"
+                app:layout_constraintStart_toEndOf="@+id/drwNum2"
+                app:layout_constraintTop_toTopOf="@+id/drwNum2" />
+
+            <TextView
+                android:id="@+id/drwNum4"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="32sp"
+                android:layout_height="32sp"
+                android:background="@drawable/bg_white_ring"
+                android:backgroundTint="#000000"
+                android:gravity="center"
+                android:text="17"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/drwNum3"
+                app:layout_constraintEnd_toStartOf="@+id/drwNum5"
+                app:layout_constraintStart_toEndOf="@+id/drwNum3"
+                app:layout_constraintTop_toTopOf="@+id/drwNum3" />
+
+            <TextView
+                android:id="@+id/drwNum5"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="32sp"
+                android:layout_height="32sp"
+                android:background="@drawable/bg_white_ring"
+                android:backgroundTint="#000000"
+                android:gravity="center"
+                android:text="17"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/drwNum4"
+                app:layout_constraintEnd_toStartOf="@+id/drwNum6"
+                app:layout_constraintStart_toEndOf="@+id/drwNum4"
+                app:layout_constraintTop_toTopOf="@+id/drwNum4" />
+
+            <TextView
+                android:id="@+id/drwNum6"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="32sp"
+                android:layout_height="32sp"
+                android:background="@drawable/bg_white_ring"
+                android:backgroundTint="#000000"
+                android:gravity="center"
+                android:text="17"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/drwNum5"
+                app:layout_constraintEnd_toStartOf="@+id/iv_plus"
+                app:layout_constraintStart_toEndOf="@+id/drwNum5"
+                app:layout_constraintTop_toTopOf="@+id/drwNum5" />
+
+            <TextView
+                android:id="@+id/bonus_num"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="32sp"
+                android:layout_height="32sp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/bg_white_ring"
+                android:backgroundTint="#000000"
+                android:gravity="center"
+                android:text="17"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_plus"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_plus"
+                app:layout_constraintTop_toTopOf="@+id/iv_plus" />
+
+            <ImageView
+                android:id="@+id/iv_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/drwNum6"
+                app:layout_constraintEnd_toStartOf="@+id/bonus_num"
+                app:layout_constraintStart_toEndOf="@+id/drwNum6"
+                app:layout_constraintTop_toTopOf="@+id/drwNum6"
+                app:srcCompat="@drawable/ic_plus_32x32" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

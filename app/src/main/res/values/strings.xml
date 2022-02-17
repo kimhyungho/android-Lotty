@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Lotty</string>
+
+    <string name="round_format">%d회</string>
 </resources>
