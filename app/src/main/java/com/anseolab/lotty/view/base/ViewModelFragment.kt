@@ -45,8 +45,8 @@ abstract class ViewModelFragment<VD : ViewDataBinding, VM : ViewModelType<*, *>>
             backPressedCallback.isEnabled = value
         }
 
-//    @IdRes
-//    protected open val toolbarId: Int = R.id.toolbar
+    @IdRes
+    protected open val toolbarId: Int = R.id.toolbar
 
     @DrawableRes
     open val backButtonResId: Int = R.drawable.ic_back_24x24
@@ -79,16 +79,16 @@ abstract class ViewModelFragment<VD : ViewDataBinding, VM : ViewModelType<*, *>>
             backPressedCallback
         )
 
-//        view.findViewById<Toolbar>(toolbarId)?.let { toolbar ->
-//            toolbar.title = null
-//
-//            if (showBackButton) {
-//                toolbar.setNavigationIcon(backButtonResId)
-//                toolbar.setNavigationOnClickListener {
-//                    onBackPressed()
-//                }
-//            }
-//        }
+        view.findViewById<Toolbar>(toolbarId)?.let { toolbar ->
+            toolbar.title = null
+
+            if (showBackButton) {
+                toolbar.setNavigationIcon(backButtonResId)
+                toolbar.setNavigationOnClickListener {
+                    onBackPressed()
+                }
+            }
+        }
     }
 
     protected open fun onBackPressed() {

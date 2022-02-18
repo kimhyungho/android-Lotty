@@ -7,7 +7,21 @@
 
     <fragment
         android:id="@+id/dest_main"
-        tools:layout="@layout/fragment_main"
         android:name="com.anseolab.lotty.view.main.MainFragment"
-        android:label="MainFragment" />
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_dest_main_to_dest_detail"
+            app:destination="@id/dest_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_detail"
+        android:name="com.anseolab.lotty.view.detail.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:defaultValue="0L"
+            android:name="drwNo"
+            app:argType="long"/>
+    </fragment>
 </navigation>

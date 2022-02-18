@@ -13,6 +13,7 @@ import com.anseolab.lotty.view.adapter.LotteryListAdapter
 import com.anseolab.lotty.view.alert.scanner.ScannerAlertDialog
 import com.anseolab.lotty.view.base.FragmentLauncher
 import com.anseolab.lotty.view.base.ViewModelFragment
+import com.anseolab.lotty.view.main.MainFragmentDirections
 import com.gun0912.tedpermission.rx3.TedPermission
 import com.jakewharton.rxbinding4.swiperefreshlayout.refreshes
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,10 +41,13 @@ class SearchFragment : ViewModelFragment<FragmentSearchBinding, SearchViewModelT
 
                 val totalItemViewCount = recyclerView.adapter?.itemCount?.minus(1) ?: 0
 
+                Log.d("kkkk", totalItemViewCount.toString())
+
                 if (newState == 2 && !recyclerView.canScrollVertically(1) && lastVisibleItem == totalItemViewCount) {
                     val lastItemDrwNum = (recyclerView.adapter as LotteryListAdapter).getItemDrwNum(
                         totalItemViewCount
                     )
+                    Log.d("kkkkdd", totalItemViewCount.toString())
 
                     viewModel.input.onScroll(lastItemDrwNum - 1)
                 }
@@ -76,6 +80,11 @@ class SearchFragment : ViewModelFragment<FragmentSearchBinding, SearchViewModelT
 
             toolbar.setOnMenuItemClickListener {
                 when (it.itemId) {
+                    R.id.menu_search -> {
+                        navController.navigate(MainFragmentDirections.actionDestMainToDestDetail())
+                        true
+                    }
+
                     R.id.menu_qr -> {
                         TedPermission.create()
                             .setPermissions(Manifest.permission.CAMERA)
@@ -112,11 +121,11 @@ class SearchFragment : ViewModelFragment<FragmentSearchBinding, SearchViewModelT
     }
 
     override fun onDestroyView() {
+        viewDataBinding.rvLottery.adapter = null
         if (rvLotteryScrollListener != null) {
             viewDataBinding.rvLottery.removeOnScrollListener(rvLotteryScrollListener!!)
         }
-        rvLotteryScrollListener = null
-        super.onDestroyView()
+            super.onDestroyView()
     }
 
     companion object : FragmentLauncher<SearchFragment>() {

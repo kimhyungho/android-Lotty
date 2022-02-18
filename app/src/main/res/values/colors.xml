@@ -8,6 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+
+    <color name="G100">#EFEFF0</color>
     <color name="G300">#B3BBD3</color>
     <color name="G500">#AAAAAA</color>
     <color name="G600">#4A5470</color>
