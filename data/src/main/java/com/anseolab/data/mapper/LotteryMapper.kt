@@ -10,6 +10,7 @@ object LotteryMapper : Mapper<LotteryData, Lottery> {
             returnValue = from.returnValue,
             drwNoDate = from.drwNoDate,
             firstWinamnt = from.firstWinamnt,
+            firstAccumamnt = from.firstAccumamnt,
             drwtNo1 = from.drwtNo1,
             drwtNo2 = from.drwtNo2,
             drwtNo3 = from.drwtNo3,

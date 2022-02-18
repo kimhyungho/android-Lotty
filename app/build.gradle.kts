@@ -155,4 +155,7 @@ dependencies {
 
     implementation(Libs.gmsLocation)
 
+    implementation ("com.github.yuriy-budiyev:code-scanner:2.1.0")
+
+
 }

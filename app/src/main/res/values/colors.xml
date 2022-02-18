@@ -7,5 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="G300">#B3BBD3</color>
+    <color name="G500">#AAAAAA</color>
+    <color name="G600">#4A5470</color>
+    <color name="R500">#FF7272</color>
+    <color name="Y500">#FBC500</color>
+    <color name="B200">#69C8F2</color>
     <color name="B500">#2393F3</color>
+    <color name="GR500">#AFD840</color>
+
 </resources>

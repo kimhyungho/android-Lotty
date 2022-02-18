@@ -17,6 +17,18 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+    <style name="Theme.Lotty.TextView.Medium" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="fontFamily">@font/pretendard_medium</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Theme.Lotty.TextView.Regular" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="fontFamily">@font/pretendard_regular</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
     <style name="Theme.Lotty.TextView.SemiBold" parent="Widget.AppCompat.TextView">
         <item name="android:fontFamily">@font/pretendard_semibold</item>
         <item name="fontFamily">@font/pretendard_semibold</item>

@@ -1,6 +1,8 @@
 package com.anseolab.lotty.di
 
 import com.anseolab.domain.providers.SchedulerProvider
+import com.anseolab.lotty.providers.permissions.PermissionProvider
+import com.anseolab.lotty.providers.permissions.PermissionProviderImpl
 import com.anseolab.lotty.providers.scheduler.SchedulerProviderImpl
 import dagger.Binds
 import dagger.Module
@@ -17,6 +19,12 @@ interface ProviderModule {
     fun bindSchedulerProvider(
         provider: SchedulerProviderImpl
     ): SchedulerProvider
+
+    @Singleton
+    @Binds
+    fun bindPermissionProvider(
+        provider: PermissionProviderImpl
+    ): PermissionProvider
 
 //    @Singleton
 //    @Binds

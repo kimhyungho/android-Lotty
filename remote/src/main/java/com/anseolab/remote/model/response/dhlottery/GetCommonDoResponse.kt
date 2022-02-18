@@ -11,6 +11,8 @@ data class GetCommonDoResponse(
     val drwNoDate: String?,
     @SerializedName("firstWinamnt")
     val firstWinamnt: Long?,
+    @SerializedName("firstAccumamnt")
+    val firstAccumamnt: Long?,
     @SerializedName("drwtNo1")
     val drwtNo1: Int?,
     @SerializedName("drwtNo2")

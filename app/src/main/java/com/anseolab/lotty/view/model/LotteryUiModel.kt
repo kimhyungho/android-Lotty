@@ -8,8 +8,9 @@ data class LotteryUiModel(
     val drwNo : Long,
     val totSellamnt: Long?,
     val returnValue: String,
-    val drwNoDate: LocalDate?,
+    val drwNoDate: String?,
     val firstWinamnt: Long?,
+    val firstAccumamnt: Long?,
     val drwtNo1: Int?,
     val drwtNo2: Int?,
     val drwtNo3: Int?,
@@ -18,8 +19,15 @@ data class LotteryUiModel(
     val drwtNo6: Int?,
     val bnusNo: Int?,
     val firstPrzwnerCo: Long?,
-    val isExpanded: Boolean
-): UiModel {
+    val isExpanded: Boolean,
+    val drwtNo1Color: Int,
+    val drwtNo2Color: Int,
+    val drwtNo3Color: Int,
+    val drwtNo4Color: Int,
+    val drwtNo5Color: Int,
+    val drwtNo6Color: Int,
+    val bonusColor: Int
+    ): UiModel {
     override val identifier: Any
         get() = drwNo
     override val viewType: ViewType

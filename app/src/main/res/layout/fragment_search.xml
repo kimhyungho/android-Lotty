@@ -16,18 +16,28 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_lottery"
-            list="@{output.lotteries}"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/srl_lottery"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            refreshing="@{output.isRefreshing}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_height="match_parent">
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_lottery"
+                list="@{output.lotteries}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
@@ -57,7 +67,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="32dp"
-                        android:layout_marginTop="100dp"
+                        android:layout_marginTop="62dp"
                         android:text="조회하기"
                         android:textColor="#0D0F14"
                         android:textSize="24sp"
@@ -95,6 +105,11 @@
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
         </com.google.android.material.appbar.AppBarLayout>
+
+        <com.anseolab.lotty.view.widget.LoaderLayout
+            app:isLoading="@{output.isLoading()}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

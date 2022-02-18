@@ -7,6 +7,7 @@ data class Lottery(
     val returnValue: String,
     val drwNoDate: LocalDate?,
     val firstWinamnt: Long?,
+    val firstAccumamnt: Long?,
     val drwtNo1: Int?,
     val drwtNo2: Int?,
     val drwtNo3: Int?,

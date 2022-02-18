@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
@@ -29,9 +30,10 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bnv_main"
-            android:layout_width="0dp"
-            selectPage="@{(page)->input.onPageSelect(page)}"
             page="@{output.selectedPage}"
+            selectPage="@{(page)->input.onPageSelect(page)}"
+            android:layout_width="0dp"
+            app:labelVisibilityMode="labeled"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
