@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.anseolab.domain.model.Lottery
 import com.anseolab.lotty.R
 import com.anseolab.lotty.databinding.FragmentSearchBinding
 import com.anseolab.lotty.providers.permissions.PermissionProvider
@@ -31,7 +32,7 @@ class SearchFragment : ViewModelFragment<FragmentSearchBinding, SearchViewModelT
     @Inject
     lateinit var permissionProvider: PermissionProvider
 
-    private var rvLotteryScrollListener: RecyclerView.OnScrollListener? =
+    private val rvLotteryScrollListener: RecyclerView.OnScrollListener =
         object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
@@ -41,13 +42,10 @@ class SearchFragment : ViewModelFragment<FragmentSearchBinding, SearchViewModelT
 
                 val totalItemViewCount = recyclerView.adapter?.itemCount?.minus(1) ?: 0
 
-                Log.d("kkkk", totalItemViewCount.toString())
-
                 if (newState == 2 && !recyclerView.canScrollVertically(1) && lastVisibleItem == totalItemViewCount) {
                     val lastItemDrwNum = (recyclerView.adapter as LotteryListAdapter).getItemDrwNum(
                         totalItemViewCount
                     )
-                    Log.d("kkkkdd", totalItemViewCount.toString())
 
                     viewModel.input.onScroll(lastItemDrwNum - 1)
                 }
@@ -61,6 +59,10 @@ class SearchFragment : ViewModelFragment<FragmentSearchBinding, SearchViewModelT
             override fun onDrwNoClick(drwNo: Long) {
                 viewModel.input.onDrwNoClick(drwNo)
             }
+
+            override fun onDetailClick(lottery: Lottery) {
+                navController.navigate(MainFragmentDirections.actionDestMainToDestDetail(lottery))
+            }
         }
     }
 
@@ -72,9 +74,7 @@ class SearchFragment : ViewModelFragment<FragmentSearchBinding, SearchViewModelT
 
         with(viewDataBinding) {
             with(rvLottery) {
-                if (rvLotteryScrollListener != null) {
-                    viewDataBinding.rvLottery.addOnScrollListener(rvLotteryScrollListener!!)
-                }
+                viewDataBinding.rvLottery.addOnScrollListener(rvLotteryScrollListener)
                 this.adapter = lotteryListAdapter
             }
 
@@ -122,10 +122,8 @@ class SearchFragment : ViewModelFragment<FragmentSearchBinding, SearchViewModelT
 
     override fun onDestroyView() {
         viewDataBinding.rvLottery.adapter = null
-        if (rvLotteryScrollListener != null) {
-            viewDataBinding.rvLottery.removeOnScrollListener(rvLotteryScrollListener!!)
-        }
-            super.onDestroyView()
+        viewDataBinding.rvLottery.removeOnScrollListener(rvLotteryScrollListener)
+        super.onDestroyView()
     }
 
     companion object : FragmentLauncher<SearchFragment>() {

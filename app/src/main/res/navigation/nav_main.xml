@@ -20,8 +20,9 @@
         android:label="DetailFragment"
         tools:layout="@layout/fragment_detail">
         <argument
-            android:defaultValue="0L"
-            android:name="drwNo"
-            app:argType="long"/>
+            app:nullable="true"
+            android:defaultValue="@null"
+            android:name="lottery"
+            app:argType="com.anseolab.domain.model.Lottery"/>
     </fragment>
 </navigation>

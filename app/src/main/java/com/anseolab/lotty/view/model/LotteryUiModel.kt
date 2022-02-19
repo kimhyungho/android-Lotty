@@ -7,7 +7,7 @@ import java.time.LocalDate
 data class LotteryUiModel(
     val drwNo : Long,
     val totSellamnt: Long?,
-    val returnValue: String,
+    val returnValue: Boolean,
     val drwNoDate: String?,
     val firstWinamnt: Long?,
     val firstAccumamnt: Long?,

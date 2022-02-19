@@ -11,7 +11,7 @@ object LotteryListStateMapper : StateMapper<SearchViewModel.State, List<LotteryU
             LotteryUiModel(
                 drwNo = it.drwNo ?: 0,
                 totSellamnt = it.totSellamnt,
-                returnValue = it.returnValue,
+                returnValue = it.returnValue == "success",
                 drwNoDate = it.drwNoDate.toString(),
                 firstWinamnt = it.firstWinamnt,
                 firstAccumamnt = it.firstAccumamnt,
@@ -42,7 +42,7 @@ object LotteryListStateMapper : StateMapper<SearchViewModel.State, List<LotteryU
             in 21..30 -> Color.parseColor("#FF7272")
             in 31..40 -> Color.parseColor("#AAAAAA")
             in 41..45 -> Color.parseColor("#AFD840")
-            else -> Color.parseColor("#000000")
+            else -> Color.parseColor("#FFFFFF")
         }
     }
 

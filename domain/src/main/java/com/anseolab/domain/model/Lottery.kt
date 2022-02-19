@@ -1,7 +1,10 @@
 package com.anseolab.domain.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import java.time.LocalDate
 
+@Parcelize
 data class Lottery(
     val totSellamnt: Long?,
     val returnValue: String,
@@ -17,4 +20,4 @@ data class Lottery(
     val bnusNo: Int?,
     val firstPrzwnerCo: Long?,
     val drwNo: Long?
-)
+): Parcelable

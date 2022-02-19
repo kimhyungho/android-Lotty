@@ -1,6 +1,9 @@
 package com.anseolab.lotty.view.detail
 
+import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.anseolab.lotty.R
 import com.anseolab.lotty.databinding.FragmentDetailBinding
 import com.anseolab.lotty.view.base.ViewModelFragment
@@ -14,6 +17,14 @@ class DetailFragment: ViewModelFragment<FragmentDetailBinding, DetailViewModelTy
 
     private val _viewModel: DetailViewModel by viewModels()
     override val viewModel: DetailViewModelType get() = _viewModel
+
+    private val args: DetailFragmentArgs by navArgs()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.input.fetchLottery(args.lottery)
+    }
 
     override fun onWillAttachViewModel(
         viewDataBinding: FragmentDetailBinding,

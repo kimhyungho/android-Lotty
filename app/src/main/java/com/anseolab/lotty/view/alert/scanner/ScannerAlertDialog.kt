@@ -5,7 +5,11 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.webkit.WebChromeClient
+import android.webkit.WebViewClient
 import android.widget.Toast
 import com.anseolab.lotty.R
 import com.anseolab.lotty.databinding.FragmentScannerDialogBinding
@@ -28,10 +32,21 @@ class ScannerAlertDialog : BaseDialogFragment<FragmentScannerDialogBinding>(
         super.onViewCreated(view, savedInstanceState)
 
         with(viewDataBinding) {
+            with(webView) {
+                webViewClient = WebViewClient()
+                webChromeClient = WebChromeClient()
+                settings.loadWithOverviewMode = true
+                settings.useWideViewPort = true
+                settings.setSupportZoom(true)
+                settings.builtInZoomControls = false
+                settings.javaScriptEnabled = true
+                settings.javaScriptCanOpenWindowsAutomatically = true
+            }
+
             with(scannerView) {
                 codeScanner = CodeScanner(requireContext(), this)
                 codeScanner.decodeCallback = DecodeCallback {
-                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(it.text)))
+                    webView.post { webView.loadUrl(it.text) }
                 }
 
                 scannerView.setOnClickListener {
@@ -46,9 +61,9 @@ class ScannerAlertDialog : BaseDialogFragment<FragmentScannerDialogBinding>(
         codeScanner.startPreview()
     }
 
-    override fun onPause() {
+    override fun onDestroyView() {
         codeScanner.releaseResources()
-        super.onPause()
+        super.onDestroyView()
     }
 
     companion object : FragmentLauncher<ScannerAlertDialog>() {
