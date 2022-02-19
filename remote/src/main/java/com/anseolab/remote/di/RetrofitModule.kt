@@ -2,6 +2,7 @@ package com.anseolab.remote.di
 
 import com.anseolab.remote.BuildConfig
 import com.anseolab.remote.di.qualifiers.DhLotteryQualifier
+import com.anseolab.remote.di.qualifiers.RemoteGsonQualifier
 import com.anseolab.remote.retrofit.api.dhlottery.DhLotteryApi
 import com.google.gson.Gson
 import dagger.Module
@@ -20,6 +21,7 @@ class RetrofitModule {
 
     @Singleton
     @Provides
+    @RemoteGsonQualifier
     fun provideJson(): Gson {
         return Gson()
     }
@@ -35,6 +37,7 @@ class RetrofitModule {
     @Provides
     @DhLotteryQualifier
     fun provideDhLotteryRetrofit(
+        @RemoteGsonQualifier
         gson: Gson,
         okHttpClient: OkHttpClient
     ): Retrofit {

@@ -9,7 +9,7 @@ object GetCommonDoMapper : Mapper<GetCommonDoResponse, LotteryData> {
         return LotteryData(
             totSellamnt = from.totSellamnt,
             returnValue = from.returnValue,
-            drwNoDate = LocalDate.parse(from.drwNoDate) ?: null,
+            drwNoDate = if (from.drwNoDate != null) LocalDate.parse(from.drwNoDate) else null,
             firstWinamnt = from.firstWinamnt,
             firstAccumamnt = from.firstAccumamnt,
             drwtNo1 = from.drwtNo1,

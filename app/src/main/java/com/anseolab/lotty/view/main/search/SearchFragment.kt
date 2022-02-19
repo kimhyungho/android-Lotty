@@ -18,7 +18,6 @@ import com.anseolab.lotty.view.main.MainFragmentDirections
 import com.gun0912.tedpermission.rx3.TedPermission
 import com.jakewharton.rxbinding4.swiperefreshlayout.refreshes
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
 import javax.inject.Inject
 import kotlin.reflect.KClass
 

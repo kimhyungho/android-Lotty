@@ -73,7 +73,7 @@ class SearchViewModel @Inject constructor(
         val defaultState = savedState as? State.SavedState
         return State(
             lotteryTrigger = defaultState?.lotteryTrigger ?: false,
-            expandedLotteries = defaultState?.expandedLotteries ?: setOf(0, Date().getDrwNum()),
+            expandedLotteries = defaultState?.expandedLotteries ?: setOf(0L, Date().getDrwNum()),
         )
     }
 

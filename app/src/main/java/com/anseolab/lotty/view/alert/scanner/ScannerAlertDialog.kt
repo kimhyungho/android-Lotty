@@ -4,6 +4,8 @@ import android.Manifest
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -27,6 +29,7 @@ class ScannerAlertDialog : BaseDialogFragment<FragmentScannerDialogBinding>(
     R.layout.fragment_scanner_dialog
 ) {
     private lateinit var codeScanner: CodeScanner
+    private val handler = object : Handler(Looper.getMainLooper()) {}
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -46,7 +49,17 @@ class ScannerAlertDialog : BaseDialogFragment<FragmentScannerDialogBinding>(
             with(scannerView) {
                 codeScanner = CodeScanner(requireContext(), this)
                 codeScanner.decodeCallback = DecodeCallback {
-                    webView.post { webView.loadUrl(it.text) }
+                    if (it.text.startsWith("http://m.dhlottery.co.kr")) {
+                        webView.post { webView.loadUrl(it.text) }
+                    } else {
+                        handler.post {
+                            Toast.makeText(
+                                requireContext(),
+                                "복권 qr이 아닙니다.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
                 }
 
                 scannerView.setOnClickListener {

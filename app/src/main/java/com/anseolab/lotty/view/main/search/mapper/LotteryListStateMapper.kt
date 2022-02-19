@@ -1,6 +1,7 @@
 package com.anseolab.lotty.view.main.search.mapper
 
 import android.graphics.Color
+import android.util.Log
 import com.anseolab.lotty.mapper.StateMapper
 import com.anseolab.lotty.view.main.search.SearchViewModel
 import com.anseolab.lotty.view.model.LotteryUiModel

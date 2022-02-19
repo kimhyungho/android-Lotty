@@ -1,6 +1,7 @@
 package com.anseolab.lotty.view.detail.mapper
 
 import android.graphics.Color
+import android.util.Log
 import com.anseolab.lotty.mapper.StateMapper
 import com.anseolab.lotty.view.detail.DetailViewModel
 import com.anseolab.lotty.view.model.LotteryUiModel
@@ -8,6 +9,7 @@ import com.anseolab.lotty.view.model.LotteryUiModel
 object LotteryStateMapper: StateMapper<DetailViewModel.State, LotteryUiModel> {
     override fun mapToView(state: DetailViewModel.State): LotteryUiModel {
         val item = state.lottery
+
         return LotteryUiModel(
             drwNo = item?.drwNo ?: 0,
             totSellamnt = item?.totSellamnt ?: 0,

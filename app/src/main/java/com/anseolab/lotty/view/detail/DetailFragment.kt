@@ -2,6 +2,8 @@ package com.anseolab.lotty.view.detail
 
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.anseolab.lotty.R
@@ -37,6 +39,21 @@ class DetailFragment: ViewModelFragment<FragmentDetailBinding, DetailViewModelTy
                 .bind {
                     onBackPressed()
                 }
+
+            etWord.setOnEditorActionListener { _, actionId, _ ->
+                var handled = false
+                if(actionId == EditorInfo.IME_ACTION_DONE) {
+                    viewModel.input.onEditorAction()
+                    handled = true
+                }
+                handled
+            }
+        }
+
+        with(viewModel.output) {
+            showNumberError.observe {
+                Toast.makeText(requireContext(), "숫자만 입력이 가능합니다.", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

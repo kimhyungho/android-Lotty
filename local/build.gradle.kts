@@ -80,4 +80,12 @@ dependencies {
     coreLibraryDesugaring(CoreLibs.coreDesugaring)
 
     androidTestImplementation(AndroidTestLibs.testJunit)
+
+    implementation("androidx.room:room-runtime:2.4.1")
+    kapt("androidx.room:room-compiler:2.4.1")
+    implementation("androidx.room:room-rxjava3:2.4.1")
+    testImplementation("androidx.room:room-testing:2.4.1")
+    implementation("androidx.room:room-ktx:2.4.1")
+
+    api(Libs.gson)
 }

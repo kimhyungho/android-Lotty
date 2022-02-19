@@ -11,11 +11,15 @@ interface DetailViewModelType: ViewModelType<DetailViewModelType.Input, DetailVi
         fun fetchLottery(lottery: Lottery?)
 
         fun onWordTextChange(word: String)
+
+        fun onEditorAction()
     }
 
     interface Output: ViewModelType.Output {
         val word: LiveData<String>
 
         val lottery: LiveData<LotteryUiModel>
+
+        val showNumberError: LiveData<Unit>
     }
 }

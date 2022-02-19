@@ -19,7 +19,7 @@ object LotteryMapper : Mapper<LotteryData, Lottery> {
             drwtNo6 = from.drwtNo6,
             bnusNo = from.bnusNo,
             firstPrzwnerCo = from.firstPrzwnerCo,
-            drwNo = from.drwNo
+            drwNo = from.drwNo ?: 0
         )
     }
 }

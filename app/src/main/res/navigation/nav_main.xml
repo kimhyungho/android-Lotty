@@ -8,16 +8,18 @@
     <fragment
         android:id="@+id/dest_main"
         android:name="com.anseolab.lotty.view.main.MainFragment"
-        android:label="MainFragment"
         tools:layout="@layout/fragment_main">
         <action
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_to_right"
             android:id="@+id/action_dest_main_to_dest_detail"
             app:destination="@id/dest_detail" />
     </fragment>
     <fragment
         android:id="@+id/dest_detail"
         android:name="com.anseolab.lotty.view.detail.DetailFragment"
-        android:label="DetailFragment"
         tools:layout="@layout/fragment_detail">
         <argument
             app:nullable="true"
