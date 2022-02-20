@@ -120,6 +120,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/btn_detail"
                 android:layout_width="0dp"
+                android:background="@drawable/bg_white_ripple"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="28dp"

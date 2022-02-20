@@ -1,22 +1,23 @@
 package com.anseolab.domain.interactors.dhlottery
 
-import com.anseolab.domain.interactors.FlowableUseCase
+import com.anseolab.domain.interactors.SingleUseCase
 import com.anseolab.domain.model.Lottery
 import com.anseolab.domain.providers.SchedulerProvider
 import com.anseolab.domain.service.DhLotteryService
-import io.reactivex.rxjava3.core.Flowable
+import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class FetchRecentLotteriesUseCase @Inject constructor(
+class SearchLotteryUseCase @Inject constructor(
     schedulerProvider: SchedulerProvider,
 
     private val dhLotteryService: DhLotteryService
-): FlowableUseCase<Any, List<Lottery>>(
+): SingleUseCase<Long, Lottery>(
     schedulerProvider
 ) {
-    override fun build(params: Any?): Flowable<List<Lottery>> {
-        return dhLotteryService.fetchRecentLotteries()
+    override fun build(params: Long?): Single<Lottery> {
+        if(params == null) throw IllegalArgumentException("params can not be null")
+        return dhLotteryService.searchLottery(params)
     }
 }

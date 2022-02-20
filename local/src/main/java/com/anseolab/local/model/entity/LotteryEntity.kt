@@ -3,6 +3,7 @@ package com.anseolab.local.model.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.time.LocalDate
+import java.util.*
 
 @Entity(tableName = "Lottery")
 data class LotteryEntity (
@@ -20,4 +21,5 @@ data class LotteryEntity (
     val drwtNo6: Int,
     val bnusNo: Int,
     val firstPrzwnerCo: Long,
+    val createAt: Long
 )

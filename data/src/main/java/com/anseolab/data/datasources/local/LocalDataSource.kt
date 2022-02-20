@@ -6,11 +6,14 @@ import io.reactivex.rxjava3.core.Flowable
 interface LocalDataSource<in Key : Any, T> {
     fun getAll(): Flowable<List<T>>
 
-    fun set(key: Key, value: T): Completable
+    fun set(value: List<T>)
 
-    fun remove(key: Key): Completable
+    fun set(value: T)
 
-    fun clear(): Completable
+    fun remove(key: Key)
+
+    fun clear()
 
 //    fun update(models: List<T>): Completable
+
 }

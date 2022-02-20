@@ -10,21 +10,21 @@
         android:name="com.anseolab.lotty.view.main.MainFragment"
         tools:layout="@layout/fragment_main">
         <action
+            android:id="@+id/action_dest_main_to_dest_detail"
+            app:destination="@id/dest_detail"
             app:enterAnim="@anim/slide_in_from_right"
             app:exitAnim="@anim/slide_out_to_left"
             app:popEnterAnim="@anim/slide_in_from_left"
-            app:popExitAnim="@anim/slide_out_to_right"
-            android:id="@+id/action_dest_main_to_dest_detail"
-            app:destination="@id/dest_detail" />
+            app:popExitAnim="@anim/slide_out_to_right" />
     </fragment>
     <fragment
         android:id="@+id/dest_detail"
         android:name="com.anseolab.lotty.view.detail.DetailFragment"
         tools:layout="@layout/fragment_detail">
         <argument
-            app:nullable="true"
-            android:defaultValue="@null"
             android:name="lottery"
-            app:argType="com.anseolab.domain.model.Lottery"/>
+            android:defaultValue="@null"
+            app:argType="com.anseolab.domain.model.Lottery"
+            app:nullable="true" />
     </fragment>
 </navigation>

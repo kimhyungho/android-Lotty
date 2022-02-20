@@ -2,6 +2,7 @@ package com.anseolab.local.mapper
 
 import com.anseolab.data.model.LotteryData
 import com.anseolab.local.model.entity.LotteryEntity
+import java.util.*
 
 object LotteryEntityMapper : Mapper<LotteryData, LotteryEntity> {
     override fun mapToData(from: LotteryData): LotteryEntity {
@@ -19,7 +20,8 @@ object LotteryEntityMapper : Mapper<LotteryData, LotteryEntity> {
             drwtNo5 = from.drwtNo5 ?: 0,
             drwtNo6 = from.drwtNo6 ?: 0,
             bnusNo = from.bnusNo ?: 0,
-            firstPrzwnerCo = from.firstPrzwnerCo ?: 0
+            firstPrzwnerCo = from.firstPrzwnerCo ?: 0,
+            createAt = Date().time
         )
     }
 }

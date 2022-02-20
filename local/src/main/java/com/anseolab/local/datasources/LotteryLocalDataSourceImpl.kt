@@ -1,5 +1,6 @@
 package com.anseolab.local.datasources
 
+import android.util.Log
 import com.anseolab.data.datasources.local.LotteryLocalDataSource
 import com.anseolab.data.model.LotteryData
 import com.anseolab.local.databases.LotteryDataBase
@@ -17,16 +18,21 @@ class LotteryLocalDataSourceImpl @Inject constructor(
             .map(FetchLotteryMapper::mapToData)
     }
 
-    override fun set(key: Long, value: LotteryData): Completable {
+    override fun set(value: List<LotteryData>) {
+        throw UnsupportedOperationException()
+    }
+
+    override fun set(value: LotteryData) {
+        Log.d("kkkk", "set")
         val data = LotteryEntityMapper.mapToData(value)
-        return lotteryDataBase.lotteryDao.set(data)
+        lotteryDataBase.lotteryDao.set(data)
     }
 
-    override fun remove(key: Long): Completable {
-        return lotteryDataBase.lotteryDao.remove(key)
+    override fun remove(key: Long) {
+        lotteryDataBase.lotteryDao.remove(key)
     }
 
-    override fun clear(): Completable {
-        return lotteryDataBase.lotteryDao.clear()
+    override fun clear() {
+        lotteryDataBase.lotteryDao.clear()
     }
 }

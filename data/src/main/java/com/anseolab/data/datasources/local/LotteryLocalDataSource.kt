@@ -7,9 +7,11 @@ import io.reactivex.rxjava3.core.Flowable
 interface LotteryLocalDataSource: LocalDataSource<Long, LotteryData> {
     override fun getAll(): Flowable<List<LotteryData>>
 
-    override fun set(key: Long, value: LotteryData) : Completable
+    override fun set(value: LotteryData)
 
-    override fun remove(key: Long) : Completable
+    override fun set(value: List<LotteryData>)
 
-    override fun clear() : Completable
+    override fun remove(key: Long)
+
+    override fun clear()
 }

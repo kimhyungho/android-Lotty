@@ -15,6 +15,13 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="buttonStyle">@style/Theme.Lotty.Button</item>
+    </style>
+
+    <style name="Theme.Lotty.Button" parent="Widget.AppCompat.Button">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+
     </style>
 
     <style name="Theme.Lotty.TextView.Medium" parent="Widget.AppCompat.TextView">
