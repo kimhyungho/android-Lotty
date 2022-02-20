@@ -34,7 +34,7 @@ class DhLotteryRepositoryImpl @Inject constructor(
     override fun searchLotteryNumber(drwNo: Long): Single<Lottery> {
         return dhLotteryRemoteDataSource.fetchLotteryNumber(drwNo)
             .doOnSuccess {
-                lotteryLocalDataSource.set(it)
+                if(it.returnValue == "success") lotteryLocalDataSource.set(it)
             }
             .map(LotteryMapper::mapToDomain)
     }
