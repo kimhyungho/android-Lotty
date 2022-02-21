@@ -2,8 +2,10 @@ package com.anseolab.remote.di
 
 import com.anseolab.remote.BuildConfig
 import com.anseolab.remote.di.qualifiers.DhLotteryQualifier
+import com.anseolab.remote.di.qualifiers.NaverQualifier
 import com.anseolab.remote.di.qualifiers.RemoteGsonQualifier
 import com.anseolab.remote.retrofit.api.dhlottery.DhLotteryApi
+import com.anseolab.remote.retrofit.api.naver.NaverApi
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -48,6 +50,29 @@ class RetrofitModule {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
     }
+
+    @Singleton
+    @Provides
+    @NaverQualifier
+    fun provideNaverRetrofit(
+        @RemoteGsonQualifier
+        gson: Gson,
+        okHttpClient: OkHttpClient
+    ): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(BuildConfig.NAVER_BASE_URL)
+            .client(okHttpClient)
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideNaverApi(
+        @NaverQualifier
+        retrofit: Retrofit
+    ): NaverApi = retrofit.create(NaverApi::class.java)
 
     @Singleton
     @Provides

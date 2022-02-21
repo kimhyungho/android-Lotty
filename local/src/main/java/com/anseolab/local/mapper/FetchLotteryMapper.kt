@@ -7,7 +7,6 @@ import java.time.LocalDate
 
 object FetchLotteryMapper: Mapper<List<LotteryEntity>, List<LotteryData>> {
     override fun mapToData(from: List<LotteryEntity>): List<LotteryData> {
-        Log.d("kkkk", from.toString())
         return from.map {
             LotteryData(
                 totSellamnt = it.totSellamnt,

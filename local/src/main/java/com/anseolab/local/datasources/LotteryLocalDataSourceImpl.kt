@@ -23,7 +23,6 @@ class LotteryLocalDataSourceImpl @Inject constructor(
     }
 
     override fun set(value: LotteryData) {
-        Log.d("kkkk", "set")
         val data = LotteryEntityMapper.mapToData(value)
         lotteryDataBase.lotteryDao.set(data)
     }

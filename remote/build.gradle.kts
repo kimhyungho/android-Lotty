@@ -23,14 +23,14 @@ android {
         getOrCreate("dev") {
             dimension = "environment"
 
-            buildConfigField("String", "OD_CLOUD_BASE_URL", "\"api.odcloud.kr/api/\"")
+            buildConfigField("String", "NAVER_BASE_URL", "\"https://map.naver.com/\"")
             buildConfigField("String", "DH_BASE_URL", "\"https://www.dhlottery.co.kr/\"")
 
         }
         getOrCreate("prod") {
             dimension = "environment"
 
-            buildConfigField("String", "OD_CLOUD_BASE_URL", "\"api.odcloud.kr/api/\"")
+            buildConfigField("String", "NAVER_BASE_URL", "\"https://map.naver.com/\"")
             buildConfigField("String", "DH_BASE_URL", "\"www.dhlottery.co.kr/\"")
 
         }

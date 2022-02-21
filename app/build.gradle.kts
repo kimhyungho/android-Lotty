@@ -45,8 +45,8 @@ android {
 
             addManifestPlaceholders(
                 mapOf(
-                    "NAVER_CLOUD_CLIENT_ID" to "iz1eezflxh",
-                    "NAVER_CLOUD_CLIENT_SECRET" to "n0SPWZCJTNgUhlr2NrOoL1YCn7jyoF1tDCUtw40d"
+                    "NAVER_CLOUD_CLIENT_ID" to "a7nivesl0b",
+                    "NAVER_CLOUD_CLIENT_SECRET" to "RpkSLo0AQMucOyftm3VEFjO0NQYLzM9edmnD9xv6"
                 )
             )
         }
@@ -56,8 +56,8 @@ android {
 
             addManifestPlaceholders(
                 mapOf(
-                    "NAVER_CLOUD_CLIENT_ID" to "iz1eezflxh",
-                    "NAVER_CLOUD_CLIENT_SECRET" to "n0SPWZCJTNgUhlr2NrOoL1YCn7jyoF1tDCUtw40d"
+                    "NAVER_CLOUD_CLIENT_ID" to "a7nivesl0b",
+                    "NAVER_CLOUD_CLIENT_SECRET" to "RpkSLo0AQMucOyftm3VEFjO0NQYLzM9edmnD9xv6"
                 )
             )
         }
