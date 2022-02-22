@@ -23,6 +23,8 @@ android {
         getOrCreate("dev") {
             dimension = "environment"
 
+            buildConfigField("String", "KAKAO_REST_API_KEY", "\"7165edf50ee98e1383adf5924f5a76ad\"")
+            buildConfigField("String", "KAKAO_BASE_URL", "\"https://dapi.kakao.com/\"")
             buildConfigField("String", "NAVER_BASE_URL", "\"https://map.naver.com/\"")
             buildConfigField("String", "DH_BASE_URL", "\"https://www.dhlottery.co.kr/\"")
 
@@ -30,9 +32,10 @@ android {
         getOrCreate("prod") {
             dimension = "environment"
 
+            buildConfigField("String", "KAKAO_REST_API_KEY", "\"7165edf50ee98e1383adf5924f5a76ad\"")
+            buildConfigField("String", "KAKAO_BASE_URL", "\"https://dapi.kakao.com/\"")
             buildConfigField("String", "NAVER_BASE_URL", "\"https://map.naver.com/\"")
             buildConfigField("String", "DH_BASE_URL", "\"www.dhlottery.co.kr/\"")
-
         }
     }
 

@@ -1,8 +1,10 @@
 package com.anseolab.remote.di
 
 import com.anseolab.data.datasources.DhLotteryRemoteDataSource
+import com.anseolab.data.datasources.remote.KakaoRemoteDataSource
 import com.anseolab.data.datasources.remote.NaverRemoteDataSource
 import com.anseolab.remote.datasources.DhLotteryRemoteDataSourceImpl
+import com.anseolab.remote.datasources.KakaoRemoteDataSourceImpl
 import com.anseolab.remote.datasources.NaverRemoteDataSourceImpl
 import dagger.Binds
 import dagger.Module
@@ -24,4 +26,10 @@ interface RemoteModule {
     fun bindNaverRemoteDataSource(
         dataSource: NaverRemoteDataSourceImpl
     ): NaverRemoteDataSource
+
+    @Singleton
+    @Binds
+    fun bindKakaoRemoteDataSource(
+        dataSource: KakaoRemoteDataSourceImpl
+    ): KakaoRemoteDataSource
 }

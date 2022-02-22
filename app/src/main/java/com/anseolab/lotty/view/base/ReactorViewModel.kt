@@ -1,10 +1,12 @@
 package com.anseolab.lotty.view.base
 
 import android.os.Parcelable
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.anseolab.domain.providers.SchedulerProvider
+import com.anseolab.lotty.extensions.getOrNull
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.subjects.PublishSubject
@@ -122,6 +124,13 @@ abstract class ReactorViewModel<Action : ReactorViewModel.Action, Mutation : Rea
             .subscribe(to::setValue) {
                 it.printStackTrace()
             }
+            .let(compositeDisposable::add)
+    }
+
+    @JvmName(name = "bindOptional")
+    protected fun <T : Any> Observable<Optional<T>>.bind(to: MutableLiveData<T>) {
+        this.observeOn(schedulerProvider.ui)
+            .subscribe { value -> to.value = value.getOrNull() }
             .let(compositeDisposable::add)
     }
 

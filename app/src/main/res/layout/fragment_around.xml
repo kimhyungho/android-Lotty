@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -26,6 +27,117 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_search"
+            style="@style/Theme.Lotty.TextView.Regular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/bg_white_rounded_4dp_ripple"
+            android:drawableLeft="@drawable/ic_search_24x24"
+            android:drawablePadding="8dp"
+            android:drawableTint="@color/G500"
+            android:elevation="4dp"
+            android:gravity="center_vertical"
+            android:padding="12dp"
+            android:text="지역 이름으로 검색하세요"
+            android:textColor="@color/G500"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_store_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_white_rounded_4dp_ripple"
+            android:elevation="4dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:id="@+id/btn_navigation"
+                style="@style/Theme.Lotty.TextView.Regular"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_b600_rounded_4dp_ripple"
+                android:elevation="4dp"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_navigation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/ic_navigation_32x32"
+                    android:text="길찾기"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tv_place_name"
+                style="@style/Theme.Lotty.TextView.SemiBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{output.store.place_name}"
+                android:textColor="@color/G900"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/btn_navigation"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="GS25 동보 안서점" />
+
+            <TextView
+                android:id="@+id/tv_road_address_name"
+                style="@style/Theme.Lotty.TextView.Regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{output.store.road_address_name}"
+                app:layout_constraintEnd_toEndOf="@+id/tv_place_name"
+                app:layout_constraintStart_toStartOf="@+id/tv_place_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_place_name"
+                tools:text="발곡로 200-21" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                style="@style/Theme.Lotty.TextView.Regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{output.store.phone}"
+                android:textColor="@color/B500"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tv_road_address_name"
+                app:layout_constraintStart_toStartOf="@+id/tv_road_address_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_road_address_name"
+                tools:text="02-000-0000" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

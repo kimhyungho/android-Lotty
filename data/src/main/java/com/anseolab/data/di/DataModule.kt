@@ -1,8 +1,10 @@
 package com.anseolab.data.di
 
 import com.anseolab.data.repositories.DhLotteryRepositoryImpl
+import com.anseolab.data.repositories.KakaoRepositoryImpl
 import com.anseolab.data.repositories.NaverRepositoryImpl
 import com.anseolab.domain.repositories.DhLotteryRepository
+import com.anseolab.domain.repositories.KakaoRepository
 import com.anseolab.domain.repositories.NaverRepository
 import dagger.Binds
 import dagger.Module
@@ -25,5 +27,12 @@ interface DataModule {
     fun bindNaverRepository(
         repository: NaverRepositoryImpl
     ): NaverRepository
+
+    @Singleton
+    @Binds
+    fun bindKakaoRepository(
+        repository: KakaoRepositoryImpl
+    ): KakaoRepository
+
 
 }

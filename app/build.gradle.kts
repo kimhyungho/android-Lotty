@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.targets.js.npm.includedRange
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -156,6 +158,5 @@ dependencies {
     implementation(Libs.gmsLocation)
 
     implementation ("com.github.yuriy-budiyev:code-scanner:2.1.0")
-
 
 }

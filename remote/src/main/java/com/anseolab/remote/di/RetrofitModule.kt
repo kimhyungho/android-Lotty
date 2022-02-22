@@ -2,10 +2,13 @@ package com.anseolab.remote.di
 
 import com.anseolab.remote.BuildConfig
 import com.anseolab.remote.di.qualifiers.DhLotteryQualifier
+import com.anseolab.remote.di.qualifiers.KakaoQualifier
 import com.anseolab.remote.di.qualifiers.NaverQualifier
 import com.anseolab.remote.di.qualifiers.RemoteGsonQualifier
 import com.anseolab.remote.retrofit.api.dhlottery.DhLotteryApi
+import com.anseolab.remote.retrofit.api.kakao.KakaoApi
 import com.anseolab.remote.retrofit.api.naver.NaverApi
+import com.anseolab.remote.retrofit.interceptors.AuthInterceptor
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -30,8 +33,11 @@ class RetrofitModule {
 
     @Singleton
     @Provides
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(
+        authInterceptor: AuthInterceptor
+    ): OkHttpClient {
         return OkHttpClient.Builder()
+            .addInterceptor(authInterceptor)
             .build()
     }
 
@@ -80,5 +86,29 @@ class RetrofitModule {
         @DhLotteryQualifier
         retrofit: Retrofit
     ): DhLotteryApi = retrofit.create(DhLotteryApi::class.java)
+
+    @Singleton
+    @Provides
+    @KakaoQualifier
+    fun provideKakaoRetrofit(
+        @RemoteGsonQualifier
+        gson: Gson,
+        okHttpClient: OkHttpClient
+    ): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(BuildConfig.KAKAO_BASE_URL)
+            .client(okHttpClient)
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideKakaoApi(
+        @KakaoQualifier
+        retrofit: Retrofit
+    ): KakaoApi = retrofit.create(KakaoApi::class.java)
+
 
 }

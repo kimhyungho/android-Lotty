@@ -1,9 +1,6 @@
 package com.anseolab.domain.di
 
-import com.anseolab.domain.service.DhLotteryService
-import com.anseolab.domain.service.DhLotteryServiceImpl
-import com.anseolab.domain.service.NaverService
-import com.anseolab.domain.service.NaverServiceImpl
+import com.anseolab.domain.service.*
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -24,4 +21,10 @@ interface DomainModule {
     fun bindNaverService(
         service: NaverServiceImpl
     ): NaverService
+
+    @Singleton
+    @Binds
+    fun bindKakaoService(
+        service: KakaoServiceImpl
+    ): KakaoService
 }
