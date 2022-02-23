@@ -80,6 +80,7 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
                 mNaverMap.uiSettings.isRotateGesturesEnabled = false
                 mNaverMap.uiSettings.isTiltGesturesEnabled = false
                 mNaverMap.setOnMapClickListener { _, _ ->
+                    selectedMarker?.iconTintColor = Color.GREEN
                     selectedMarker = null
                     viewModel.input.onMapClick()
                 }
