@@ -43,6 +43,7 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
     private var oldLong: Double? = null
     private var oldLat: Double? = null
 
+    private var selectedMarker: Marker? = null
     private val currentMarkers: MutableList<Marker> = mutableListOf()
 
     private lateinit var mNaverMap: NaverMap
@@ -78,7 +79,10 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
                 mNaverMap.locationTrackingMode = LocationTrackingMode.Follow
                 mNaverMap.uiSettings.isRotateGesturesEnabled = false
                 mNaverMap.uiSettings.isTiltGesturesEnabled = false
-                mNaverMap.setOnMapClickListener { _, _ -> viewModel.input.onMapClick() }
+                mNaverMap.setOnMapClickListener { _, _ ->
+                    selectedMarker = null
+                    viewModel.input.onMapClick()
+                }
                 mNaverMap.addOnCameraIdleListener {
                     if (oldLong == null) oldLong = mNaverMap.cameraPosition.target.longitude
                     if (oldLat == null) oldLat = mNaverMap.cameraPosition.target.longitude
@@ -134,20 +138,28 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
 
             stores.observe { stores ->
                 for (marker in currentMarkers) {
-                    marker.map = null
+                    if (marker != selectedMarker)
+                        marker.map = null
                 }
-                currentMarkers.clear()
+                currentMarkers
+                    .removeIf { marker -> marker != selectedMarker }
+
                 for (store in stores) {
                     val storeLocation = LatLng(store.y, store.x)
-                    val marker = Marker().apply {
-                        position = storeLocation
-                        map = mNaverMap
-                        setOnClickListener {
-                            viewModel.input.onMarkerClick(store)
-                            true
+                    if (selectedMarker?.position?.latitude != store.y && selectedMarker?.position?.longitude != store.x) {
+                        val marker = Marker().apply {
+                            position = storeLocation
+                            map = mNaverMap
+                            setOnClickListener {
+                                viewModel.input.onMarkerClick(store)
+                                selectedMarker?.iconTintColor = Color.GREEN
+                                selectedMarker = this
+                                this.iconTintColor = Color.RED
+                                true
+                            }
                         }
+                        currentMarkers.add(marker)
                     }
-                    currentMarkers.add(marker)
                 }
             }
         }

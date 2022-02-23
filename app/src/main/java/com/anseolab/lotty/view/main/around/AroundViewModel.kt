@@ -12,6 +12,7 @@ import com.anseolab.domain.model.Store
 import com.anseolab.domain.providers.SchedulerProvider
 import com.anseolab.lotty.extensions.getOrNull
 import com.anseolab.lotty.view.base.ReactorViewModel
+import com.naver.maps.map.overlay.Marker
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.core.Observable
 import kotlinx.parcelize.Parcelize

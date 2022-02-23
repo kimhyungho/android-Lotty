@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import com.anseolab.domain.model.KakaoStore
 import com.anseolab.domain.model.Store
 import com.anseolab.lotty.view.base.ViewModelType
+import com.naver.maps.map.overlay.Marker
 
 interface AroundViewModelType: ViewModelType<AroundViewModelType.Input, AroundViewModelType.Output> {
     interface Input: ViewModelType.Input {
