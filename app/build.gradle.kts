@@ -157,6 +157,9 @@ dependencies {
 
     implementation(Libs.gmsLocation)
 
+    implementation ("nl.dionsegijn:konfetti-compose:2.0.2")
+    implementation ("nl.dionsegijn:konfetti-xml:2.0.2")
+
     implementation ("com.github.yuriy-budiyev:code-scanner:2.1.0")
 
 }
