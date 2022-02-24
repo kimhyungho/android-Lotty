@@ -42,16 +42,18 @@ class RandomFragment : ViewModelFragment<FragmentRandomBinding, RandomViewModelT
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-    }
-
     private fun startAnimation(x: Double, y: Double) {
         val party = Party(
             speed = 0f,
             maxSpeed = 30f,
             damping = 0.9f,
             size = listOf(Size(36), Size(24), Size(18)),
+            spread = 360,
+            emitter = Emitter(duration = 300, TimeUnit.MILLISECONDS).max(30),
+            position = Position.Relative(x, y),
+            fadeOutEnabled = false,
+            rotation = Rotation(false),
+            timeToLive = 5000L,
             shapes = listOf(
                 Shape.DrawableShape(
                     ContextCompat.getDrawable(
@@ -59,13 +61,7 @@ class RandomFragment : ViewModelFragment<FragmentRandomBinding, RandomViewModelT
                         R.drawable.ic_coin_36x36
                     )!!, false
                 )
-            ),
-            spread = 360,
-            emitter = Emitter(duration = 300, TimeUnit.MILLISECONDS).max(30),
-            position = Position.Relative(x, y),
-            fadeOutEnabled = false,
-            rotation = Rotation(false),
-            timeToLive = 5000L,
+            )
         )
 
         viewDataBinding.kv.start(party)
