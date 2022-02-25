@@ -27,4 +27,10 @@ interface DomainModule {
     fun bindKakaoService(
         service: KakaoServiceImpl
     ): KakaoService
+
+    @Singleton
+    @Binds
+    fun bindDrwtNoService(
+        service: DrwtNoServiceImpl
+    ): DrwtNoService
 }

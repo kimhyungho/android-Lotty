@@ -28,6 +28,7 @@
         <entry key="app/src/main/res/layout/fragment_scanner_dialog.xml" value="0.33177083333333335" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.22939346811819597" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.33177083333333335" />
+        <entry key="app/src/main/res/layout/item_drwt_no.xml" value="0.2140625" />
         <entry key="app/src/main/res/layout/item_lottery.xml" value="0.49611197511664074" />
         <entry key="app/src/main/res/layout/item_recent_lottery.xml" value="0.67" />
         <entry key="app/src/main/res/layout/layout_loader_progress.xml" value="0.33229166666666665" />

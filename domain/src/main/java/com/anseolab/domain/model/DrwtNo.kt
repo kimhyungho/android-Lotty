@@ -1,7 +1,7 @@
-package com.anseolab.data.model
+package com.anseolab.domain.model
 
-data class DrwtNoData(
-    val id : Int? = null,
+data class DrwtNo(
+    val id: Int? = null,
     val drwtNo1: Int,
     val drwtNo2: Int,
     val drwtNo3: Int,

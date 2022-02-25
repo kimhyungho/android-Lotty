@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -30,10 +31,168 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_touch"
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
+                    android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_drwt_no"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="90dp"
+                        android:paddingVertical="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/drwNum1"
+                            style="@style/Theme.Lotty.TextView.Bold"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_marginStart="32dp"
+                            android:background="@drawable/bg_white_ring"
+                            android:backgroundTint="@{output.drwtNo.drwtNo1Color}"
+                            android:elevation="4dp"
+                            android:gravity="center"
+                            android:text="@{String.valueOf(output.drwtNo.drwtNo1)}"
+                            android:textColor="@color/white"
+                            android:textSize="20dp"
+                            app:layout_constraintEnd_toStartOf="@+id/drwNum2"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="17" />
+
+                        <TextView
+                            android:id="@+id/drwNum2"
+                            style="@style/Theme.Lotty.TextView.Bold"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:background="@drawable/bg_white_ring"
+                            android:backgroundTint="@{output.drwtNo.drwtNo2Color}"
+                            android:elevation="4dp"
+                            android:gravity="center"
+                            android:text="@{String.valueOf(output.drwtNo.drwtNo2)}"
+                            android:textColor="@color/white"
+                            android:textSize="20dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/drwNum1"
+                            app:layout_constraintEnd_toStartOf="@+id/drwNum3"
+                            app:layout_constraintStart_toEndOf="@+id/drwNum1"
+                            app:layout_constraintTop_toTopOf="@+id/drwNum1" />
+
+                        <TextView
+                            android:id="@+id/drwNum3"
+                            style="@style/Theme.Lotty.TextView.Bold"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:background="@drawable/bg_white_ring"
+                            android:backgroundTint="@{output.drwtNo.drwtNo3Color}"
+                            android:elevation="4dp"
+                            android:gravity="center"
+                            android:text="@{String.valueOf(output.drwtNo.drwtNo3)}"
+                            android:textColor="@color/white"
+                            android:textSize="20dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/drwNum2"
+                            app:layout_constraintEnd_toStartOf="@+id/drwNum4"
+                            app:layout_constraintStart_toEndOf="@+id/drwNum2"
+                            app:layout_constraintTop_toTopOf="@+id/drwNum2" />
+
+                        <TextView
+                            android:id="@+id/drwNum4"
+                            style="@style/Theme.Lotty.TextView.Bold"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:background="@drawable/bg_white_ring"
+                            android:backgroundTint="@{output.drwtNo.drwtNo4Color}"
+                            android:elevation="4dp"
+                            android:gravity="center"
+                            android:text="@{String.valueOf(output.drwtNo.drwtNo4)}"
+                            android:textColor="@color/white"
+                            android:textSize="20dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/drwNum3"
+                            app:layout_constraintEnd_toStartOf="@+id/drwNum5"
+                            app:layout_constraintStart_toEndOf="@+id/drwNum3"
+                            app:layout_constraintTop_toTopOf="@+id/drwNum3" />
+
+                        <TextView
+                            android:id="@+id/drwNum5"
+                            style="@style/Theme.Lotty.TextView.Bold"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:background="@drawable/bg_white_ring"
+                            android:backgroundTint="@{output.drwtNo.drwtNo5Color}"
+                            android:elevation="4dp"
+                            android:gravity="center"
+                            android:text="@{String.valueOf(output.drwtNo.drwtNo5)}"
+                            android:textColor="@color/white"
+                            android:textSize="20dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/drwNum4"
+                            app:layout_constraintEnd_toStartOf="@+id/drwNum6"
+                            app:layout_constraintStart_toEndOf="@+id/drwNum4"
+                            app:layout_constraintTop_toTopOf="@+id/drwNum4" />
+
+                        <TextView
+                            android:id="@+id/drwNum6"
+                            style="@style/Theme.Lotty.TextView.Bold"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:background="@drawable/bg_white_ring"
+                            android:backgroundTint="@{output.drwtNo.drwtNo6Color}"
+                            android:elevation="4dp"
+                            android:gravity="center"
+                            android:text="@{String.valueOf(output.drwtNo.drwtNo6)}"
+                            android:textColor="@color/white"
+                            android:textSize="20dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/drwNum5"
+                            app:layout_constraintEnd_toStartOf="@+id/iv_plus"
+                            app:layout_constraintStart_toEndOf="@+id/drwNum5"
+                            app:layout_constraintTop_toTopOf="@+id/drwNum5" />
+
+                        <TextView
+                            android:id="@+id/bonus_num"
+                            style="@style/Theme.Lotty.TextView.Bold"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_marginEnd="32dp"
+                            android:background="@drawable/bg_white_ring"
+                            android:backgroundTint="@{output.drwtNo.bonusColor}"
+                            android:elevation="4dp"
+                            android:gravity="center"
+                            android:text="@{String.valueOf(output.drwtNo.bnusNo)}"
+                            android:textColor="@color/white"
+                            android:textSize="20dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/iv_plus"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/iv_plus"
+                            app:layout_constraintTop_toTopOf="@+id/iv_plus" />
+
+                        <ImageView
+                            android:id="@+id/iv_plus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="@+id/drwNum6"
+                            app:layout_constraintEnd_toStartOf="@+id/bonus_num"
+                            app:layout_constraintStart_toEndOf="@+id/drwNum6"
+                            app:layout_constraintTop_toTopOf="@+id/drwNum6"
+                            app:srcCompat="@drawable/ic_plus_32x32" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_create"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="24dp"
+                        android:text="랜덤 번호 받기"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_drwt_no" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
                 <TextView

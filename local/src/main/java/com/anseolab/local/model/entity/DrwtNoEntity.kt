@@ -3,9 +3,9 @@ package com.anseolab.local.model.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "DrwtNo")
 data class DrwtNoEntity(
-    @PrimaryKey(autoGenerate = true) val id: Int,
+    @PrimaryKey(autoGenerate = true) val id: Int? = null,
     val drwtNo1: Int,
     val drwtNo2: Int,
     val drwtNo3: Int,

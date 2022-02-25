@@ -6,8 +6,10 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.anseolab.lotty.R
 import com.anseolab.lotty.databinding.FragmentRandomBinding
+import com.anseolab.lotty.extensions.throttle
 import com.anseolab.lotty.view.base.FragmentLauncher
 import com.anseolab.lotty.view.base.ViewModelFragment
+import com.jakewharton.rxbinding4.view.clicks
 import dagger.hilt.android.AndroidEntryPoint
 import nl.dionsegijn.konfetti.core.Party
 import nl.dionsegijn.konfetti.core.Position
@@ -34,11 +36,22 @@ class RandomFragment : ViewModelFragment<FragmentRandomBinding, RandomViewModelT
 
         with(viewDataBinding) {
             layoutTouch.setOnTouchListener { _, event ->
-                val x = (event.x / viewDataBinding.root.width).toDouble()
-                val y = (event.y / viewDataBinding.root.height).toDouble()
+                val x = (event.x / root.width).toDouble()
+                val y = (event.y / root.height).toDouble()
                 startAnimation(x, y)
                 true
             }
+
+            btnCreate.clicks()
+                .bind {
+                    viewModel.input.onCreateButtonClick()
+                    startAnimation(0.5, (layoutDrwtNo.y / root.height).toDouble())
+                }
+
+            btnClear.clicks()
+                .bind {
+
+                }
         }
     }
 
@@ -52,7 +65,7 @@ class RandomFragment : ViewModelFragment<FragmentRandomBinding, RandomViewModelT
             emitter = Emitter(duration = 300, TimeUnit.MILLISECONDS).max(30),
             position = Position.Relative(x, y),
             fadeOutEnabled = false,
-            rotation = Rotation(false),
+            rotation = Rotation(true),
             timeToLive = 5000L,
             shapes = listOf(
                 Shape.DrawableShape(

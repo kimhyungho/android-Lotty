@@ -11,7 +11,7 @@ import io.reactivex.rxjava3.core.Flowable
 @Dao
 interface LotteryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun set(vararg drwtNo: DrwtNoDao)
+    fun set(vararg lotteries: LotteryEntity)
 
     @Query("SELECT * FROM Lottery ORDER BY createAt DESC")
     fun getAll(): Flowable<List<LotteryEntity>>
