@@ -7,6 +7,10 @@ import io.reactivex.rxjava3.core.Flowable
 interface DrwtNoService {
     fun getAll(): Flowable<List<DrwtNo>>
 
+    fun clear() : Completable
+
+    fun remove(id: Int): Completable
+
     fun set(
         drwtNo1: Int,
         drwtNo2: Int,

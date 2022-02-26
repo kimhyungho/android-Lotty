@@ -17,8 +17,10 @@ import androidx.fragment.app.viewModels
 import com.anseolab.lotty.R
 import com.anseolab.lotty.databinding.FragmentAroundBinding
 import com.anseolab.lotty.extensions.throttle
+import com.anseolab.lotty.view.alert.searchaddress.SearchAddressDialogFragment
 import com.anseolab.lotty.view.base.FragmentLauncher
 import com.anseolab.lotty.view.base.ViewModelFragment
+import com.anseolab.lotty.view.main.MainFragmentDirections
 import com.jakewharton.rxbinding4.view.clicks
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.LocationTrackingMode
@@ -80,7 +82,7 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
                 mNaverMap.uiSettings.isRotateGesturesEnabled = false
                 mNaverMap.uiSettings.isTiltGesturesEnabled = false
                 mNaverMap.setOnMapClickListener { _, _ ->
-                    selectedMarker?.iconTintColor = Color.GREEN
+                    selectedMarker?.iconTintColor = 0
                     selectedMarker = null
                     viewModel.input.onMapClick()
                 }
@@ -106,7 +108,7 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
             tvSearch.clicks()
                 .throttle()
                 .bind {
-
+                    SearchAddressDialogFragment.getInstance().show(childFragmentManager, SearchAddressDialogFragment.name)
                 }
 
             btnNavigation.clicks()
@@ -153,7 +155,7 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
                             map = mNaverMap
                             setOnClickListener {
                                 viewModel.input.onMarkerClick(store)
-                                selectedMarker?.iconTintColor = Color.GREEN
+                                selectedMarker?.iconTintColor = 0
                                 selectedMarker = this
                                 this.iconTintColor = Color.RED
                                 true

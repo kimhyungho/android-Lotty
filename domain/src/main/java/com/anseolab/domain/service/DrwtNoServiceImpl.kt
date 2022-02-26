@@ -13,6 +13,14 @@ class DrwtNoServiceImpl @Inject constructor(
         return drwtNoRepository.getAll()
     }
 
+    override fun clear(): Completable {
+        return drwtNoRepository.clear()
+    }
+
+    override fun remove(id: Int): Completable {
+        return drwtNoRepository.remove(id)
+    }
+
     override fun set(
         drwtNo1: Int,
         drwtNo2: Int,

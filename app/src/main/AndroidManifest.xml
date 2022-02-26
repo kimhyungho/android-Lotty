@@ -42,7 +42,9 @@
 
         <activity
             android:name=".MainActivity"
-            android:exported="true"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.Lotty"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
 
 

@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import com.anseolab.lotty.R
 import com.anseolab.lotty.databinding.FragmentRandomBinding
 import com.anseolab.lotty.extensions.throttle
+import com.anseolab.lotty.view.adapter.RecentDrwtNoListAdapter
 import com.anseolab.lotty.view.base.FragmentLauncher
 import com.anseolab.lotty.view.base.ViewModelFragment
 import com.jakewharton.rxbinding4.view.clicks
@@ -27,6 +28,14 @@ class RandomFragment : ViewModelFragment<FragmentRandomBinding, RandomViewModelT
     private val _viewModel: RandomViewModel by viewModels()
     override val viewModel: RandomViewModelType get() = _viewModel
 
+    private val recentDrwtNoListAdapter = RecentDrwtNoListAdapter().apply {
+        listener = object: RecentDrwtNoListAdapter.Listener {
+            override fun onRemoveClick(id: Int) {
+                viewModel.input.onRemoveButtonClick(id)
+            }
+        }
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onWillAttachViewModel(
         viewDataBinding: FragmentRandomBinding,
@@ -35,6 +44,8 @@ class RandomFragment : ViewModelFragment<FragmentRandomBinding, RandomViewModelT
         super.onWillAttachViewModel(viewDataBinding, viewModel)
 
         with(viewDataBinding) {
+            rvRecent.adapter = recentDrwtNoListAdapter
+
             layoutTouch.setOnTouchListener { _, event ->
                 val x = (event.x / root.width).toDouble()
                 val y = (event.y / root.height).toDouble()
@@ -50,7 +61,7 @@ class RandomFragment : ViewModelFragment<FragmentRandomBinding, RandomViewModelT
 
             btnClear.clicks()
                 .bind {
-
+                    viewModel.input.onClearButtonClick()
                 }
         }
     }
@@ -78,6 +89,11 @@ class RandomFragment : ViewModelFragment<FragmentRandomBinding, RandomViewModelT
         )
 
         viewDataBinding.kv.start(party)
+    }
+
+    override fun onDestroyView() {
+        viewDataBinding.rvRecent.adapter = null
+        super.onDestroyView()
     }
 
     companion object : FragmentLauncher<RandomFragment>() {
