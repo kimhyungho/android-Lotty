@@ -1,6 +1,7 @@
 package com.anseolab.lotty.view.main.around
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.anseolab.domain.model.KakaoStore
 import com.anseolab.domain.model.Store
 import com.anseolab.lotty.view.base.ViewModelType
@@ -12,6 +13,8 @@ interface AroundViewModelType: ViewModelType<AroundViewModelType.Input, AroundVi
 
         fun onMarkerClick(store: KakaoStore)
 
+        fun onSearchButtonClick(address: String)
+
         fun onMapClick()
     }
 
@@ -21,5 +24,7 @@ interface AroundViewModelType: ViewModelType<AroundViewModelType.Input, AroundVi
         val stores: LiveData<List<KakaoStore>>
 
         val showStoreInfo: LiveData<Boolean>
+
+        val showStoreLocation: LiveData<Boolean>
     }
 }

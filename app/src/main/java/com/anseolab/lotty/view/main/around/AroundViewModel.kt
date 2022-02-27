@@ -33,6 +33,9 @@ class AroundViewModel @Inject constructor(
     override fun onMarkerClick(store: KakaoStore) =
         createAction(Action.MarkerClick(store))
 
+    override fun onSearchButtonClick(address: String) =
+        createAction(Action.SearchButtonClick(address))
+
     override fun onMapClick() =
         createAction(Action.MapClick)
 
@@ -44,6 +47,9 @@ class AroundViewModel @Inject constructor(
 
     private val _showStoreInfo: MutableLiveData<Boolean> = MutableLiveData()
     override val showStoreInfo: LiveData<Boolean> get() = _showStoreInfo
+
+    private val _showStoreLocation: MutableLiveData<Boolean> = MutableLiveData()
+    override val showStoreLocation: LiveData<Boolean> get() = _showStoreLocation
 
     override val input: AroundViewModelType.Input = this
     override val output: AroundViewModelType.Output = this
@@ -58,6 +64,9 @@ class AroundViewModel @Inject constructor(
 
         state.select(State::showStoreInfo)
             .bind(_showStoreInfo)
+
+        state.select(State::showStoreLocation)
+            .bind(_showStoreLocation)
     }
 
     override fun createInitialState(savedState: Parcelable?): State {
@@ -84,6 +93,21 @@ class AroundViewModel @Inject constructor(
                     }
             }
 
+            is Action.SearchButtonClick -> {
+                val params = KakaoSearchUseCase.Params(
+                    query = "${action.address} 복권 판매점",
+                    x = 0.0,
+                    y = 0.0
+                )
+
+                kakaoSearchUseCase.execute(params)
+                    .map(Mutation::SearchWithDialogStoreSuccess)
+                    .toObservable()
+                    .onErrorResumeNext {
+                        Observable.empty()
+                    }
+            }
+
             is Action.MarkerClick -> {
                 Observable.just(Mutation.SetStore(action.store))
             }
@@ -99,7 +123,11 @@ class AroundViewModel @Inject constructor(
     override fun reduce(state: State, mutation: Mutation): State {
         return when (mutation) {
             is Mutation.SearchStoreSuccess -> {
-                state.copy(stores = mutation.response)
+                state.copy(stores = mutation.response, showStoreLocation = false)
+            }
+
+            is Mutation.SearchWithDialogStoreSuccess -> {
+                state.copy(stores = mutation.response, showStoreLocation = true)
             }
 
             is Mutation.SetStore -> {
@@ -115,11 +143,15 @@ class AroundViewModel @Inject constructor(
 
         class MarkerClick(val store: KakaoStore) : Action
 
+        class SearchButtonClick(val address: String): Action
+
         object MapClick : Action
     }
 
     interface Mutation : ReactorViewModel.Mutation {
         class SearchStoreSuccess(val response: List<KakaoStore>) : Mutation
+
+        class SearchWithDialogStoreSuccess(val response: List<KakaoStore>): Mutation
 
         class SetStore(val store: KakaoStore?) : Mutation
     }
@@ -127,7 +159,8 @@ class AroundViewModel @Inject constructor(
     data class State(
         val stores: List<KakaoStore> = listOf(),
         val store: KakaoStore? = null,
-        val showStoreInfo: Boolean
+        val showStoreInfo: Boolean,
+        val showStoreLocation: Boolean = false
     ) : ReactorViewModel.State {
         override fun toParcelable(): Parcelable? {
             return SavedState(

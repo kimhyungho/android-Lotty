@@ -23,10 +23,7 @@ import com.anseolab.lotty.view.base.ViewModelFragment
 import com.anseolab.lotty.view.main.MainFragmentDirections
 import com.jakewharton.rxbinding4.view.clicks
 import com.naver.maps.geometry.LatLng
-import com.naver.maps.map.LocationTrackingMode
-import com.naver.maps.map.MapFragment
-import com.naver.maps.map.MapView
-import com.naver.maps.map.NaverMap
+import com.naver.maps.map.*
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.Overlay
 import com.naver.maps.map.util.FusedLocationSource
@@ -105,10 +102,22 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
         }
 
         with(viewDataBinding) {
+            btnMyLocation.clicks()
+                .bind {
+                    val myLocation = mNaverMap.locationOverlay.position
+                    mNaverMap.cameraPosition = CameraPosition(myLocation, 13.0)
+                }
+
             tvSearch.clicks()
                 .throttle()
                 .bind {
-                    SearchAddressDialogFragment.getInstance().show(childFragmentManager, SearchAddressDialogFragment.name)
+                    SearchAddressDialogFragment.apply {
+                        listener = object : SearchAddressDialogFragment.Companion.Listener {
+                            override fun onSearchButtonClick(address: String) {
+                                viewModel.input.onSearchButtonClick(address)
+                            }
+                        }
+                    }.getInstance().show(childFragmentManager, SearchAddressDialogFragment.name)
                 }
 
             btnNavigation.clicks()
@@ -134,12 +143,18 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
         }
 
         with(viewModel.output) {
+
             showStoreInfo.observe {
                 if (it) showStoreInformation()
                 else hideStoreInformation()
             }
 
             stores.observe { stores ->
+                val fistStore = stores.firstOrNull()
+
+                if (fistStore != null && _viewModel.currentState.showStoreLocation) mNaverMap.cameraPosition =
+                    CameraPosition(LatLng(fistStore.y, fistStore.x), 13.0)
+
                 for (marker in currentMarkers) {
                     if (marker != selectedMarker)
                         marker.map = null
