@@ -159,6 +159,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="#55000000"
+            android:clickable="true"
+            visibleOrGone="@{output.showApiExceeded}"
             android:elevation="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -169,8 +171,9 @@
                 android:id="@+id/imageButton"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="18dp"
-                android:background="#2db400"
+                android:layout_marginStart="36dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_gr600_rounded_8dp_ripple"
                 android:padding="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="1:1"
@@ -184,9 +187,9 @@
                 android:id="@+id/imageButton2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="18dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginEnd="36dp"
-                android:background="#F7E600"
+                android:background="@drawable/bg_y400_rounded_8dp_ripple"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -211,7 +214,7 @@
             <TextView
                 android:id="@+id/textView18"
                 style="@style/Theme.Lotty.TextView.SemiBold"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:gravity="center"
@@ -220,6 +223,22 @@
                 app:layout_constraintEnd_toEndOf="@+id/imageButton2"
                 app:layout_constraintStart_toStartOf="@+id/imageButton2"
                 app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+
+            <TextView
+                android:id="@+id/textView19"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:text="금일 검색회수를 초과했습니다. 아래 버튼을 눌러 네이버맵 혹은 카카오맵으로 주변 복권판매점을 검색할 수 있습니다. 불편을 드려 죄송합니다."
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/imageButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

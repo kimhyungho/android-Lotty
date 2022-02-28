@@ -1,5 +1,6 @@
 package com.anseolab.domain.interactors
 
+import com.anseolab.domain.model.exeption.LottyException
 import com.anseolab.domain.providers.SchedulerProvider
 import io.reactivex.rxjava3.core.Completable
 import javax.inject.Singleton
@@ -16,6 +17,9 @@ abstract class CompletableUseCase<Params>(
         this.build(params)
             .subscribeOn(workerScheduler)
             .observeOn(schedulerProvider.ui)
+            .onErrorResumeNext { throwable: Throwable ->
+                Completable.error(LottyException(throwable.message!!, throwable))
+            }
     }
 
 }

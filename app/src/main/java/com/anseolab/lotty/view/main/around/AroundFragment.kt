@@ -143,6 +143,9 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
         }
 
         with(viewModel.output) {
+            showError.observe {
+                Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+            }
 
             showStoreInfo.observe {
                 if (it) showStoreInformation()

@@ -16,6 +16,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:animateLayoutChanges="true"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.Guideline
@@ -60,6 +61,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/bg_g100_rounded_10dp"
             android:drawableStart="@drawable/ic_search_12x12"
             android:drawablePadding="8dp"
@@ -77,15 +79,16 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_search"
+            visibleOrGone="@{output.word.length() > 0}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
             android:padding="8dp"
-            visibleOrGone="@{output.word.length() > 0}"
             android:text="검색"
             android:textColor="@color/G900"
             app:layout_constraintBottom_toBottomOf="@+id/et_word"
-            app:layout_constraintEnd_toStartOf="@+id/guide_end"
+            app:layout_constraintEnd_toEndOf="@+id/toolbar"
             app:layout_constraintTop_toTopOf="@+id/et_word" />
 
         <androidx.core.widget.NestedScrollView

@@ -9,9 +9,12 @@ import com.anseolab.domain.interactors.kakao.KakaoSearchUseCase
 import com.anseolab.domain.interactors.naver.SearchUseCase
 import com.anseolab.domain.model.KakaoStore
 import com.anseolab.domain.model.Store
+import com.anseolab.domain.model.exeption.LottyException
 import com.anseolab.domain.providers.SchedulerProvider
 import com.anseolab.lotty.extensions.getOrNull
+import com.anseolab.lotty.mapper.ExceptionMapper
 import com.anseolab.lotty.view.base.ReactorViewModel
+import com.anseolab.lotty.view.lifecycle.SingleLiveData
 import com.naver.maps.map.overlay.Marker
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.core.Observable
@@ -51,6 +54,12 @@ class AroundViewModel @Inject constructor(
     private val _showStoreLocation: MutableLiveData<Boolean> = MutableLiveData()
     override val showStoreLocation: LiveData<Boolean> get() = _showStoreLocation
 
+    private val _showApiExceeded: MutableLiveData<Boolean> = MutableLiveData()
+    override val showApiExceeded: LiveData<Boolean> get() = _showApiExceeded
+
+    private val _showError: MutableLiveData<String> = SingleLiveData()
+    override val showError: LiveData<String> get() = _showError
+
     override val input: AroundViewModelType.Input = this
     override val output: AroundViewModelType.Output = this
 
@@ -67,6 +76,20 @@ class AroundViewModel @Inject constructor(
 
         state.select(State::showStoreLocation)
             .bind(_showStoreLocation)
+
+        state.select(State::throwable)
+            .unwrapOptional()
+            .map(this::isApiExceedError)
+            .bind(_showApiExceeded)
+
+        state.select(State::throwable)
+            .unwrapOptional()
+            .map(ExceptionMapper::mapToView)
+            .bind(_showError)
+    }
+
+    private fun isApiExceedError(throwable: Throwable): Boolean {
+        return throwable is LottyException && throwable.code == LottyException.API_LIMIT_HAS_BEEN_EXCEEDED
     }
 
     override fun createInitialState(savedState: Parcelable?): State {
@@ -86,10 +109,10 @@ class AroundViewModel @Inject constructor(
                 )
 
                 kakaoSearchUseCase.execute(params)
-                    .map(Mutation::SearchStoreSuccess)
+                    .map<Mutation>(Mutation::SearchStoreSuccess)
                     .toObservable()
                     .onErrorResumeNext {
-                        Observable.empty()
+                        Observable.just(Mutation.SetThrowable(it))
                     }
             }
 
@@ -101,10 +124,10 @@ class AroundViewModel @Inject constructor(
                 )
 
                 kakaoSearchUseCase.execute(params)
-                    .map(Mutation::SearchWithDialogStoreSuccess)
+                    .map<Mutation>(Mutation::SearchWithDialogStoreSuccess)
                     .toObservable()
                     .onErrorResumeNext {
-                        Observable.empty()
+                        Observable.just(Mutation.SetThrowable(it))
                     }
             }
 
@@ -134,6 +157,10 @@ class AroundViewModel @Inject constructor(
                 state.copy(store = mutation.store, showStoreInfo = mutation.store != null)
             }
 
+            is Mutation.SetThrowable -> {
+                state.copy(throwable = mutation.throwable)
+            }
+
             else -> state
         }
     }
@@ -154,13 +181,16 @@ class AroundViewModel @Inject constructor(
         class SearchWithDialogStoreSuccess(val response: List<KakaoStore>): Mutation
 
         class SetStore(val store: KakaoStore?) : Mutation
+
+        class SetThrowable (val throwable: Throwable): Mutation
     }
 
     data class State(
         val stores: List<KakaoStore> = listOf(),
         val store: KakaoStore? = null,
         val showStoreInfo: Boolean,
-        val showStoreLocation: Boolean = false
+        val showStoreLocation: Boolean = false,
+        val throwable: Throwable? = null
     ) : ReactorViewModel.State {
         override fun toParcelable(): Parcelable? {
             return SavedState(

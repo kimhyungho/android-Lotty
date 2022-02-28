@@ -26,5 +26,9 @@ interface AroundViewModelType: ViewModelType<AroundViewModelType.Input, AroundVi
         val showStoreInfo: LiveData<Boolean>
 
         val showStoreLocation: LiveData<Boolean>
+
+        val showApiExceeded: LiveData<Boolean>
+
+        val showError: LiveData<String>
     }
 }
