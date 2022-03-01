@@ -18,13 +18,14 @@ class KakaoSearchUseCase @Inject constructor(
 ) {
     override fun build(params: Params?): Single<List<KakaoStore>> {
         if(params == null) throw IllegalArgumentException("params can not be null")
-        val (query, x, y) = params
-        return kakaoService.search(query, x, y)
+        val (query, x, y, type) = params
+        return kakaoService.search(query, x, y, type)
     }
 
     data class Params(
         val query: String,
         val x: Double,
-        val y: Double
+        val y: Double,
+        val type: String
     )
 }

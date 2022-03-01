@@ -1,6 +1,7 @@
 package com.anseolab.local.di
 
 import android.content.Context
+import com.anseolab.local.databases.AddressDatabase
 import com.anseolab.local.databases.DrwtNoDataBase
 import com.anseolab.local.databases.LotteryDataBase
 import com.anseolab.local.di.qualifiers.LocalGsonQualifier
@@ -40,5 +41,14 @@ class DataBaseModule {
         @LocalGsonQualifier
         gson: Gson
     ): DrwtNoDataBase = DrwtNoDataBase.getInstance(applicationContext, gson)
+
+    @Singleton
+    @Provides
+    fun provideAddressDatabase(
+        @ApplicationContext
+        applicationContext: Context,
+        @LocalGsonQualifier
+        gson: Gson
+    ): AddressDatabase = AddressDatabase.getInstance(applicationContext, gson)
 
 }

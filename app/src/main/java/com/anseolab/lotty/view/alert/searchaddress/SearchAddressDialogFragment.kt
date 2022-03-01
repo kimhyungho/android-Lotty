@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import com.anseolab.lotty.R
 import com.anseolab.lotty.databinding.FragmentSearchAddressDialogBinding
+import com.anseolab.lotty.view.adapter.RecentAddressListAdapter
 import com.anseolab.lotty.view.base.FragmentLauncher
 import com.anseolab.lotty.view.base.ViewModelDialogFragment
 import com.jakewharton.rxbinding4.view.clicks
@@ -17,6 +18,8 @@ class SearchAddressDialogFragment:  ViewModelDialogFragment<FragmentSearchAddres
 ){
     private val _viewModel: SearchAddressViewModel by viewModels()
     override val viewModel: SearchAddressViewModelType get() = _viewModel
+
+    private val recentAddressListAdapter = RecentAddressListAdapter()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -31,6 +34,8 @@ class SearchAddressDialogFragment:  ViewModelDialogFragment<FragmentSearchAddres
         super.onWillAttachViewModel(viewDataBinding, viewModel)
 
         with(viewDataBinding) {
+            rvRecent.adapter = recentAddressListAdapter
+
             ibBack.clicks()
                 .bind {
                     dismiss()

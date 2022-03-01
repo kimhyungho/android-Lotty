@@ -105,7 +105,8 @@ class AroundViewModel @Inject constructor(
                 val params = KakaoSearchUseCase.Params(
                     query = "복권 판매점",
                     x = action.x,
-                    y = action.y
+                    y = action.y,
+                    type = "normal"
                 )
 
                 kakaoSearchUseCase.execute(params)
@@ -120,7 +121,8 @@ class AroundViewModel @Inject constructor(
                 val params = KakaoSearchUseCase.Params(
                     query = "${action.address} 복권 판매점",
                     x = 0.0,
-                    y = 0.0
+                    y = 0.0,
+                    type = "search"
                 )
 
                 kakaoSearchUseCase.execute(params)

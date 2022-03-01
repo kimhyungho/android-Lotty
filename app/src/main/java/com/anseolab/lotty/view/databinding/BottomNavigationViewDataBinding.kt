@@ -22,20 +22,20 @@ fun BottomNavigationView.bindPage(page: Int) {
 
 fun convertMainMenuToPage(menuItem: MenuItem): Int {
     return when(menuItem.itemId) {
-        R.id.menu_around -> 0
-        R.id.menu_search -> 1
-        R.id.menu_random -> 2
-        R.id.menu_setting -> 3
+        R.id.menu_home -> 0
+        R.id.menu_around -> 1
+        R.id.menu_search -> 2
+        R.id.menu_random -> 3
         else -> 0
     }
 }
 
 fun convertPageToMenuItem(page: Int): Int {
     return when(page) {
-        0 -> R.id.menu_around
-        1 -> R.id.menu_search
-        2 -> R.id.menu_random
-        3 -> R.id.menu_setting
+        0 -> R.id.menu_home
+        1 -> R.id.menu_around
+        2 -> R.id.menu_search
+        3 -> R.id.menu_random
         else -> R.id.menu_around
     }
 }

@@ -7,6 +7,7 @@ import com.anseolab.lotty.databinding.FragmentMainBinding
 import com.anseolab.lotty.extensions.hideAll
 import com.anseolab.lotty.view.base.ViewModelFragment
 import com.anseolab.lotty.view.main.around.AroundFragment
+import com.anseolab.lotty.view.main.home.HomeFragment
 import com.anseolab.lotty.view.main.random.RandomFragment
 import com.anseolab.lotty.view.main.search.SearchFragment
 import com.anseolab.lotty.view.main.setting.SettingFragment
@@ -27,15 +28,16 @@ class MainFragment: ViewModelFragment<FragmentMainBinding, MainViewModelType>(
     ) {
         with(viewDataBinding) {
 
+
         }
 
         with(viewModel.output) {
             selectedPage.observe {
                 when(it) {
-                    0 -> changeFragment(AroundFragment::class, AroundFragment.name)
-                    1 -> changeFragment(SearchFragment::class, SearchFragment.name)
-                    2 -> changeFragment(RandomFragment::class, RandomFragment.name)
-                    3 -> changeFragment(SettingFragment::class, SettingFragment.name)
+                    0 -> changeFragment(HomeFragment::class, HomeFragment.name)
+                    1 -> changeFragment(AroundFragment::class, AroundFragment.name)
+                    2 -> changeFragment(SearchFragment::class, SearchFragment.name)
+                    3 -> changeFragment(RandomFragment::class, RandomFragment.name)
                 }
             }
         }

@@ -1,7 +1,9 @@
 package com.anseolab.local.di
 
+import com.anseolab.data.datasources.local.AddressLocalDataSource
 import com.anseolab.data.datasources.local.DrwtNoLocalDataSource
 import com.anseolab.data.datasources.local.LotteryLocalDataSource
+import com.anseolab.local.datasources.AddressLocalDataSourceImpl
 import com.anseolab.local.datasources.DrwtNoLocalDataSourceImpl
 import com.anseolab.local.datasources.LotteryLocalDataSourceImpl
 import dagger.Binds
@@ -25,4 +27,10 @@ interface LocalModule {
     fun bindDrwtNoLocalDatasource(
         drwtNoLocalDataSource: DrwtNoLocalDataSourceImpl
     ): DrwtNoLocalDataSource
+
+    @Singleton
+    @Binds
+    fun bindAddressLocalDatasource(
+        addressLocalDataSource: AddressLocalDataSourceImpl
+    ): AddressLocalDataSource
 }
