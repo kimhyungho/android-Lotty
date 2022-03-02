@@ -1,5 +1,7 @@
 package com.anseolab.lotty.view.main
 
+import android.graphics.Color
+import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.anseolab.lotty.R
@@ -15,9 +17,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlin.reflect.KClass
 
 @AndroidEntryPoint
-class MainFragment: ViewModelFragment<FragmentMainBinding, MainViewModelType>(
+class MainFragment : ViewModelFragment<FragmentMainBinding, MainViewModelType>(
     R.layout.fragment_main
-){
+) {
 
     private val _viewModel: MainViewModel by viewModels()
     override val viewModel: MainViewModelType get() = _viewModel
@@ -26,6 +28,7 @@ class MainFragment: ViewModelFragment<FragmentMainBinding, MainViewModelType>(
         viewDataBinding: FragmentMainBinding,
         viewModel: MainViewModelType
     ) {
+
         with(viewDataBinding) {
 
 
@@ -33,11 +36,19 @@ class MainFragment: ViewModelFragment<FragmentMainBinding, MainViewModelType>(
 
         with(viewModel.output) {
             selectedPage.observe {
-                when(it) {
-                    0 -> changeFragment(HomeFragment::class, HomeFragment.name)
-                    1 -> changeFragment(AroundFragment::class, AroundFragment.name)
-                    2 -> changeFragment(SearchFragment::class, SearchFragment.name)
-                    3 -> changeFragment(RandomFragment::class, RandomFragment.name)
+                when (it) {
+                    0 -> {
+                        changeFragment(HomeFragment::class, HomeFragment.name)
+                    }
+                    1 -> {
+                        changeFragment(AroundFragment::class, AroundFragment.name)
+                    }
+                    2 -> {
+                        changeFragment(SearchFragment::class, SearchFragment.name)
+                    }
+                    3 -> {
+                        changeFragment(RandomFragment::class, RandomFragment.name)
+                    }
                 }
             }
         }

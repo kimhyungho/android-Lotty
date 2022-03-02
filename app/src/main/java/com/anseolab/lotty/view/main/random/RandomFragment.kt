@@ -1,6 +1,7 @@
 package com.anseolab.lotty.view.main.random
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels

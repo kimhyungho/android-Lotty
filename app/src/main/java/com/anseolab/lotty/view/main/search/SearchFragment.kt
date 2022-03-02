@@ -1,6 +1,7 @@
 package com.anseolab.lotty.view.main.search
 
 import android.Manifest
+import android.graphics.Color
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.viewModels

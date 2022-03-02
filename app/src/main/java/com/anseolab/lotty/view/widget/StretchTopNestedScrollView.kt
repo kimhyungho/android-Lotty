@@ -1,0 +1,157 @@
+package com.anseolab.lotty.view.widget
+
+import android.content.Context
+import android.util.AttributeSet
+import android.util.Log
+import android.view.View
+import android.view.MotionEvent
+import android.widget.LinearLayout
+import kotlin.math.abs
+import curtains.OnTouchEventListener
+import android.view.animation.Animation
+import android.view.animation.Transformation
+import androidx.core.widget.OpenedNestedScrollView
+
+
+class StretchTopNestedScrollView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyle: Int = 0
+) : OpenedNestedScrollView(
+    context, attrs, defStyle
+) {
+    private var mTopView: View? = null
+    private var mBottomView: View? = null
+    private var mNormalHeight = 0
+    private var mMaxHeight: Int = 0
+    private var mChangeListener: onOverScrollChanged? = null
+    private var mFactor = 1.6f
+
+    private interface OnTouchEventListener {
+        fun onTouchEvent(ev: MotionEvent?)
+    }
+
+    fun setFactor(f: Float) {
+        mFactor = f
+        mTopView!!.postDelayed({
+            mNormalHeight = mTopView!!.height
+            mMaxHeight = (mNormalHeight * mFactor).toInt()
+        }, 50)
+    }
+
+    fun getTopView(): View? {
+        return mTopView
+    }
+
+    fun getBottomView(): View? {
+        return mBottomView
+    }
+
+    override fun onFinishInflate() {
+        super.onFinishInflate()
+        if (childCount > 1) throw IllegalArgumentException("Root layout must be a LinearLayout, and only one child on this view!")
+
+        if (childCount == 0 || getChildAt(0) !is LinearLayout) throw IllegalArgumentException("Root layout is not a LinearLayout!")
+
+        if (childCount == 1 && getChildAt(0) is LinearLayout) {
+            val parent = getChildAt(0) as LinearLayout
+            if (parent.childCount != 2) throw IllegalArgumentException("Root LinearLayout's has not EXACTLY two Views!")
+
+            mTopView = parent.getChildAt(0)
+            mBottomView = parent.getChildAt(1)
+
+            mTopView!!.postDelayed(Runnable {
+                mNormalHeight = mTopView!!.height
+                mMaxHeight = (mNormalHeight * mFactor).toInt()
+            }, 50)
+        }
+    }
+
+    override fun onScrollChanged(l: Int, t: Int, oldl: Int, oldt: Int) {
+        super.onScrollChanged(l, t, oldl, oldt)
+    }
+
+    override fun onTouchEvent(ev: MotionEvent?): Boolean {
+        touchListener.onTouchEvent(ev!!)
+        return super.onTouchEvent(ev)
+    }
+
+    interface onOverScrollChanged {
+        fun onChanged(v: Float)
+    }
+
+    fun setChangeListener(changeListener: onOverScrollChanged) {
+        mChangeListener = changeListener
+    }
+
+    override fun openedOverScrollByCompat(
+        deltaX: Int,
+        deltaY: Int,
+        scrollX: Int,
+        scrollY: Int,
+        scrollRangeX: Int,
+        scrollRangeY: Int,
+        maxOverScrollX: Int,
+        maxOverScrollY: Int,
+        isTouchEvent: Boolean
+    ): Boolean {
+        if (scrollY == 0) {
+            if (deltaY < 0 && mTopView!!.layoutParams.height + abs(deltaY) > mMaxHeight) {
+                mTopView!!.layoutParams.height = mMaxHeight
+            } else if (deltaY < 0 && mTopView!!.layoutParams.height + abs(deltaY) <= mMaxHeight) {
+                mTopView!!.layoutParams.height += abs(deltaY * 0.5).toInt()
+            } else if (deltaY > 0 && mTopView!!.layoutParams.height - abs(deltaY) < mNormalHeight) {
+                mTopView!!.layoutParams.height = mNormalHeight
+            } else if (deltaY > 0 && mTopView!!.layoutParams.height - abs(deltaY) >= mNormalHeight) {
+                mTopView!!.layoutParams.height -= abs(deltaY * 0.5).toInt()
+            }
+        }
+
+        if (mChangeListener != null) mChangeListener?.onChanged(
+            (mMaxHeight - mTopView!!.layoutParams.height.toFloat()) / (mMaxHeight - mNormalHeight)
+        )
+
+        if (deltaY != 0 && scrollY == 0) {
+            mTopView!!.requestLayout()
+            mBottomView!!.requestLayout()
+        }
+
+        if (mTopView!!.layoutParams.height == mNormalHeight) {
+            super.overScrollBy(
+                deltaX, deltaY, scrollX,
+                scrollY, scrollRangeX, scrollRangeY,
+                maxOverScrollX, maxOverScrollY, isTouchEvent
+            )
+        }
+        return true
+    }
+
+    private val touchListener =
+        OnTouchEventListener { ev ->
+            if (ev.action == MotionEvent.ACTION_UP) {
+
+                Log.d("kkkk", mTopView!!.height.toString() + " " + mNormalHeight.toString())
+                if (mTopView != null && mTopView!!.height > mNormalHeight) {
+                    val animation = ResetAnimation(mTopView!!, mNormalHeight)
+                    animation.duration = 150
+                    mTopView!!.startAnimation(animation)
+                }
+            }
+        }
+
+    inner class ResetAnimation internal constructor(var mView: View, var targetHeight: Int) :
+        Animation() {
+        private var originalHeight: Int = mView.height
+        private var extraHeight: Int = targetHeight - originalHeight
+
+        override fun applyTransformation(interpolatedTime: Float, t: Transformation?) {
+            val newHeight = (targetHeight - extraHeight * (1 - interpolatedTime)).toInt()
+            mView.layoutParams.height = newHeight
+            mView.requestLayout()
+            if (mChangeListener != null) mChangeListener?.onChanged(
+                (mMaxHeight - mTopView!!.layoutParams.height.toFloat()) / (mMaxHeight - mNormalHeight)
+            )
+        }
+    }
+
+}
