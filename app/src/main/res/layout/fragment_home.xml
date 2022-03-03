@@ -21,21 +21,26 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
+                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/B600">
+                    android:background="@color/B600"
+                    android:orientation="horizontal">
+
+                    <com.anseolab.lotty.view.widget.ImageWheelPicker
+                        android:id="@+id/np"
+                        android:backgroundTint="@color/B600"
+                        android:background="@color/B600"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
                     <TextView
-                        android:id="@+id/textView20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="TextView"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        android:text="땡겨요" />
+
+                </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -126,17 +131,17 @@
                             app:layout_constraintTop_toTopOf="parent">
 
                             <ImageView
-                                android:layout_weight="1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:src="@drawable/ic_search_24x24" />
 
                             <TextView
                                 style="@style/Theme.Lotty.TextView.SemiBold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="번호 조회"
                                 android:paddingTop="6dp"
+                                android:text="번호 조회"
                                 android:textColor="@color/black" />
                         </LinearLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -171,16 +176,16 @@
                             app:layout_constraintTop_toTopOf="parent">
 
                             <ImageView
-                                android:layout_weight="1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:src="@drawable/ic_qr_24x24" />
 
                             <TextView
-                                android:paddingTop="6dp"
                                 style="@style/Theme.Lotty.TextView.SemiBold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:paddingTop="6dp"
                                 android:text="번호 조회"
                                 android:textColor="@color/black" />
                         </LinearLayout>
@@ -217,16 +222,16 @@
                             app:layout_constraintTop_toTopOf="parent">
 
                             <ImageView
-                                android:layout_weight="1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:src="@drawable/ic_search_24x24" />
 
                             <TextView
-                                android:paddingTop="6dp"
                                 style="@style/Theme.Lotty.TextView.SemiBold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:paddingTop="6dp"
                                 android:text="번호 조회"
                                 android:textColor="@color/black" />
                         </LinearLayout>

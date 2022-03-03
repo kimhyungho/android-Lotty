@@ -1,15 +1,21 @@
 package com.anseolab.lotty.view.widget
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.view.MotionEvent
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import kotlin.math.abs
 import curtains.OnTouchEventListener
 import android.view.animation.Animation
 import android.view.animation.Transformation
+import android.widget.NumberPicker
+import android.widget.TextView
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.widget.OpenedNestedScrollView
 
 
@@ -24,11 +30,11 @@ class StretchTopNestedScrollView @JvmOverloads constructor(
     private var mBottomView: View? = null
     private var mNormalHeight = 0
     private var mMaxHeight: Int = 0
-    private var mChangeListener: onOverScrollChanged? = null
+    private var mChangeListener: OnOverScrollChanged? = null
     private var mFactor = 1.6f
 
     private interface OnTouchEventListener {
-        fun onTouchEvent(ev: MotionEvent?)
+        fun onTouchEvent(ev: MotionEvent)
     }
 
     fun setFactor(f: Float) {
@@ -49,22 +55,21 @@ class StretchTopNestedScrollView @JvmOverloads constructor(
 
     override fun onFinishInflate() {
         super.onFinishInflate()
-        if (childCount > 1) throw IllegalArgumentException("Root layout must be a LinearLayout, and only one child on this view!")
 
-        if (childCount == 0 || getChildAt(0) !is LinearLayout) throw IllegalArgumentException("Root layout is not a LinearLayout!")
+        if (childCount != 1) throw IllegalArgumentException("Root layout must be a LinearLayout, and only one child on this view!")
 
-        if (childCount == 1 && getChildAt(0) is LinearLayout) {
-            val parent = getChildAt(0) as LinearLayout
-            if (parent.childCount != 2) throw IllegalArgumentException("Root LinearLayout's has not EXACTLY two Views!")
+        val container = getChildAt(0) as? LinearLayout
+            ?: throw IllegalArgumentException("Root layout is not a LinearLayout!")
 
-            mTopView = parent.getChildAt(0)
-            mBottomView = parent.getChildAt(1)
+        if (container.childCount != 2) throw IllegalArgumentException("Root LinearLayout's has not EXACTLY two Views!")
 
-            mTopView!!.postDelayed(Runnable {
-                mNormalHeight = mTopView!!.height
-                mMaxHeight = (mNormalHeight * mFactor).toInt()
-            }, 50)
-        }
+        mTopView = container.getChildAt(0)
+        mBottomView = container.getChildAt(1)
+
+        mTopView!!.postDelayed(Runnable {
+            mNormalHeight = mTopView!!.height
+            mMaxHeight = (mNormalHeight * mFactor).toInt()
+        }, 50)
     }
 
     override fun onScrollChanged(l: Int, t: Int, oldl: Int, oldt: Int) {
@@ -76,12 +81,16 @@ class StretchTopNestedScrollView @JvmOverloads constructor(
         return super.onTouchEvent(ev)
     }
 
-    interface onOverScrollChanged {
+    interface OnOverScrollChanged {
         fun onChanged(v: Float)
     }
 
-    fun setChangeListener(changeListener: onOverScrollChanged) {
+    fun setChangeListener(changeListener: OnOverScrollChanged) {
         mChangeListener = changeListener
+    }
+
+    fun removeChangeListener() {
+        mChangeListener = null
     }
 
     override fun openedOverScrollByCompat(
@@ -107,7 +116,7 @@ class StretchTopNestedScrollView @JvmOverloads constructor(
             }
         }
 
-        if (mChangeListener != null) mChangeListener?.onChanged(
+        mChangeListener?.onChanged(
             (mMaxHeight - mTopView!!.layoutParams.height.toFloat()) / (mMaxHeight - mNormalHeight)
         )
 
@@ -126,11 +135,9 @@ class StretchTopNestedScrollView @JvmOverloads constructor(
         return true
     }
 
-    private val touchListener =
-        OnTouchEventListener { ev ->
+    private val touchListener = object : OnTouchEventListener {
+        override fun onTouchEvent(ev: MotionEvent) {
             if (ev.action == MotionEvent.ACTION_UP) {
-
-                Log.d("kkkk", mTopView!!.height.toString() + " " + mNormalHeight.toString())
                 if (mTopView != null && mTopView!!.height > mNormalHeight) {
                     val animation = ResetAnimation(mTopView!!, mNormalHeight)
                     animation.duration = 150
@@ -138,6 +145,7 @@ class StretchTopNestedScrollView @JvmOverloads constructor(
                 }
             }
         }
+    }
 
     inner class ResetAnimation internal constructor(var mView: View, var targetHeight: Int) :
         Animation() {

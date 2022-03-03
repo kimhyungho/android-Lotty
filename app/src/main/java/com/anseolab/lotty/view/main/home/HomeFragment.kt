@@ -21,8 +21,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
 
     override val showBackButton: Boolean = false
 
-    lateinit var stretchTopNestedScrollView: StretchTopNestedScrollView
-
+    private val overScrollChangedListener by lazy {
+        object : StretchTopNestedScrollView.OnOverScrollChanged {
+            override fun onChanged(v: Float) {
+                viewDataBinding.np.setRotate(v)
+            }
+        }
+    }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,28 +37,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
             ContextCompat.getColor(requireContext(), R.color.B600)
 
         with(viewDataBinding) {
-
-            btnQr.setOnTouchListener { v, event ->
-                when (event.action) {
-
-                }
-
-                true
-            }
-
-            stretchTopNestedScrollView = sv
-            val bottomView = sv.getBottomView()
-            stretchTopNestedScrollView.setFactor(1000f)
-
-            stretchTopNestedScrollView.setChangeListener(object :
-                StretchTopNestedScrollView.onOverScrollChanged {
-                override fun onChanged(v: Float) {
-
-                }
-            })
+            sv.setFactor(1000f)
+            sv.setChangeListener(overScrollChangedListener)
         }
     }
 
+    override fun onDestroyView() {
+        viewDataBinding.sv.removeChangeListener()
+        super.onDestroyView()
+    }
 
     companion object : FragmentLauncher<HomeFragment>() {
         override val fragmentClass: KClass<HomeFragment>
