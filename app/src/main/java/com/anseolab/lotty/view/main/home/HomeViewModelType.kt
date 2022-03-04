@@ -1,4 +1,17 @@
 package com.anseolab.lotty.view.main.home
 
-class HomeViewModelType {
+import androidx.lifecycle.LiveData
+import com.anseolab.lotty.view.base.ViewModelType
+import com.anseolab.lotty.view.model.SlotMachineUiModel
+
+interface HomeViewModelType: ViewModelType<HomeViewModelType.Input, HomeViewModelType.Output> {
+    interface Input : ViewModelType.Input{
+
+    }
+
+    interface Output: ViewModelType.Output {
+        val currentItem: LiveData<Int>
+
+        val drawables : LiveData<List<SlotMachineUiModel>>
+    }
 }

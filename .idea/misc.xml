@@ -24,6 +24,7 @@
         <entry key="app/src/main/res/drawable/ic_logo_128x130.xml" value="0.3484375" />
         <entry key="app/src/main/res/drawable/ic_logo_foreground.xml" value="0.3277777777777778" />
         <entry key="app/src/main/res/drawable/ic_navigation_32x32.xml" value="0.159375" />
+        <entry key="app/src/main/res/drawable/item_slot_machine.xml" value="0.205" />
         <entry key="app/src/main/res/drawable/lc_logo_128x130.xml" value="0.33240740740740743" />
         <entry key="app/src/main/res/drawable/selector_arrow_down_up.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/drawable/selector_blue_button.xml" value="0.1921875" />
@@ -33,7 +34,7 @@
         <entry key="app/src/main/res/layout/fragment_address_search.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_around.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.3072916666666667" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_random.xml" value="0.33177083333333335" />
         <entry key="app/src/main/res/layout/fragment_scanner_dialog.xml" value="0.33177083333333335" />
@@ -44,6 +45,7 @@
         <entry key="app/src/main/res/layout/item_drwt_no.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_lottery.xml" value="0.49611197511664074" />
         <entry key="app/src/main/res/layout/item_recent_lottery.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/item_slot_machine.xml" value="0.34010416666666665" />
         <entry key="app/src/main/res/layout/layout_loader_progress.xml" value="0.33229166666666665" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.33177083333333335" />
         <entry key="app/src/main/res/menu/menu_search.xml" value="0.3333333333333333" />

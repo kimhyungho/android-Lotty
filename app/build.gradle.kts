@@ -162,4 +162,5 @@ dependencies {
 
     implementation ("com.github.yuriy-budiyev:code-scanner:2.1.0")
 
+//    implementation("androidx.dynamicanimation:dynamicanimation-ktx:1.1.0-alpha03")
 }

@@ -26,15 +26,27 @@ class StretchTopNestedScrollView @JvmOverloads constructor(
 ) : OpenedNestedScrollView(
     context, attrs, defStyle
 ) {
+
     private var mTopView: View? = null
     private var mBottomView: View? = null
     private var mNormalHeight = 0
     private var mMaxHeight: Int = 0
     private var mChangeListener: OnOverScrollChanged? = null
     private var mFactor = 1.6f
+    private var mActionUpListener: OnActionUpListener? = null
 
     private interface OnTouchEventListener {
         fun onTouchEvent(ev: MotionEvent)
+    }
+
+
+
+    interface OnActionUpListener {
+        fun onActionUpEvent()
+    }
+
+    fun setActionUpListener(listener: OnActionUpListener) {
+        mActionUpListener = listener
     }
 
     fun setFactor(f: Float) {
@@ -138,6 +150,7 @@ class StretchTopNestedScrollView @JvmOverloads constructor(
     private val touchListener = object : OnTouchEventListener {
         override fun onTouchEvent(ev: MotionEvent) {
             if (ev.action == MotionEvent.ACTION_UP) {
+                mActionUpListener?.onActionUpEvent()
                 if (mTopView != null && mTopView!!.height > mNormalHeight) {
                     val animation = ResetAnimation(mTopView!!, mNormalHeight)
                     animation.duration = 150
