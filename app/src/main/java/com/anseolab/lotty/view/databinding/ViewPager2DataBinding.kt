@@ -12,6 +12,7 @@ import com.anseolab.lotty.view.base.UiModel
 @BindingAdapter("list")
 fun <E : UiModel> ViewPager2.bindList(items: List<E>?) {
     this.bindedAdapter?.submitList(items)
+    this.currentItem = Int.MAX_VALUE / 2
 }
 
 
@@ -21,7 +22,7 @@ val ViewPager2.bindedAdapter: BaseRecyclerViewAdapter<*>?
 fun ViewPager2.setItem(
     item: Int,
     duration: Long,
-//    interpolator: TimeInterpolator = AccelerateDecelerateInterpolator(),
+    interpolator: TimeInterpolator = AccelerateDecelerateInterpolator(),
     pagePxWidth: Int = width // Default value taken from getWidth() from ViewPager2 view
 ) {
     val pxToDrag: Int = pagePxWidth * (item - currentItem)
@@ -39,7 +40,7 @@ fun ViewPager2.setItem(
         override fun onAnimationCancel(animation: Animator?) { /* Ignored */ }
         override fun onAnimationRepeat(animation: Animator?) { /* Ignored */ }
     })
-//    animator.interpolator = interpolator
+    animator.interpolator = interpolator
     animator.duration = duration
     animator.start()
 }

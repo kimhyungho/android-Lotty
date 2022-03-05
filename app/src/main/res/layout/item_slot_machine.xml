@@ -7,8 +7,25 @@
             type="com.anseolab.lotty.view.model.SlotMachineUiModel" />
     </data>
 
-    <ImageView
-        imgSrc="@{item.drawable}"
+    <FrameLayout
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <TextView
+            visibleOrGone="@{item.lastModel}"
+            android:text="@{item.number}"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ImageView
+            visibleOrGone="@{!item.lastModel}"
+            imgSrc="@{item.drawable}"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+
 </layout>

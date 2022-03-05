@@ -33,7 +33,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="1dp"
                     android:background="@color/B600"
                     android:gravity="center"
                     android:orientation="horizontal">
@@ -41,15 +41,17 @@
                     <androidx.viewpager2.widget.ViewPager2
                         android:id="@+id/np"
                         list="@{output.drawables}"
-                        android:orientation="vertical"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:background="@color/B600" />
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@color/B600"
+                        android:orientation="vertical" />
 
                     <TextView
+                        style="@style/Theme.Lotty.TextView.Bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="땡겨요" />
+                        android:text="당겨요"
+                        android:textSize="24dp" />
 
                 </LinearLayout>
 
@@ -65,7 +67,20 @@
                         android:background="@drawable/bg_b600_bottom_rounded_10dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent" >
+
+                        <TextView
+                            android:id="@+id/textView20"
+                            style="@style/Theme.Lotty.TextView.Bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="아래로 힘껏 당긴 후 놔주세요."
+                            android:textColor="@color/white"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/constraintLayout5"
@@ -258,8 +273,8 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/B500"
+            android:layout_height="1dp"
+            android:background="@color/B600"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

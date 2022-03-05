@@ -17,6 +17,7 @@ import android.widget.NumberPicker
 import android.widget.TextView
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.widget.OpenedNestedScrollView
+import kotlinx.coroutines.delay
 
 
 class StretchTopNestedScrollView @JvmOverloads constructor(
@@ -39,8 +40,6 @@ class StretchTopNestedScrollView @JvmOverloads constructor(
         fun onTouchEvent(ev: MotionEvent)
     }
 
-
-
     interface OnActionUpListener {
         fun onActionUpEvent()
     }
@@ -52,18 +51,19 @@ class StretchTopNestedScrollView @JvmOverloads constructor(
     fun setFactor(f: Float) {
         mFactor = f
         mTopView!!.postDelayed({
-            mNormalHeight = mTopView!!.height
+            mNormalHeight = 3
+//            mNormalHeight = mTopView!!.height
             mMaxHeight = (mNormalHeight * mFactor).toInt()
         }, 50)
     }
 
-    fun getTopView(): View? {
-        return mTopView
-    }
-
-    fun getBottomView(): View? {
-        return mBottomView
-    }
+//    fun getTopView(): View? {
+//        return mTopView
+//    }
+//
+//    fun getBottomView(): View? {
+//        return mBottomView
+//    }
 
     override fun onFinishInflate() {
         super.onFinishInflate()
@@ -79,7 +79,8 @@ class StretchTopNestedScrollView @JvmOverloads constructor(
         mBottomView = container.getChildAt(1)
 
         mTopView!!.postDelayed(Runnable {
-            mNormalHeight = mTopView!!.height
+//            mNormalHeight = mTopView!!.height
+            mNormalHeight = 3
             mMaxHeight = (mNormalHeight * mFactor).toInt()
         }, 50)
     }
@@ -97,9 +98,9 @@ class StretchTopNestedScrollView @JvmOverloads constructor(
         fun onChanged(v: Float)
     }
 
-    fun setChangeListener(changeListener: OnOverScrollChanged) {
-        mChangeListener = changeListener
-    }
+//    fun setChangeListener(changeListener: OnOverScrollChanged) {
+//        mChangeListener = changeListener
+//    }
 
     fun removeChangeListener() {
         mChangeListener = null
@@ -152,9 +153,24 @@ class StretchTopNestedScrollView @JvmOverloads constructor(
             if (ev.action == MotionEvent.ACTION_UP) {
                 mActionUpListener?.onActionUpEvent()
                 if (mTopView != null && mTopView!!.height > mNormalHeight) {
-                    val animation = ResetAnimation(mTopView!!, mNormalHeight)
+                    val animation = ResetAnimation(mTopView!!, mNormalHeight + 200)
                     animation.duration = 150
+                    animation.setAnimationListener(object : Animation.AnimationListener {
+                        override fun onAnimationStart(animation: Animation?) {
+                        }
+
+                        override fun onAnimationEnd(animation: Animation?) {
+                            val animation2 = ResetAnimation(mTopView!!, mNormalHeight)
+                            animation2.startOffset = 1500
+                            animation2.duration = 150
+                            mTopView!!.startAnimation(animation2)
+                        }
+
+                        override fun onAnimationRepeat(animation: Animation?) {
+                        }
+                    })
                     mTopView!!.startAnimation(animation)
+
                 }
             }
         }
@@ -169,9 +185,10 @@ class StretchTopNestedScrollView @JvmOverloads constructor(
             val newHeight = (targetHeight - extraHeight * (1 - interpolatedTime)).toInt()
             mView.layoutParams.height = newHeight
             mView.requestLayout()
-            if (mChangeListener != null) mChangeListener?.onChanged(
-                (mMaxHeight - mTopView!!.layoutParams.height.toFloat()) / (mMaxHeight - mNormalHeight)
-            )
+
+//            if (mChangeListener != null) mChangeListener?.onChanged(
+//                (mMaxHeight - mTopView!!.layoutParams.height.toFloat()) / (mMaxHeight - mNormalHeight)
+//            )
         }
     }
 
