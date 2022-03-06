@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.viewModels
 import com.anseolab.lotty.R
 import com.anseolab.lotty.databinding.FragmentHomeBinding
@@ -22,35 +24,48 @@ import kotlin.reflect.KClass
 class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModelType>(
     R.layout.fragment_home
 ) {
-
     override val showBackButton: Boolean = false
-
     private val slotMachinePagerAdapter = SlotMachinePagerAdapter()
+    private val onActionUpListener by lazy {
+        object : StretchTopNestedScrollView.OnActionUpListener {
+            override fun onActionUpEvent() {
+                val nextItem = viewDataBinding.np.currentItem + 5
+
+                viewModel.input.onPageStateChange(nextItem)
+                viewDataBinding.np.setItem(nextItem, 1200)
+            }
+        }
+    }
 
     private val _viewModel: HomeViewModel by viewModels()
     override val viewModel: HomeViewModelType get() = _viewModel
 
-    @SuppressLint("ClickableViewAccessibility")
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        requireActivity().window.statusBarColor =
-            ContextCompat.getColor(requireContext(), R.color.B600)
-
+    override fun onWillAttachViewModel(
+        viewDataBinding: FragmentHomeBinding,
+        viewModel: HomeViewModelType
+    ) {
         with(viewDataBinding) {
-            np.adapter = slotMachinePagerAdapter
-            np.isUserInputEnabled = false
-            sv.setFactor(1000f)
-            sv.setActionUpListener(object : StretchTopNestedScrollView.OnActionUpListener {
-                override fun onActionUpEvent() {
-                    viewDataBinding.np.setItem(viewDataBinding.np.currentItem + 5, 1000)
-                }
-            })
+            with(np) {
+                adapter = slotMachinePagerAdapter
+                isUserInputEnabled = false
+            }
+
+            with(sv) {
+                setFactor(1000f)
+                setActionUpListener(onActionUpListener)
+            }
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onWillDetachViewModel(
+        viewDataBinding: FragmentHomeBinding,
+        viewModel: HomeViewModelType
+    ) {
+        with(viewDataBinding) {
+            with(np) {
+                np.adapter = null
+            }
+        }
     }
 
     companion object : FragmentLauncher<HomeFragment>() {

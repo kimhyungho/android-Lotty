@@ -28,27 +28,13 @@ class MainFragment : ViewModelFragment<FragmentMainBinding, MainViewModelType>(
         viewDataBinding: FragmentMainBinding,
         viewModel: MainViewModelType
     ) {
-
-        with(viewDataBinding) {
-
-
-        }
-
         with(viewModel.output) {
             selectedPage.observe {
                 when (it) {
-                    0 -> {
-                        changeFragment(HomeFragment::class, HomeFragment.name)
-                    }
-                    1 -> {
-                        changeFragment(AroundFragment::class, AroundFragment.name)
-                    }
-                    2 -> {
-                        changeFragment(SearchFragment::class, SearchFragment.name)
-                    }
-                    3 -> {
-                        changeFragment(RandomFragment::class, RandomFragment.name)
-                    }
+                    0 -> changeFragment(HomeFragment::class, HomeFragment.name)
+                    1 -> changeFragment(AroundFragment::class, AroundFragment.name)
+                    2 -> changeFragment(SearchFragment::class, SearchFragment.name)
+                    3 -> changeFragment(RandomFragment::class, RandomFragment.name)
                 }
             }
         }

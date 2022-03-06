@@ -1,6 +1,7 @@
 package com.anseolab.lotty.view.main.home
 
 import android.os.Parcelable
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
@@ -49,7 +50,38 @@ class HomeViewModel @Inject constructor(
         state.distinctUntilChanged(slotMachineStateMapper::diff)
             .map(slotMachineStateMapper::mapToView)
             .bind(_drawables)
+
+//        _drawables.value = listOf(
+//            SlotMachineUiModel(
+//                0, resourceProvider.getDrawable(R.drawable.ic_around_24x24)
+//            ),
+//            SlotMachineUiModel(
+//                1, resourceProvider.getDrawable(R.drawable.ic_around_24x24)
+//            ),
+//            SlotMachineUiModel(
+//                2, resourceProvider.getDrawable(R.drawable.ic_around_24x24)
+//            ),
+//            SlotMachineUiModel(
+//                3, resourceProvider.getDrawable(R.drawable.ic_around_24x24)
+//            ),
+//            SlotMachineUiModel(
+//                4, resourceProvider.getDrawable(R.drawable.ic_around_24x24)
+//            ),
+//            SlotMachineUiModel(
+//                5, resourceProvider.getDrawable(R.drawable.ic_around_24x24)
+//            ),
+//            SlotMachineUiModel(
+//                6, resourceProvider.getDrawable(R.drawable.ic_around_24x24)
+//            ),
+//            SlotMachineUiModel(
+//                7, resourceProvider.getDrawable(R.drawable.ic_around_24x24)
+//            ),
+//            SlotMachineUiModel(
+//                8, resourceProvider.getDrawable(R.drawable.ic_around_24x24)
+//            ),
+//        )
     }
+
 
     override fun mutate(action: Action): Observable<out Mutation> {
         return when (action) {
@@ -84,16 +116,16 @@ class HomeViewModel @Inject constructor(
     }
 
     data class State(
-        val drawables: List<Pair<Int,Int>> = listOf(
+        val drawables: List<Pair<Int, Int>> = listOf(
             Pair(0, R.drawable.ic_around_24x24),
-            Pair(1,R.drawable.ic_arrow_down_24x24),
-            Pair(2,R.drawable.ic_coin_36x36),
+            Pair(1, R.drawable.ic_arrow_down_24x24),
+            Pair(2, R.drawable.ic_coin_36x36),
             Pair(3, R.drawable.ic_around_24x24),
-            Pair(4,R.drawable.ic_arrow_down_24x24),
-            Pair(5,R.drawable.ic_coin_36x36),
+            Pair(4, R.drawable.ic_arrow_down_24x24),
+            Pair(5, R.drawable.ic_coin_36x36),
             Pair(6, R.drawable.ic_around_24x24),
-            Pair(7,R.drawable.ic_arrow_down_24x24),
-            Pair(8,R.drawable.ic_coin_36x36)
+            Pair(7, R.drawable.ic_arrow_down_24x24),
+            Pair(8, R.drawable.ic_coin_36x36)
         ),
         val lastItem: Int? = null
     ) : ReactorViewModel.State {

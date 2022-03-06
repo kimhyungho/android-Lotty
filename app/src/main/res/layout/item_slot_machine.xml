@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="item"
             type="com.anseolab.lotty.view.model.SlotMachineUiModel" />
@@ -13,18 +14,20 @@
         android:layout_height="match_parent">
 
         <TextView
+            style="@style/Theme.Lotty.TextView.Bold"
             visibleOrGone="@{item.lastModel}"
-            android:text="@{item.number}"
-            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@{item.number}"
+            android:textSize="24dp" />
 
         <ImageView
-            visibleOrGone="@{!item.lastModel}"
             imgSrc="@{item.drawable}"
-            android:layout_gravity="center"
+            visibleOrGone="@{!item.lastModel}"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
     </FrameLayout>
 
 

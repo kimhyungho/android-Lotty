@@ -12,7 +12,6 @@ import com.anseolab.lotty.view.base.UiModel
 @BindingAdapter("list")
 fun <E : UiModel> ViewPager2.bindList(items: List<E>?) {
     this.bindedAdapter?.submitList(items)
-    this.currentItem = Int.MAX_VALUE / 2
 }
 
 
