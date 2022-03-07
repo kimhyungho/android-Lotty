@@ -29,7 +29,6 @@ class StretchTopNestedScrollView @JvmOverloads constructor(
 ) {
     private var mChangeListener: OnOverScrollChanged? = null
     private var mActionUpListener: OnActionUpListener? = null
-
     private var mTopView: View? = null
     private var mBottomView: View? = null
     private var mNormalHeight = 0
@@ -51,19 +50,19 @@ class StretchTopNestedScrollView @JvmOverloads constructor(
     fun setFactor(f: Float) {
         mFactor = f
         mTopView!!.postDelayed({
-            mNormalHeight = 3
-//            mNormalHeight = mTopView!!.height
+            mNormalHeight = mTopView!!.height
             mMaxHeight = (mNormalHeight * mFactor).toInt()
         }, 50)
     }
 
-//    fun getTopView(): View? {
-//        return mTopView
-//    }
-//
-//    fun getBottomView(): View? {
-//        return mBottomView
-//    }
+    fun getTopView(): View? {
+        return mTopView
+    }
+
+    fun setNormalHeight(height: Int) {
+        mNormalHeight = height
+        mMaxHeight = (mNormalHeight * mFactor).toInt()
+    }
 
     override fun onFinishInflate() {
         super.onFinishInflate()
@@ -77,12 +76,6 @@ class StretchTopNestedScrollView @JvmOverloads constructor(
 
         mTopView = container.getChildAt(0)
         mBottomView = container.getChildAt(1)
-
-        mTopView!!.postDelayed(Runnable {
-//            mNormalHeight = mTopView!!.height
-            mNormalHeight = 3
-            mMaxHeight = (mNormalHeight * mFactor).toInt()
-        }, 50)
     }
 
     override fun onScrollChanged(l: Int, t: Int, oldl: Int, oldt: Int) {
@@ -101,10 +94,6 @@ class StretchTopNestedScrollView @JvmOverloads constructor(
 //    fun setChangeListener(changeListener: OnOverScrollChanged) {
 //        mChangeListener = changeListener
 //    }
-
-    fun removeChangeListener() {
-        mChangeListener = null
-    }
 
     override fun openedOverScrollByCompat(
         deltaX: Int,
@@ -154,15 +143,15 @@ class StretchTopNestedScrollView @JvmOverloads constructor(
                 mActionUpListener?.onActionUpEvent()
                 if (mTopView != null && mTopView!!.height > mNormalHeight) {
                     val animation = ResetAnimation(mTopView!!, mNormalHeight + 200)
-                    animation.duration = 150
+                    animation.duration = REDUCE_DURATION
                     animation.setAnimationListener(object : Animation.AnimationListener {
                         override fun onAnimationStart(animation: Animation?) {
                         }
 
                         override fun onAnimationEnd(animation: Animation?) {
                             val animation2 = ResetAnimation(mTopView!!, mNormalHeight)
-                            animation2.startOffset = 1500
-                            animation2.duration = 150
+                            animation2.startOffset = SECOND_REDUCE_WAIT_TIME
+                            animation2.duration = REDUCE_DURATION
                             mTopView!!.startAnimation(animation2)
                         }
 
@@ -192,6 +181,9 @@ class StretchTopNestedScrollView @JvmOverloads constructor(
         }
     }
 
-
-
+    companion object {
+        const val REDUCE_DURATION = 150L
+        const val SLOT_MACHINE_DURATION = 1700L
+        const val SECOND_REDUCE_WAIT_TIME = 2000L
+    }
 }

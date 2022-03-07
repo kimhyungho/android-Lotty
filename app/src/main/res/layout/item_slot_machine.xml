@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@{item.number}"
-            android:textSize="24dp" />
+            android:textSize="32dp" />
 
         <ImageView
             imgSrc="@{item.drawable}"

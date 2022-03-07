@@ -12,6 +12,6 @@ class LottyException : RuntimeException {
     }
 
     companion object Code {
-        const val API_LIMIT_HAS_BEEN_EXCEEDED = "API limit has been exceeded."
+        const val OVER_SEARCH_REQUEST = "HTTP 429 Too Many Requests"
     }
 }

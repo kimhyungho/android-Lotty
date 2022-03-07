@@ -1,6 +1,7 @@
 package com.anseolab.lotty.view.main
 
 import android.graphics.Color
+import android.util.Log
 import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -31,10 +32,24 @@ class MainFragment : ViewModelFragment<FragmentMainBinding, MainViewModelType>(
         with(viewModel.output) {
             selectedPage.observe {
                 when (it) {
-                    0 -> changeFragment(HomeFragment::class, HomeFragment.name)
-                    1 -> changeFragment(AroundFragment::class, AroundFragment.name)
-                    2 -> changeFragment(SearchFragment::class, SearchFragment.name)
-                    3 -> changeFragment(RandomFragment::class, RandomFragment.name)
+                    0 -> changeFragment(HomeFragment.apply {
+                        mListener = object : HomeFragment.Companion.Listener {
+                            override fun onAroundButtonClick() {
+                                viewModel.input.onPageSelect(1)
+                            }
+
+                            override fun onSearchButtonClick() {
+                                viewModel.input.onPageSelect(2)
+                            }
+
+                            override fun onCreateButtonClick() {
+                                viewModel.input.onPageSelect(3)
+                            }
+                        }
+                    }.fragmentClass, HomeFragment.name)
+                    1 -> changeFragment(AroundFragment.fragmentClass, AroundFragment.name)
+                    2 -> changeFragment(SearchFragment.fragmentClass, SearchFragment.name)
+                    3 -> changeFragment(RandomFragment.fragmentClass, RandomFragment.name)
                 }
             }
         }

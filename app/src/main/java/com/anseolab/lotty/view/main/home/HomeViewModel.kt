@@ -117,15 +117,15 @@ class HomeViewModel @Inject constructor(
 
     data class State(
         val drawables: List<Pair<Int, Int>> = listOf(
-            Pair(0, R.drawable.ic_around_24x24),
-            Pair(1, R.drawable.ic_arrow_down_24x24),
-            Pair(2, R.drawable.ic_coin_36x36),
-            Pair(3, R.drawable.ic_around_24x24),
-            Pair(4, R.drawable.ic_arrow_down_24x24),
+            Pair(0, R.drawable.ic_pig_32x32),
+            Pair(1, R.drawable.ic_bag_32x32),
+            Pair(2, R.drawable.ic_clover_32x32),
+            Pair(3, R.drawable.ic_home_32x32),
+            Pair(4, R.drawable.ic_diamond_32x32),
             Pair(5, R.drawable.ic_coin_36x36),
-            Pair(6, R.drawable.ic_around_24x24),
-            Pair(7, R.drawable.ic_arrow_down_24x24),
-            Pair(8, R.drawable.ic_coin_36x36)
+            Pair(6, R.drawable.ic_car_32x32),
+            Pair(7, R.drawable.ic_bill_32x32),
+            Pair(8, R.drawable.ic_rocket_32x32)
         ),
         val lastItem: Int? = null
     ) : ReactorViewModel.State {

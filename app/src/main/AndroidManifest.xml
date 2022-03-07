@@ -44,10 +44,9 @@
             android:name=".MainActivity"
             android:exported="false"
             android:launchMode="singleTop"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Lotty"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
-
-
         </activity>
     </application>
 

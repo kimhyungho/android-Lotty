@@ -87,8 +87,8 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
                     if (oldLong == null) oldLong = mNaverMap.cameraPosition.target.longitude
                     if (oldLat == null) oldLat = mNaverMap.cameraPosition.target.longitude
 
-                    if (abs(oldLong!!.minus(mNaverMap.cameraPosition.target.longitude)) > 0.00001 ||
-                        abs(oldLat!!.minus(mNaverMap.cameraPosition.target.latitude)) > 0.00001
+                    if (abs(oldLong!!.minus(mNaverMap.cameraPosition.target.longitude)) > 0.001 ||
+                        abs(oldLat!!.minus(mNaverMap.cameraPosition.target.latitude)) > 0.001
                     ) {
                         viewModel.input.onCameraIdleChange(
                             mNaverMap.cameraPosition.target.longitude,

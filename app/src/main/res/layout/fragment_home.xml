@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="input"
             type="com.anseolab.lotty.view.main.home.HomeViewModelType.Input" />
@@ -41,8 +42,9 @@
                     <androidx.viewpager2.widget.ViewPager2
                         android:id="@+id/np"
                         list="@{output.drawables}"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="36dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_height="36dp"
                         android:background="@color/B600"
                         android:orientation="vertical" />
 
@@ -50,7 +52,7 @@
                         style="@style/Theme.Lotty.TextView.Bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="당겨요"
+                        android:text="뽑아요"
                         android:textSize="24dp" />
 
                 </LinearLayout>
@@ -67,7 +69,7 @@
                         android:background="@drawable/bg_b600_bottom_rounded_10dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" >
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
                             android:id="@+id/textView20"
@@ -83,8 +85,7 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/constraintLayout5"
-                        press="@{0.95f}"
+                        android:id="@+id/btn_around"
                         android:layout_width="0dp"
                         android:layout_height="100dp"
                         android:layout_marginStart="12dp"
@@ -101,9 +102,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="12dp"
-                            android:drawableRight="@android:drawable/arrow_up_float"
+                            android:drawableRight="@drawable/ic_arrow_right_24x24"
                             android:drawablePadding="8dp"
                             android:gravity="center"
+                            android:drawableTint="@color/white"
                             android:text="주변 복권방\n찾기"
                             android:textColor="@color/white"
                             android:textSize="16dp"
@@ -127,142 +129,103 @@
                             app:tint="@color/white" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/btn_qr"
-                        press="@{0.9f}"
+
+                    <LinearLayout
+                        android:id="@+id/btn_search"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_marginStart="12dp"
-                        android:layout_marginTop="8dp"
+
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="4dp"
                         android:background="@drawable/bg_white_rounded_10dp"
                         android:elevation="4dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="24dp"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintEnd_toStartOf="@+id/constraintLayout6"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_qr"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5">
+                        app:layout_constraintTop_toBottomOf="@+id/btn_around">
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="1dp"
-                            android:layout_marginTop="1dp"
-                            android:layout_marginEnd="1dp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="24dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_search_24x24" />
 
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:src="@drawable/ic_search_24x24" />
+                        <TextView
+                            style="@style/Theme.Lotty.TextView.SemiBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="6dp"
+                            android:text="번호조회"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
 
-                            <TextView
-                                style="@style/Theme.Lotty.TextView.SemiBold"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="6dp"
-                                android:text="번호 조회"
-                                android:textColor="@color/black" />
-                        </LinearLayout>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/constraintLayout6"
-                        press="@{0.9f}"
+                    <LinearLayout
+                        android:id="@+id/btn_qr"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_marginStart="4dp"
                         android:layout_marginEnd="4dp"
                         android:background="@drawable/bg_white_rounded_10dp"
                         android:elevation="4dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/btn_qr"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="24dp"
                         app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintEnd_toStartOf="@+id/constraintLayout7"
-                        app:layout_constraintStart_toEndOf="@+id/btn_qr"
-                        app:layout_constraintTop_toTopOf="@+id/btn_qr">
+                        app:layout_constraintEnd_toStartOf="@+id/btn_create"
+                        app:layout_constraintStart_toEndOf="@+id/btn_search"
+                        app:layout_constraintTop_toTopOf="@+id/btn_search">
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="1dp"
-                            android:layout_marginTop="1dp"
-                            android:layout_marginEnd="1dp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="24dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_qr_24x24" />
 
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:src="@drawable/ic_qr_24x24" />
+                        <TextView
+                            style="@style/Theme.Lotty.TextView.SemiBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="6dp"
+                            android:text="QR촬영"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
 
-                            <TextView
-                                style="@style/Theme.Lotty.TextView.SemiBold"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="6dp"
-                                android:text="번호 조회"
-                                android:textColor="@color/black" />
-                        </LinearLayout>
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/constraintLayout7"
-                        press="@{0.9f}"
+                    <LinearLayout
+                        android:id="@+id/btn_create"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_marginStart="4dp"
                         android:layout_marginEnd="12dp"
                         android:background="@drawable/bg_white_rounded_10dp"
                         android:elevation="4dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout6"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="24dp"
                         app:layout_constraintDimensionRatio="1:1"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/constraintLayout6"
-                        app:layout_constraintTop_toTopOf="@+id/constraintLayout6">
+                        app:layout_constraintStart_toEndOf="@+id/btn_qr"
+                        app:layout_constraintTop_toTopOf="@+id/btn_qr">
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="1dp"
-                            android:layout_marginTop="1dp"
-                            android:layout_marginEnd="1dp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="24dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/ic_slot_machine_32x32" />
 
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:src="@drawable/ic_search_24x24" />
+                        <TextView
+                            style="@style/Theme.Lotty.TextView.SemiBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="6dp"
+                            android:text="번호생성"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
 
-                            <TextView
-                                style="@style/Theme.Lotty.TextView.SemiBold"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="6dp"
-                                android:text="번호 조회"
-                                android:textColor="@color/black" />
-                        </LinearLayout>
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>

@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/menu_home"
-        android:icon="@drawable/ic_setting_24x24"
+        android:icon="@drawable/ic_mian_home_32x32"
         android:title="홈" />
     <item
         android:id="@+id/menu_around"
@@ -16,6 +16,7 @@
         android:title="번호 조회" />
 
     <item
+        android:icon="@drawable/ic_slot_machine_32x32"
         android:id="@+id/menu_random"
         android:title="번호 생성" />
 </menu>

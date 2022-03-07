@@ -6,16 +6,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.anseolab.domain.interactors.kakao.KakaoSearchUseCase
-import com.anseolab.domain.interactors.naver.SearchUseCase
 import com.anseolab.domain.model.KakaoStore
-import com.anseolab.domain.model.Store
 import com.anseolab.domain.model.exeption.LottyException
 import com.anseolab.domain.providers.SchedulerProvider
-import com.anseolab.lotty.extensions.getOrNull
 import com.anseolab.lotty.mapper.ExceptionMapper
 import com.anseolab.lotty.view.base.ReactorViewModel
 import com.anseolab.lotty.view.lifecycle.SingleLiveData
-import com.naver.maps.map.overlay.Marker
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.core.Observable
 import kotlinx.parcelize.Parcelize
@@ -89,7 +85,7 @@ class AroundViewModel @Inject constructor(
     }
 
     private fun isApiExceedError(throwable: Throwable): Boolean {
-        return throwable is LottyException && throwable.code == LottyException.API_LIMIT_HAS_BEEN_EXCEEDED
+        return throwable is LottyException && throwable.code == LottyException.OVER_SEARCH_REQUEST
     }
 
     override fun createInitialState(savedState: Parcelable?): State {
