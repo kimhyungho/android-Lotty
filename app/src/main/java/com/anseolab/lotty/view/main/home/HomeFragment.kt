@@ -34,18 +34,20 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModelType>(
             }
         }
     }
+    private var globalLayoutListener: ViewTreeObserver.OnGlobalLayoutListener? = null
 
-    private val globalLayoutListener by lazy {
-        object : ViewTreeObserver.OnGlobalLayoutListener {
-            override fun onGlobalLayout() {
-                val topView = viewDataBinding.sv.getTopView()!!
-                if (topView.height != 0) {
-                    topView.viewTreeObserver.removeOnGlobalLayoutListener(this)
-                    viewDataBinding.sv.setNormalHeight(topView.height)
-                }
-            }
-        }
-    }
+//    private val globalLayoutListener by lazy {
+//        object : ViewTreeObserver.OnGlobalLayoutListener {
+//            override fun onGlobalLayout() {
+//                val topView = viewDataBinding.sv.getTopView()!!
+//
+//                if (topView.height != 0) {
+//                    topView.viewTreeObserver.removeOnGlobalLayoutListener(this)
+//                    viewDataBinding.sv.setNormalHeight(topView.height)
+//                }
+//            }
+//        }
+//    }
 
     private val _viewModel: HomeViewModel by viewModels()
     override val viewModel: HomeViewModelType get() = _viewModel
@@ -67,6 +69,17 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModelType>(
             }
 
             with(sv.getTopView()!!) {
+                globalLayoutListener = object : ViewTreeObserver.OnGlobalLayoutListener {
+                    override fun onGlobalLayout() {
+                        val topView = viewDataBinding.sv.getTopView()!!
+
+                        if (topView.height != 0) {
+                            topView.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                            viewDataBinding.sv.setNormalHeight(topView.height)
+                        }
+                    }
+                }
+
                 viewTreeObserver?.addOnGlobalLayoutListener(globalLayoutListener)
             }
 
@@ -103,8 +116,8 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModelType>(
                     MotionEvent.ACTION_DOWN -> {
                         v.animate()
                             .setDuration(100)
-                            .scaleX(0.95f)
-                            .scaleY(0.95f)
+                            .scaleX(0.9f)
+                            .scaleY(0.9f)
                             .start()
                     }
                     MotionEvent.ACTION_UP -> {
@@ -131,8 +144,8 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModelType>(
                     MotionEvent.ACTION_DOWN -> {
                         v.animate()
                             .setDuration(100)
-                            .scaleX(0.95f)
-                            .scaleY(0.95f)
+                            .scaleX(0.9f)
+                            .scaleY(0.9f)
                             .start()
                     }
                     MotionEvent.ACTION_UP -> {
@@ -160,8 +173,8 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModelType>(
                     MotionEvent.ACTION_DOWN -> {
                         v.animate()
                             .setDuration(100)
-                            .scaleX(0.95f)
-                            .scaleY(0.95f)
+                            .scaleX(0.9f)
+                            .scaleY(0.9f)
                             .start()
                     }
                     MotionEvent.ACTION_UP -> {

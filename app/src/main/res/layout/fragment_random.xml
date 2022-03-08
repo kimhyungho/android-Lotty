@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -26,7 +26,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="1000dp">
+                android:layout_height="wrap_content">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_touch"
@@ -40,8 +40,9 @@
                         android:id="@+id/layout_drwt_no"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="90dp"
+                        android:layout_marginTop="24dp"
                         android:paddingVertical="10dp"
+                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -54,7 +55,6 @@
                             android:layout_marginStart="32dp"
                             android:background="@drawable/bg_white_ring"
                             android:backgroundTint="@{output.drwtNo.drwtNo1Color}"
-                            android:elevation="4dp"
                             android:gravity="center"
                             android:text="@{String.valueOf(output.drwtNo.drwtNo1)}"
                             android:textColor="@color/white"
@@ -71,7 +71,6 @@
                             android:layout_height="32dp"
                             android:background="@drawable/bg_white_ring"
                             android:backgroundTint="@{output.drwtNo.drwtNo2Color}"
-                            android:elevation="4dp"
                             android:gravity="center"
                             android:text="@{String.valueOf(output.drwtNo.drwtNo2)}"
                             android:textColor="@color/white"
@@ -88,7 +87,6 @@
                             android:layout_height="32dp"
                             android:background="@drawable/bg_white_ring"
                             android:backgroundTint="@{output.drwtNo.drwtNo3Color}"
-                            android:elevation="4dp"
                             android:gravity="center"
                             android:text="@{String.valueOf(output.drwtNo.drwtNo3)}"
                             android:textColor="@color/white"
@@ -105,7 +103,6 @@
                             android:layout_height="32dp"
                             android:background="@drawable/bg_white_ring"
                             android:backgroundTint="@{output.drwtNo.drwtNo4Color}"
-                            android:elevation="4dp"
                             android:gravity="center"
                             android:text="@{String.valueOf(output.drwtNo.drwtNo4)}"
                             android:textColor="@color/white"
@@ -122,7 +119,6 @@
                             android:layout_height="32dp"
                             android:background="@drawable/bg_white_ring"
                             android:backgroundTint="@{output.drwtNo.drwtNo5Color}"
-                            android:elevation="4dp"
                             android:gravity="center"
                             android:text="@{String.valueOf(output.drwtNo.drwtNo5)}"
                             android:textColor="@color/white"
@@ -139,7 +135,6 @@
                             android:layout_height="32dp"
                             android:background="@drawable/bg_white_ring"
                             android:backgroundTint="@{output.drwtNo.drwtNo6Color}"
-                            android:elevation="4dp"
                             android:gravity="center"
                             android:text="@{String.valueOf(output.drwtNo.drwtNo6)}"
                             android:textColor="@color/white"
@@ -157,7 +152,6 @@
                             android:layout_marginEnd="32dp"
                             android:background="@drawable/bg_white_ring"
                             android:backgroundTint="@{output.drwtNo.bonusColor}"
-                            android:elevation="4dp"
                             android:gravity="center"
                             android:text="@{String.valueOf(output.drwtNo.bnusNo)}"
                             android:textColor="@color/white"
@@ -180,18 +174,57 @@
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_create"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
-                        android:layout_marginBottom="24dp"
-                        android:text="랜덤 번호 받기"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginTop="12dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_drwt_no" />
+                        app:layout_constraintTop_toBottomOf="@+id/layout_drwt_no">
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btn_clear"
+                            style="@style/Theme.Lotty.TextView.SemiBold"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_white_rounded_10dp"
+                            android:elevation="4dp"
+                            android:paddingVertical="16dp"
+                            android:text="초기화"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/layout_drwt_no" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btn_create"
+                            style="@style/Theme.Lotty.TextView.SemiBold"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginEnd="12dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_gradient_b300_b600_rounded_10dp"
+                            android:elevation="4dp"
+                            android:paddingVertical="16dp"
+                            android:text="랜덤 번호 받기"
+                            android:textColor="@color/white"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/layout_drwt_no" />
+
+
+                    </LinearLayout>
+
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -201,38 +234,44 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="16dp"
                     android:text="최근 뽑은 번호"
                     android:textColor="@color/G500"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/layout_touch" />
 
-                <TextView
-                    android:id="@+id/btn_clear"
-                    style="@style/Theme.Lotty.TextView.Regular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="12dp"
-                    android:background="@drawable/bg_white_ripple"
-                    android:drawableLeft="@drawable/ic_clear_12x12"
-                    android:drawablePadding="4dp"
-                    android:drawableTint="@color/G500"
-                    android:padding="4dp"
-                    android:text="전체 삭제"
-                    android:textColor="@color/G500"
-                    android:textSize="13sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView8"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textView8" />
+                <!--                <TextView-->
+                <!--                    android:id="@+id/btn_clear"-->
+                <!--                    style="@style/Theme.Lotty.TextView.Regular"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginEnd="12dp"-->
+                <!--                    android:background="@drawable/bg_white_ripple"-->
+                <!--                    android:drawableLeft="@drawable/ic_clear_12x12"-->
+                <!--                    android:drawablePadding="4dp"-->
+                <!--                    android:drawableTint="@color/G500"-->
+                <!--                    android:padding="4dp"-->
+                <!--                    android:text="전체 삭제"-->
+                <!--                    android:textColor="@color/G500"-->
+                <!--                    android:textSize="13sp"-->
+                <!--                    app:layout_constraintBottom_toBottomOf="@+id/textView8"-->
+                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                    app:layout_constraintTop_toTopOf="@+id/textView8" />-->
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_recent"
+                    list="@{output.recentDrwtNos}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/bg_white_rounded_10dp"
+                    android:elevation="4dp"
                     android:focusable="false"
-                    list="@{output.recentDrwtNos}"
                     android:nestedScrollingEnabled="false"
+                    android:paddingVertical="12dp"
+                    android:layout_marginBottom="16dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -245,6 +284,19 @@
 
         </androidx.core.widget.NestedScrollView>
 
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/ic_arrow_up_32x32"
+            app:borderWidth="0dp"
+            app:fabSize="mini"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
         <nl.dionsegijn.konfetti.xml.KonfettiView
             android:id="@+id/kv"
             android:layout_width="0dp"
@@ -256,8 +308,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 
 </layout>

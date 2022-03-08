@@ -3,6 +3,7 @@ package com.anseolab.lotty.view.main.random
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.util.Log
+import android.view.MotionEvent
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.anseolab.lotty.R
@@ -11,6 +12,7 @@ import com.anseolab.lotty.extensions.throttle
 import com.anseolab.lotty.view.adapter.RecentDrwtNoListAdapter
 import com.anseolab.lotty.view.base.FragmentLauncher
 import com.anseolab.lotty.view.base.ViewModelFragment
+import com.anseolab.lotty.view.main.home.HomeFragment
 import com.jakewharton.rxbinding4.view.clicks
 import dagger.hilt.android.AndroidEntryPoint
 import nl.dionsegijn.konfetti.core.Party
@@ -54,16 +56,61 @@ class RandomFragment : ViewModelFragment<FragmentRandomBinding, RandomViewModelT
                 true
             }
 
-            btnCreate.clicks()
-                .bind {
-                    viewModel.input.onCreateButtonClick()
-                    startAnimation(0.5, (layoutDrwtNo.y / root.height).toDouble())
+            btnCreate.setOnTouchListener { v, event ->
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        v.animate()
+                            .setDuration(100)
+                            .scaleX(0.9f)
+                            .scaleY(0.9f)
+                            .start()
+                    }
+                    MotionEvent.ACTION_UP -> {
+                        viewModel.input.onCreateButtonClick()
+                        v.animate()
+                            .setDuration(100)
+                            .scaleX(1f)
+                            .scaleY(1f)
+                            .start()
+                    }
+                    MotionEvent.ACTION_CANCEL -> {
+                        v.animate()
+                            .setDuration(100)
+                            .scaleX(1f)
+                            .scaleY(1f)
+                            .start()
+                    }
                 }
+                true
+            }
 
-            btnClear.clicks()
-                .bind {
-                    viewModel.input.onClearButtonClick()
+            btnClear.setOnTouchListener { v, event ->
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        v.animate()
+                            .setDuration(100)
+                            .scaleX(0.9f)
+                            .scaleY(0.9f)
+                            .start()
+                    }
+                    MotionEvent.ACTION_UP -> {
+                        viewModel.input.onClearButtonClick()
+                        v.animate()
+                            .setDuration(100)
+                            .scaleX(1f)
+                            .scaleY(1f)
+                            .start()
+                    }
+                    MotionEvent.ACTION_CANCEL -> {
+                        v.animate()
+                            .setDuration(100)
+                            .scaleX(1f)
+                            .scaleY(1f)
+                            .start()
+                    }
                 }
+                true
+            }
         }
     }
 
@@ -89,7 +136,7 @@ class RandomFragment : ViewModelFragment<FragmentRandomBinding, RandomViewModelT
             )
         )
 
-        viewDataBinding.kv.start(party)
+//        viewDataBinding.kv.start(party)
     }
 
     override fun onDestroyView() {
