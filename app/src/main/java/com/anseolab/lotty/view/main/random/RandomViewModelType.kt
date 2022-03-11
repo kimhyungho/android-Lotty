@@ -6,16 +6,26 @@ import com.anseolab.lotty.view.model.DrwtNoUiModel
 
 interface RandomViewModelType: ViewModelType<RandomViewModelType.Input, RandomViewModelType.Output> {
     interface Input: ViewModelType.Input {
-        fun onCreateButtonClick()
-
-        fun onClearButtonClick()
-
-        fun onRemoveButtonClick(id: Int)
+        fun onDrawButtonClick()
     }
 
     interface Output: ViewModelType.Output {
-        val drwtNo: LiveData<DrwtNoUiModel>
+        val aList: LiveData<List<Int>>
 
-        val recentDrwtNos: LiveData<List<DrwtNoUiModel>>
+        val bList: LiveData<List<Int>>
+
+        val cList: LiveData<List<Int>>
+
+        val dList: LiveData<List<Int>>
+
+        val eList: LiveData<List<Int>>
+
+        val publishedDate: LiveData<String>
+
+        val drawDate: LiveData<String>
+
+        val dueDate: LiveData<String>
+
+        val round: LiveData<Long>
     }
 }

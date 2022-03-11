@@ -29,8 +29,8 @@
         <activity
             android:name=".view.splash.SplashActivity"
             android:exported="true"
-            android:noHistory="true"
-            android:theme="@style/Theme.Lotty.Splash">
+            android:theme="@style/Theme.Lotty"
+            android:noHistory="true">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

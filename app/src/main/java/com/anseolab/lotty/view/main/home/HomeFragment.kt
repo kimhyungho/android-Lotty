@@ -36,19 +36,6 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModelType>(
     }
     private var globalLayoutListener: ViewTreeObserver.OnGlobalLayoutListener? = null
 
-//    private val globalLayoutListener by lazy {
-//        object : ViewTreeObserver.OnGlobalLayoutListener {
-//            override fun onGlobalLayout() {
-//                val topView = viewDataBinding.sv.getTopView()!!
-//
-//                if (topView.height != 0) {
-//                    topView.viewTreeObserver.removeOnGlobalLayoutListener(this)
-//                    viewDataBinding.sv.setNormalHeight(topView.height)
-//                }
-//            }
-//        }
-//    }
-
     private val _viewModel: HomeViewModel by viewModels()
     override val viewModel: HomeViewModelType get() = _viewModel
 

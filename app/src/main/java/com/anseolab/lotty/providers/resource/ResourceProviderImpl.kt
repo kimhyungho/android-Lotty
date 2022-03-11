@@ -29,4 +29,8 @@ class ResourceProviderImpl @Inject constructor(
     override fun getDrawable(resId: Int): Drawable? {
         return ContextCompat.getDrawable(applicationContext, resId)
     }
+
+    override fun getStringArray(resId: Int): Array<String> {
+        return resources.getStringArray(resId)
+    }
 }

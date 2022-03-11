@@ -162,5 +162,10 @@ dependencies {
 
     implementation ("com.github.yuriy-budiyev:code-scanner:2.1.0")
 
-//    implementation("androidx.dynamicanimation:dynamicanimation-ktx:1.1.0-alpha03")
+//    implementation("androidx.dynamicanimation:dynamicanimation-ktx:1.1.0-alpha03")\
+
+    implementation ("com.robinhood.ticker:ticker:2.0.4")
+
+    implementation("xyz.pinaki.android:wheelticker:1.0.1")
+
 }

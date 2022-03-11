@@ -18,294 +18,685 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/sv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_touch"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/layout_drwt_no"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:paddingVertical="10dp"
-                        android:visibility="gone"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <TextView
-                            android:id="@+id/drwNum1"
-                            style="@style/Theme.Lotty.TextView.Bold"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:layout_marginStart="32dp"
-                            android:background="@drawable/bg_white_ring"
-                            android:backgroundTint="@{output.drwtNo.drwtNo1Color}"
-                            android:gravity="center"
-                            android:text="@{String.valueOf(output.drwtNo.drwtNo1)}"
-                            android:textColor="@color/white"
-                            android:textSize="20dp"
-                            app:layout_constraintEnd_toStartOf="@+id/drwNum2"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:text="17" />
-
-                        <TextView
-                            android:id="@+id/drwNum2"
-                            style="@style/Theme.Lotty.TextView.Bold"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:background="@drawable/bg_white_ring"
-                            android:backgroundTint="@{output.drwtNo.drwtNo2Color}"
-                            android:gravity="center"
-                            android:text="@{String.valueOf(output.drwtNo.drwtNo2)}"
-                            android:textColor="@color/white"
-                            android:textSize="20dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/drwNum1"
-                            app:layout_constraintEnd_toStartOf="@+id/drwNum3"
-                            app:layout_constraintStart_toEndOf="@+id/drwNum1"
-                            app:layout_constraintTop_toTopOf="@+id/drwNum1" />
-
-                        <TextView
-                            android:id="@+id/drwNum3"
-                            style="@style/Theme.Lotty.TextView.Bold"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:background="@drawable/bg_white_ring"
-                            android:backgroundTint="@{output.drwtNo.drwtNo3Color}"
-                            android:gravity="center"
-                            android:text="@{String.valueOf(output.drwtNo.drwtNo3)}"
-                            android:textColor="@color/white"
-                            android:textSize="20dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/drwNum2"
-                            app:layout_constraintEnd_toStartOf="@+id/drwNum4"
-                            app:layout_constraintStart_toEndOf="@+id/drwNum2"
-                            app:layout_constraintTop_toTopOf="@+id/drwNum2" />
-
-                        <TextView
-                            android:id="@+id/drwNum4"
-                            style="@style/Theme.Lotty.TextView.Bold"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:background="@drawable/bg_white_ring"
-                            android:backgroundTint="@{output.drwtNo.drwtNo4Color}"
-                            android:gravity="center"
-                            android:text="@{String.valueOf(output.drwtNo.drwtNo4)}"
-                            android:textColor="@color/white"
-                            android:textSize="20dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/drwNum3"
-                            app:layout_constraintEnd_toStartOf="@+id/drwNum5"
-                            app:layout_constraintStart_toEndOf="@+id/drwNum3"
-                            app:layout_constraintTop_toTopOf="@+id/drwNum3" />
-
-                        <TextView
-                            android:id="@+id/drwNum5"
-                            style="@style/Theme.Lotty.TextView.Bold"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:background="@drawable/bg_white_ring"
-                            android:backgroundTint="@{output.drwtNo.drwtNo5Color}"
-                            android:gravity="center"
-                            android:text="@{String.valueOf(output.drwtNo.drwtNo5)}"
-                            android:textColor="@color/white"
-                            android:textSize="20dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/drwNum4"
-                            app:layout_constraintEnd_toStartOf="@+id/drwNum6"
-                            app:layout_constraintStart_toEndOf="@+id/drwNum4"
-                            app:layout_constraintTop_toTopOf="@+id/drwNum4" />
-
-                        <TextView
-                            android:id="@+id/drwNum6"
-                            style="@style/Theme.Lotty.TextView.Bold"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:background="@drawable/bg_white_ring"
-                            android:backgroundTint="@{output.drwtNo.drwtNo6Color}"
-                            android:gravity="center"
-                            android:text="@{String.valueOf(output.drwtNo.drwtNo6)}"
-                            android:textColor="@color/white"
-                            android:textSize="20dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/drwNum5"
-                            app:layout_constraintEnd_toStartOf="@+id/iv_plus"
-                            app:layout_constraintStart_toEndOf="@+id/drwNum5"
-                            app:layout_constraintTop_toTopOf="@+id/drwNum5" />
-
-                        <TextView
-                            android:id="@+id/bonus_num"
-                            style="@style/Theme.Lotty.TextView.Bold"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:layout_marginEnd="32dp"
-                            android:background="@drawable/bg_white_ring"
-                            android:backgroundTint="@{output.drwtNo.bonusColor}"
-                            android:gravity="center"
-                            android:text="@{String.valueOf(output.drwtNo.bnusNo)}"
-                            android:textColor="@color/white"
-                            android:textSize="20dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/iv_plus"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/iv_plus"
-                            app:layout_constraintTop_toTopOf="@+id/iv_plus" />
-
-                        <ImageView
-                            android:id="@+id/iv_plus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintBottom_toBottomOf="@+id/drwNum6"
-                            app:layout_constraintEnd_toStartOf="@+id/bonus_num"
-                            app:layout_constraintStart_toEndOf="@+id/drwNum6"
-                            app:layout_constraintTop_toTopOf="@+id/drwNum6"
-                            app:srcCompat="@drawable/ic_plus_32x32" />
-
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_drwt_no">
-
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/btn_clear"
-                            style="@style/Theme.Lotty.TextView.SemiBold"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginEnd="4dp"
-                            android:layout_marginBottom="4dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/bg_white_rounded_10dp"
-                            android:elevation="4dp"
-                            android:paddingVertical="16dp"
-                            android:text="초기화"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/layout_drwt_no" />
-
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/btn_create"
-                            style="@style/Theme.Lotty.TextView.SemiBold"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginTop="4dp"
-                            android:layout_marginEnd="12dp"
-                            android:layout_marginBottom="4dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/bg_gradient_b300_b600_rounded_10dp"
-                            android:elevation="4dp"
-                            android:paddingVertical="16dp"
-                            android:text="랜덤 번호 받기"
-                            android:textColor="@color/white"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/layout_drwt_no" />
-
-
-                    </LinearLayout>
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                <TextView
-                    android:id="@+id/textView8"
-                    style="@style/Theme.Lotty.TextView.SemiBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:text="최근 뽑은 번호"
-                    android:textColor="@color/G500"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_touch" />
-
-                <!--                <TextView-->
-                <!--                    android:id="@+id/btn_clear"-->
-                <!--                    style="@style/Theme.Lotty.TextView.Regular"-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_marginEnd="12dp"-->
-                <!--                    android:background="@drawable/bg_white_ripple"-->
-                <!--                    android:drawableLeft="@drawable/ic_clear_12x12"-->
-                <!--                    android:drawablePadding="4dp"-->
-                <!--                    android:drawableTint="@color/G500"-->
-                <!--                    android:padding="4dp"-->
-                <!--                    android:text="전체 삭제"-->
-                <!--                    android:textColor="@color/G500"-->
-                <!--                    android:textSize="13sp"-->
-                <!--                    app:layout_constraintBottom_toBottomOf="@+id/textView8"-->
-                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
-                <!--                    app:layout_constraintTop_toTopOf="@+id/textView8" />-->
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_recent"
-                    list="@{output.recentDrwtNos}"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/bg_white_rounded_10dp"
-                    android:elevation="4dp"
-                    android:focusable="false"
-                    android:nestedScrollingEnabled="false"
-                    android:paddingVertical="12dp"
-                    android:layout_marginBottom="16dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </androidx.core.widget.NestedScrollView>
-
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/white"
-            android:src="@drawable/ic_arrow_up_32x32"
-            app:borderWidth="0dp"
-            app:fabSize="mini"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <nl.dionsegijn.konfetti.xml.KonfettiView
-            android:id="@+id/kv"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="24dp"
             android:layout_height="0dp"
-            android:clickable="false"
+            android:layout_marginEnd="8dp"
+            android:alpha="0.3"
+            android:background="@color/B600"
+            android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.anseolab.lotty.view.widget.VerticalTextView
+                style="@style/Theme.Lotty.TextView.SemiBold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="로또의 민족                  로또의 민족                  로또의 민족                  로또의 민족                  로또의 민족"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView19"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lotto"
+                android:textColor="@color/G900"
+                android:textSize="26dp" />
+
+            <TextView
+                android:id="@+id/textView20"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:text="의 민족"
+                android:textColor="@color/G900"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/textView21"
+            style="@style/Theme.Lotty.TextView.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="36dp"
+            android:alpha="0.2"
+            android:text="Lotto"
+            android:textColor="@color/B600"
+            android:textSize="26dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView22"
+            style="@style/Theme.Lotty.TextView.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:alpha="0.2"
+            android:text="의 민족"
+            android:textColor="@color/B600"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView21"
+            app:layout_constraintStart_toEndOf="@+id/textView21" />
+
+
+        <TextView
+            android:id="@+id/textView23"
+            style="@style/Theme.Lotty.TextView.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:alpha="0.2"
+            android:text="Lotto"
+            android:textColor="@color/B600"
+            android:textSize="26dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+        <TextView
+            android:id="@+id/textView24"
+            style="@style/Theme.Lotty.TextView.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:alpha="0.2"
+            android:text="의 민족"
+            android:textColor="@color/B600"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView23"
+            app:layout_constraintStart_toEndOf="@+id/textView23" />
+
+
+        <TextView
+            android:id="@+id/textView25"
+            style="@style/Theme.Lotty.TextView.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="36dp"
+            android:alpha="0.2"
+            android:text="Lotto"
+            android:textColor="@color/B600"
+            android:textSize="26dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView26"
+            style="@style/Theme.Lotty.TextView.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:alpha="0.2"
+            android:text="의 민족"
+            android:textColor="@color/B600"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView25"
+            app:layout_constraintStart_toEndOf="@+id/textView25" />
+
+        <TextView
+            android:id="@+id/tv_round"
+            style="@style/Theme.Lotty.TextView.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@{@string/round_format2(output.round)}"
+            android:textColor="@color/G900"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton3"
+            tools:text="제 1006 회" />
+
+        <ImageView
+            android:id="@+id/imageButton3"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="4dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_qr_24x24"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
+
+        <TextView
+            android:id="@+id/tv_published_date"
+            style="@style/Theme.Lotty.TextView.SemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="4dp"
+            android:text="@{output.publishedDate}"
+            android:textColor="@color/G900"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_round"
+            tools:text="발  행  일 : 2022/03/11 (금) 11:59:02" />
+
+        <TextView
+            android:id="@+id/tv_draw_date"
+            style="@style/Theme.Lotty.TextView.SemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@{output.drawDate}"
+            tools:text="추  첨  일 : 2022/03/12 (토) 20:43:00"
+            android:textColor="@color/G900"
+            app:layout_constraintStart_toStartOf="@+id/tv_published_date"
+            app:layout_constraintTop_toBottomOf="@+id/tv_published_date" />
+
+        <TextView
+            android:id="@+id/textView31"
+            style="@style/Theme.Lotty.TextView.SemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@{output.dueDate}"
+            tools:text="지급기한 : 2022/03/13"
+            android:textColor="@color/G900"
+            app:layout_constraintStart_toStartOf="@+id/tv_draw_date"
+            app:layout_constraintTop_toBottomOf="@+id/tv_draw_date" />
+
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/bg_dash_line"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView31" />
+
+        <TextView
+            android:id="@+id/tv_a"
+            style="@style/Theme.Lotty.TextView.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="A 자  동"
+            android:textColor="@color/G900"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+
+        <TextView
+            android:id="@+id/tv_b"
+            style="@style/Theme.Lotty.TextView.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="B 자  동"
+            android:textColor="@color/G900"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toBottomOf="@+id/tv_a" />
+
+        <TextView
+            android:id="@+id/tv_c"
+            style="@style/Theme.Lotty.TextView.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="C 자  동"
+            android:textColor="@color/G900"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toBottomOf="@+id/tv_b" />
+
+        <TextView
+            android:id="@+id/tv_d"
+            style="@style/Theme.Lotty.TextView.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="D 자  동"
+            android:textColor="@color/G900"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toBottomOf="@+id/tv_c" />
+
+        <TextView
+            android:id="@+id/tv_e"
+            style="@style/Theme.Lotty.TextView.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="E 자  동"
+            android:textColor="@color/G900"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toBottomOf="@+id/tv_d" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/bg_dash_line"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_e" />
+
+        <TextView
+            android:id="@+id/textView33"
+            style="@style/Theme.Lotty.TextView.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="₩ 5, 000"
+            android:textColor="@color/G900"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/view2"
+            app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+        <TextView
+            android:id="@+id/textView34"
+            style="@style/Theme.Lotty.TextView.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="금액"
+            android:textColor="@color/G900"
+            android:textSize="16dp"
+            app:layout_constraintStart_toStartOf="@+id/view2"
+            app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_a"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintStart_toEndOf="@+id/tv_a"
+            app:layout_constraintTop_toTopOf="@+id/tv_a">
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_a_1"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_a_2"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_a_3"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_a_4"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_a_5"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_a_6"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_b"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintStart_toEndOf="@+id/tv_a"
+            app:layout_constraintTop_toTopOf="@+id/tv_b">
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_b_1"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_b_2"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_b_3"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_b_4"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_b_5"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_b_6"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_c"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintStart_toEndOf="@+id/tv_a"
+            app:layout_constraintTop_toTopOf="@+id/tv_c">
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_c_1"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_c_2"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_c_3"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_c_4"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_c_5"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_c_6"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_d"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintStart_toEndOf="@+id/tv_a"
+            app:layout_constraintTop_toTopOf="@+id/tv_d">
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_d_1"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_d_2"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_d_3"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_d_4"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_d_5"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_d_6"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_e"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintStart_toEndOf="@+id/tv_a"
+            app:layout_constraintTop_toTopOf="@+id/tv_e">
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_e_1"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_e_2"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_e_3"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_e_4"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_e_5"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+
+            <com.robinhood.ticker.TickerView
+                android:id="@+id/tv_e_6"
+                style="@style/Theme.Lotty.TextView.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/G900"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btn_draw"
+            style="@style/Theme.Lotty.TextView.SemiBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_white_rounded_10dp"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="뽑기"
+            app:layout_constraintEnd_toEndOf="@+id/textView33"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView34" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

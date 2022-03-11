@@ -13,4 +13,6 @@ interface ResourceProvider {
     fun getColor(@ColorRes resId: Int): Int
 
     fun getDrawable(@DrawableRes resId: Int): Drawable?
+
+    fun getStringArray(@ArrayRes resId: Int): Array<String>
 }
