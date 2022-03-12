@@ -43,8 +43,8 @@
                         android:id="@+id/np"
                         list="@{output.drawables}"
                         android:layout_width="36dp"
-                        android:layout_marginRight="4dp"
                         android:layout_height="36dp"
+                        android:layout_marginRight="4dp"
                         android:orientation="vertical" />
 
                     <TextView
@@ -58,7 +58,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="1000dp"
+                    android:layout_height="wrap_content"
                     android:background="@color/white">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -102,8 +102,8 @@
                             android:layout_marginEnd="12dp"
                             android:drawableRight="@drawable/ic_arrow_right_24x24"
                             android:drawablePadding="8dp"
-                            android:gravity="center"
                             android:drawableTint="@color/white"
+                            android:gravity="center"
                             android:text="주변 복권방\n찾기"
                             android:textColor="@color/white"
                             android:textSize="16dp"
@@ -224,6 +224,40 @@
                             android:textColor="@color/black" />
                     </LinearLayout>
 
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/vp_banner"
+                        list="@{output.banners}"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginBottom="24dp"
+                        android:background="@drawable/bg_white_rounded_10dp"
+                        android:elevation="4dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="3:1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btn_search" />
+
+                    <TextView
+                        android:id="@+id/tv_page"
+                        style="@style/Theme.Lotty.TextView.Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/bg_trg600_rounded_24dp"
+                        android:elevation="4dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="4dp"
+                        android:text="@{@string/banner_format(output.page + 1, output.banners.size())}"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="@+id/vp_banner"
+                        app:layout_constraintEnd_toEndOf="@+id/vp_banner"
+                        tools:text="3 / 5" />
+
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
@@ -235,7 +269,7 @@
             android:id="@+id/toolbar"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="@color/white"
+            android:background="@color/B400"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

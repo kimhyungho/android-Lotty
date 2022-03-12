@@ -5,6 +5,7 @@
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.20260416666666667" />
         <entry key="app/src/main/res/drawable/bg_b500_bottom_rounded_10dp.xml" value="0.3507692307692308" />
+        <entry key="app/src/main/res/drawable/bg_b600_bottom_rounded_10dp.xml" value="0.3765" />
         <entry key="app/src/main/res/drawable/bg_b600_rounded_4dp_ripple.xml" value="0.159375" />
         <entry key="app/src/main/res/drawable/bg_dash_line.xml" value="0.205" />
         <entry key="app/src/main/res/drawable/bg_g100_rounded_10dp.xml" value="0.2328125" />
@@ -14,6 +15,8 @@
         <entry key="app/src/main/res/drawable/bg_radient_b300_b500_rounded_10dp.xml" value="0.18333333333333332" />
         <entry key="app/src/main/res/drawable/bg_splash.xml" value="0.3277777777777778" />
         <entry key="app/src/main/res/drawable/bg_tb600_rounded_10dp.xml" value="0.205" />
+        <entry key="app/src/main/res/drawable/bg_trb600_rounded_10dp.xml" value="0.205" />
+        <entry key="app/src/main/res/drawable/bg_trg600_rounded_24dp.xml" value="0.205" />
         <entry key="app/src/main/res/drawable/bg_white_oval_ripple.xml" value="0.3425641025641026" />
         <entry key="app/src/main/res/drawable/bg_white_ring.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/drawable/bg_white_ripple.xml" value="0.3425641025641026" />
@@ -24,22 +27,25 @@
         <entry key="app/src/main/res/drawable/ic_arrow_down_24x24.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/drawable/ic_arrow_up_24x24.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/drawable/ic_back_24x24.xml" value="0.1890625" />
+        <entry key="app/src/main/res/drawable/ic_banner_645.xml" value="0.205" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.205" />
         <entry key="app/src/main/res/drawable/ic_home_32x32.xml" value="0.205" />
         <entry key="app/src/main/res/drawable/ic_logo_128x130.xml" value="0.3484375" />
         <entry key="app/src/main/res/drawable/ic_logo_foreground.xml" value="0.3277777777777778" />
         <entry key="app/src/main/res/drawable/ic_navigation_32x32.xml" value="0.159375" />
+        <entry key="app/src/main/res/drawable/ic_splash.xml" value="0.205" />
         <entry key="app/src/main/res/drawable/item_slot_machine.xml" value="0.205" />
         <entry key="app/src/main/res/drawable/lc_logo_128x130.xml" value="0.33240740740740743" />
         <entry key="app/src/main/res/drawable/selector_arrow_down_up.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/drawable/selector_blue_button.xml" value="0.1921875" />
         <entry key="app/src/main/res/drawable/selector_white_button_10dp.xml" value="0.1921875" />
+        <entry key="app/src/main/res/drawable/splash_inset.xml" value="0.187" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18229166666666666" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_address_search.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_around.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.3072916666666667" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_random.xml" value="0.40520833333333334" />
         <entry key="app/src/main/res/layout/fragment_scanner_dialog.xml" value="0.33177083333333335" />
@@ -47,6 +53,7 @@
         <entry key="app/src/main/res/layout/fragment_search_address_dialog.xml" value="0.21770833333333334" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.33177083333333335" />
         <entry key="app/src/main/res/layout/item_address.xml" value="0.2125" />
+        <entry key="app/src/main/res/layout/item_banner.xml" value="0.34010416666666665" />
         <entry key="app/src/main/res/layout/item_drwt_no.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_lottery.xml" value="0.49611197511664074" />
         <entry key="app/src/main/res/layout/item_recent_lottery.xml" value="0.67" />
@@ -54,6 +61,10 @@
         <entry key="app/src/main/res/layout/layout_loader_progress.xml" value="0.33229166666666665" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.33177083333333335" />
         <entry key="app/src/main/res/menu/menu_search.xml" value="0.3333333333333333" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.205" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.205" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_logo.xml" value="0.205" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_logo_round.xml" value="0.205" />
         <entry key="app/src/main/res/xml/network_security_config.xml" value="0.1" />
       </map>
     </option>

@@ -1,11 +1,16 @@
 package com.anseolab.lotty.view.main.home
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
+import android.util.Log
 import android.view.MotionEvent
 import android.view.ViewTreeObserver
 import androidx.fragment.app.viewModels
+import androidx.viewpager2.widget.ViewPager2
 import com.anseolab.lotty.R
 import com.anseolab.lotty.databinding.FragmentHomeBinding
+import com.anseolab.lotty.view.adapter.BannerPagerAdapter
 import com.anseolab.lotty.view.adapter.SlotMachinePagerAdapter
 import com.anseolab.lotty.view.alert.scanner.ScannerAlertDialog
 import com.anseolab.lotty.view.base.FragmentLauncher
@@ -21,6 +26,14 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModelType>(
 ) {
     override val showBackButton: Boolean = false
     private val slotMachinePagerAdapter = SlotMachinePagerAdapter()
+    private val bannerPagerAdapter = BannerPagerAdapter().apply {
+        mListener = object: BannerPagerAdapter.Listener {
+            override fun onItemClick(url: String) {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+            }
+        }
+    }
+
     private val onActionUpListener by lazy {
         object : StretchTopNestedScrollView.OnActionUpListener {
             override fun onActionUpEvent() {
@@ -34,6 +47,13 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModelType>(
             }
         }
     }
+
+    private val onPageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
+        override fun onPageSelected(position: Int) {
+            viewModel.input.onPageChange(position % 3)
+        }
+    }
+
     private var globalLayoutListener: ViewTreeObserver.OnGlobalLayoutListener? = null
 
     private val _viewModel: HomeViewModel by viewModels()
@@ -45,6 +65,12 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModelType>(
         viewModel: HomeViewModelType
     ) {
         with(viewDataBinding) {
+            with(vpBanner) {
+                adapter = bannerPagerAdapter
+                registerOnPageChangeCallback(onPageChangeCallback)
+
+            }
+
             with(np) {
                 adapter = slotMachinePagerAdapter
                 isUserInputEnabled = false
@@ -191,6 +217,7 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModelType>(
     ) {
         with(viewDataBinding) {
             mListener = null
+            vpBanner.unregisterOnPageChangeCallback(onPageChangeCallback)
             with(sv) {
                 getTopView()!!.viewTreeObserver.removeOnGlobalLayoutListener(globalLayoutListener)
             }

@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
 
+    <color name="TRG600">#664A5470</color>
     <color name="G100">#EFEFF0</color>
     <color name="G300">#B3BBD3</color>
     <color name="G500">#AAAAAA</color>
@@ -18,6 +19,7 @@
     <color name="Y400">#F7E600</color>
     <color name="Y500">#FBC500</color>
     <color name="B200">#69C8F2</color>
+    <color name="B400">#b5caff</color>
     <color name="B500">#2393F3</color>
     <color name="B600">#447BFE</color>
     <color name="TRB600">#66447BFE</color>

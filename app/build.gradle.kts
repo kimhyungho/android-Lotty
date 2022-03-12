@@ -168,4 +168,7 @@ dependencies {
 
     implementation("xyz.pinaki.android:wheelticker:1.0.1")
 
+    implementation("androidx.core:core-splashscreen:1.0.0-beta01")
+
+
 }

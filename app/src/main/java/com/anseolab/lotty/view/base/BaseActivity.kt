@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.navigation.fragment.NavHostFragment
@@ -30,6 +31,8 @@ abstract class BaseActivity<VD : ViewDataBinding>(
     protected val navController get() = _navController!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
+
         super.onCreate(savedInstanceState)
         DataBindingUtil.setContentView<VD>(this, layoutResId).also { viewDataBinding ->
             viewDataBinding.lifecycleOwner = this
