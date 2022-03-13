@@ -3,9 +3,11 @@ package com.anseolab.lotty.view.main.home
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.view.ViewTreeObserver
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.anseolab.lotty.R
@@ -32,6 +34,16 @@ class HomeFragment : ViewModelFragment<FragmentHomeBinding, HomeViewModelType>(
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
             }
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.B400)
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if(!hidden) requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.B400)
     }
 
     private val onActionUpListener by lazy {

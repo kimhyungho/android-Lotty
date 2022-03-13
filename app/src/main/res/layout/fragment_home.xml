@@ -28,6 +28,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
+                style="@style/Theme.Lotty.Layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -35,7 +36,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/TRB600"
+                    android:background="@color/B400"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -58,8 +59,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white">
+                    android:layout_height="wrap_content">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/constraintLayout4"
@@ -68,20 +68,7 @@
                         android:background="@drawable/bg_b600_bottom_rounded_10dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <TextView
-                            android:id="@+id/textView20"
-                            style="@style/Theme.Lotty.TextView.Bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="아래로 힘껏 당긴 후 놔주세요."
-                            android:textColor="@color/white"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/btn_around"
@@ -90,7 +77,7 @@
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="12dp"
                         android:layout_marginEnd="12dp"
-                        android:background="@drawable/bg_trb600_rounded_10dp"
+                        android:background="@drawable/bg_b400_rounded_10dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
@@ -104,9 +91,9 @@
                             android:drawablePadding="8dp"
                             android:drawableTint="@color/white"
                             android:gravity="center"
-                            android:text="주변 복권방\n찾기"
+                            android:text="주변\n로또점 찾기"
                             android:textColor="@color/white"
-                            android:textSize="16dp"
+                            android:textSize="19dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -118,7 +105,6 @@
                             android:layout_marginStart="24dp"
                             android:layout_marginTop="16dp"
                             android:layout_marginBottom="16dp"
-                            android:alpha="0.7"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintDimensionRatio="1:1"
                             app:layout_constraintStart_toStartOf="parent"
@@ -130,14 +116,13 @@
 
                     <LinearLayout
                         android:id="@+id/btn_search"
+                        style="@style/Theme.Lotty.Button.3D"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_marginStart="12dp"
 
+                        android:layout_marginStart="12dp"
                         android:layout_marginTop="12dp"
                         android:layout_marginEnd="4dp"
-                        android:background="@drawable/bg_white_rounded_10dp"
-                        android:elevation="4dp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="24dp"
@@ -147,29 +132,28 @@
                         app:layout_constraintTop_toBottomOf="@+id/btn_around">
 
                         <ImageView
+                            style="@style/Theme.Lotty.ImageView.Basic"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:src="@drawable/ic_search_24x24" />
 
                         <TextView
-                            style="@style/Theme.Lotty.TextView.SemiBold"
+                            style="@style/Theme.Lotty.TextView.Button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="6dp"
-                            android:text="번호조회"
-                            android:textColor="@color/black" />
+                            android:text="번호조회" />
                     </LinearLayout>
 
 
                     <LinearLayout
                         android:id="@+id/btn_qr"
+                        style="@style/Theme.Lotty.Button.3D"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_marginStart="4dp"
                         android:layout_marginEnd="4dp"
-                        android:background="@drawable/bg_white_rounded_10dp"
-                        android:elevation="4dp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="24dp"
@@ -179,28 +163,27 @@
                         app:layout_constraintTop_toTopOf="@+id/btn_search">
 
                         <ImageView
+                            style="@style/Theme.Lotty.ImageView.Basic"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:src="@drawable/ic_qr_24x24" />
 
                         <TextView
-                            style="@style/Theme.Lotty.TextView.SemiBold"
+                            style="@style/Theme.Lotty.TextView.Button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="6dp"
-                            android:text="QR촬영"
-                            android:textColor="@color/black" />
+                            android:text="QR촬영" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/btn_create"
+                        style="@style/Theme.Lotty.Button.3D"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_marginStart="4dp"
                         android:layout_marginEnd="12dp"
-                        android:background="@drawable/bg_white_rounded_10dp"
-                        android:elevation="4dp"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="24dp"
@@ -210,53 +193,65 @@
                         app:layout_constraintTop_toTopOf="@+id/btn_qr">
 
                         <ImageView
+                            style="@style/Theme.Lotty.ImageView.Basic"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:src="@drawable/ic_slot_machine_32x32" />
 
                         <TextView
-                            style="@style/Theme.Lotty.TextView.SemiBold"
+                            style="@style/Theme.Lotty.TextView.Button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="6dp"
-                            android:text="번호생성"
-                            android:textColor="@color/black" />
+                            android:text="번호생성" />
                     </LinearLayout>
 
-                    <androidx.viewpager2.widget.ViewPager2
-                        android:id="@+id/vp_banner"
-                        list="@{output.banners}"
+
+                    <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="12dp"
                         android:layout_marginEnd="12dp"
                         android:layout_marginBottom="24dp"
-                        android:background="@drawable/bg_white_rounded_10dp"
-                        android:elevation="4dp"
+                        android:background="@drawable/bg_g100_rounded_10dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintDimensionRatio="3:1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/btn_search" />
+                        app:layout_constraintTop_toBottomOf="@+id/btn_qr">
 
-                    <TextView
-                        android:id="@+id/tv_page"
-                        style="@style/Theme.Lotty.TextView.Regular"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="@drawable/bg_trg600_rounded_24dp"
-                        android:elevation="4dp"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="4dp"
-                        android:text="@{@string/banner_format(output.page + 1, output.banners.size())}"
-                        android:textColor="@color/white"
-                        app:layout_constraintBottom_toBottomOf="@+id/vp_banner"
-                        app:layout_constraintEnd_toEndOf="@+id/vp_banner"
-                        tools:text="3 / 5" />
+                        <androidx.viewpager2.widget.ViewPager2
+                            android:id="@+id/vp_banner"
+                            list="@{output.banners}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:elevation="0dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_page"
+                            style="@style/Theme.Lotty.TextView.Regular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|end"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/bg_trg600_rounded_24dp"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="4dp"
+                            android:text="@{@string/banner_format(output.page + 1, output.banners.size())}"
+                            android:textColor="@color/white"
+                            app:layout_constraintBottom_toBottomOf="@+id/vp_banner"
+                            app:layout_constraintEnd_toEndOf="@+id/vp_banner"
+                            tools:text="3 / 5" />
+                    </androidx.cardview.widget.CardView>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

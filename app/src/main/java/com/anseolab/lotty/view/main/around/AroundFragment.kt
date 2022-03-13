@@ -7,12 +7,14 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.net.Uri
 import android.os.Build
+import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.anseolab.lotty.R
 import com.anseolab.lotty.databinding.FragmentAroundBinding
@@ -63,6 +65,11 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
                 override fun onAnimationRepeat(animation: Animation?) {}
             })
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
     }
 
     override fun onWillAttachViewModel(
@@ -184,6 +191,11 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
                 }
             }
         }
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if(!hidden) requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
     }
 
     private fun hideStoreInformation() {

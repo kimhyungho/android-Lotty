@@ -63,15 +63,15 @@ class HomeViewModel @Inject constructor(
 
         _banners.value = listOf(
             BannerUiModel(
-                resourceProvider.getDrawable(R.drawable.ic_rocket_32x32)!!,
+                resourceProvider.getDrawable(R.drawable.banner3)!!,
                 "https://dhlottery.co.kr/gameInfo.do?method=buyLotto"
             ),
             BannerUiModel(
-                resourceProvider.getDrawable(R.drawable.ic_diamond_32x32)!!,
+                resourceProvider.getDrawable(R.drawable.banner3)!!,
                 "https://dhlottery.co.kr/gameInfo.do?method=game720Method"
             ),
             BannerUiModel(
-                resourceProvider.getDrawable(R.drawable.ic_clover_32x32)!!,
+                resourceProvider.getDrawable(R.drawable.banner3)!!,
                 "https://dhlottery.co.kr/gameInfo.do?method=inetbokBuyInfo"
             )
         )

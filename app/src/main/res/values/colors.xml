@@ -25,5 +25,5 @@
     <color name="TRB600">#66447BFE</color>
     <color name="GR500">#AFD840</color>
     <color name="GR600">#2db400</color>
-
+    <color name="DarkBG">#292929</color>
 </resources>

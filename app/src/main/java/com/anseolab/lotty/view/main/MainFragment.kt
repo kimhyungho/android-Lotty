@@ -30,6 +30,7 @@ class MainFragment : ViewModelFragment<FragmentMainBinding, MainViewModelType>(
         viewModel: MainViewModelType
     ) {
         with(viewModel.output) {
+
             selectedPage.observe {
                 when (it) {
                     0 -> changeFragment(HomeFragment.apply {

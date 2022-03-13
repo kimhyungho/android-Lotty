@@ -3,6 +3,7 @@ package com.anseolab.lotty.view.main.random
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.Typeface
+import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import androidx.core.content.ContextCompat
@@ -44,15 +45,17 @@ class RandomFragment : ViewModelFragment<FragmentRandomBinding, RandomViewModelT
     @Inject
     lateinit var resourceProvider: ResourceProvider
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onWillAttachViewModel(
         viewDataBinding: FragmentRandomBinding,
         viewModel: RandomViewModelType
     ) {
         super.onWillAttachViewModel(viewDataBinding, viewModel)
-
-        Log.d("kkkk", LocalDate.now().getNextSaturday().toString())
-
         with(viewDataBinding) {
             tvA1.setting()
             tvA2.setting()
@@ -164,6 +167,11 @@ class RandomFragment : ViewModelFragment<FragmentRandomBinding, RandomViewModelT
                 }
             }
         }
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if(!hidden) requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
     }
 
     private fun TickerView.setting() {

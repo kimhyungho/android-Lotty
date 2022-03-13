@@ -2,8 +2,10 @@ package com.anseolab.lotty.view.main.search
 
 import android.Manifest
 import android.graphics.Color
+import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -66,6 +68,11 @@ class SearchFragment : ViewModelFragment<FragmentSearchBinding, SearchViewModelT
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
+    }
+
     override fun onWillAttachViewModel(
         viewDataBinding: FragmentSearchBinding,
         viewModel: SearchViewModelType
@@ -118,6 +125,11 @@ class SearchFragment : ViewModelFragment<FragmentSearchBinding, SearchViewModelT
         with(viewModel.output) {
 
         }
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if(!hidden) requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
     }
 
     override fun onDestroyView() {
