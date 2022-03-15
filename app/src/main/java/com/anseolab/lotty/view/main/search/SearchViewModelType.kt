@@ -19,5 +19,7 @@ interface SearchViewModelType: ViewModelType<SearchViewModelType.Input, SearchVi
         val isRefreshing: LiveData<Boolean>
 
         val isLoading: LiveData<Boolean>
+
+        val showError: LiveData<String>
     }
 }

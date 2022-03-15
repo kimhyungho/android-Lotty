@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.anseolab.lotty">
+
+    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -8,9 +11,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <application
         android:name=".LottyApplication"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_lotty_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_lotty_logo_round"
@@ -26,18 +34,19 @@
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
             android:value="barcode" />
 
-<!--        <activity-->
-<!--            android:name=".view.splash.SplashActivity"-->
-<!--            android:exported="true"-->
-<!--            android:noHistory="true"-->
-<!--            android:theme="@style/Theme.Lotty.Splash">-->
+        <!--        <activity-->
+        <!--            android:name=".view.splash.SplashActivity"-->
+        <!--            android:exported="true"-->
+        <!--            android:noHistory="true"-->
+        <!--            android:theme="@style/Theme.Lotty.Splash">-->
 
-<!--        </activity>-->
+        <!--        </activity>-->
 
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
+            android:stateNotNeeded="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Lotty.Splash"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize">

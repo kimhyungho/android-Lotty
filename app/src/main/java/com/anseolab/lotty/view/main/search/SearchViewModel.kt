@@ -10,7 +10,9 @@ import com.anseolab.domain.interactors.dhlottery.FetchLotteryNumberUseCase
 import com.anseolab.domain.model.Lottery
 import com.anseolab.domain.providers.SchedulerProvider
 import com.anseolab.lotty.extensions.getDrwNum
+import com.anseolab.lotty.mapper.ExceptionMapper
 import com.anseolab.lotty.view.base.ReactorViewModel
+import com.anseolab.lotty.view.lifecycle.SingleLiveData
 import com.anseolab.lotty.view.main.around.AroundViewModelType
 import com.anseolab.lotty.view.main.search.mapper.LotteryListStateMapper
 import com.anseolab.lotty.view.model.LotteryUiModel
@@ -48,6 +50,9 @@ class SearchViewModel @Inject constructor(
     private val _isLoading: MutableLiveData<Boolean> = MutableLiveData()
     override val isLoading: LiveData<Boolean> get() = _isLoading
 
+    private val _showError: MutableLiveData<String> = SingleLiveData()
+    override val showError: LiveData<String> get() = _showError
+
     override val input: SearchViewModelType.Input = this
     override val output: SearchViewModelType.Output = this
 
@@ -61,9 +66,12 @@ class SearchViewModel @Inject constructor(
 
         state.select(State::isLoading)
             .bind(_isLoading)
+
+        state.select(State::throwable)
+            .unwrapOptional()
+            .map(ExceptionMapper::mapToView)
+            .bind(_showError)
     }
-
-
 
     override fun transformAction(action: Observable<Action>): Observable<out Action> {
         return action.startWithItem(Action.Refresh)
@@ -84,14 +92,16 @@ class SearchViewModel @Inject constructor(
                     Observable.just(Mutation.SetRefreshing(true)),
                     Observable.just(Mutation.InitLotteryNumber),
                     fetchLotteriesNumber(Date().getDrwNum())
-                )
+                ).takeUntil(this.action.filterAction<Action.Refresh>())
             }
 
             is Action.Scroll -> {
                 Observable.concat(
                     Observable.just(Mutation.SetLoading(true)),
                     fetchLotteriesNumber(action.drwNo)
-                )
+                ).onErrorResumeNext {
+                    Observable.just(Mutation.SetThrowable(it))
+                }.takeUntil(this.action.filterAction<Action.Scroll>())
             }
 
             is Action.DrwNoClick -> {
@@ -137,6 +147,10 @@ class SearchViewModel @Inject constructor(
                 })
             }
 
+            is Mutation.SetThrowable -> {
+                state.copy(throwable = mutation.throwable)
+            }
+
             else -> state
         }
     }
@@ -159,6 +173,8 @@ class SearchViewModel @Inject constructor(
         class SetRefreshing(val isRefreshing: Boolean): Mutation
 
         class SetLoading(val isLoading: Boolean) : Mutation
+
+        class SetThrowable(val throwable: Throwable): Mutation
     }
 
     private fun fetchLotteriesNumber(firstDrwNum: Long): Observable<Mutation> {
@@ -190,9 +206,6 @@ class SearchViewModel @Inject constructor(
             fetchLotteryNumberUseCase.execute(drwNum)
                 .map<Mutation>(Mutation::FetchLotteryNumberSuccess)
                 .toObservable()
-                .onErrorResumeNext {
-                    Observable.empty()
-                }
         } else {
             Observable.empty()
         }
@@ -203,7 +216,8 @@ class SearchViewModel @Inject constructor(
         val lotteries: MutableList<Lottery> = mutableListOf(),
         val expandedLotteries: Set<Long>,
         val isRefreshing: Boolean = false,
-        val isLoading : Boolean = false
+        val isLoading : Boolean = false,
+        val throwable: Throwable? = null
     ) : ReactorViewModel.State {
         override fun toParcelable(): Parcelable? {
             return SavedState(

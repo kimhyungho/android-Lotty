@@ -6,11 +6,4 @@
         android:icon="@drawable/ic_search_24x24"
         app:showAsAction="ifRoom"
         android:title="검색" />
-
-    <item
-        android:id="@+id/menu_qr"
-        android:icon="@drawable/ic_qr_24x24"
-        app:showAsAction="ifRoom"
-        android:title="qr" />
-
 </menu>

@@ -15,10 +15,8 @@ import com.anseolab.lotty.extensions.getNextSaturday
 import com.anseolab.lotty.extensions.throttle
 import com.anseolab.lotty.providers.resource.ResourceProvider
 import com.anseolab.lotty.view.adapter.RecentDrwtNoListAdapter
-import com.anseolab.lotty.view.alert.scanner.ScannerAlertDialog
 import com.anseolab.lotty.view.base.FragmentLauncher
 import com.anseolab.lotty.view.base.ViewModelFragment
-import com.anseolab.lotty.view.main.home.HomeFragment
 import com.jakewharton.rxbinding4.view.clicks
 import com.robinhood.ticker.TickerUtils
 import com.robinhood.ticker.TickerView

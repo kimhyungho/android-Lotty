@@ -272,13 +272,15 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             visibleOrGone="@{!item.returnValue}"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:orientation="vertical"
+            android:gravity="center"
             android:background="@color/white"
             android:clickable="true"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -286,28 +288,21 @@
 
             <ImageView
                 android:id="@+id/iv_character"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="32dp"
-                android:src="@mipmap/leak_canary_icon"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:src="@drawable/ic_gray_logo" />
 
             <TextView
+                android:layout_marginTop="4dp"
                 android:id="@+id/textView7"
                 style="@style/Theme.Lotty.TextView.SemiBold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="32dp"
                 android:gravity="center"
+                android:textColor="#CCCCCC"
                 android:text="아직 회차가 업데이트 되지 않았습니다.\n잠시 후 다시 시도해 주세요."
-                android:textSize="14dp"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_character"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/iv_character"
-                app:layout_constraintTop_toTopOf="@+id/iv_character" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:textSize="14dp" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

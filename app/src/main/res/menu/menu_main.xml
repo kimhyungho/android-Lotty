@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/menu_home"
-        android:icon="@drawable/ic_mian_home_32x32"
-        android:title="홈" />
+    <!--    <item-->
+    <!--        android:id="@+id/menu_home"-->
+    <!--        android:icon="@drawable/ic_mian_home_32x32"-->
+    <!--        android:title="홈" />-->
     <item
         android:id="@+id/menu_around"
         android:icon="@drawable/ic_around_24x24"
@@ -16,7 +16,12 @@
         android:title="번호 조회" />
 
     <item
-        android:icon="@drawable/ic_slot_machine_32x32"
         android:id="@+id/menu_random"
+        android:icon="@drawable/ic_slot_machine_32x32"
         android:title="번호 생성" />
+
+    <item
+        android:id="@+id/menu_qr"
+        android:icon="@drawable/ic_qr_24x24"
+        android:title="QR" />
 </menu>

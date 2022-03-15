@@ -171,4 +171,5 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.0.0-beta01")
 
 
+    implementation ("com.github.nisrulz:qreader:2.1.1")
 }

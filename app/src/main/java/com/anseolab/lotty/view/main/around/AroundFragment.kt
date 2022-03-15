@@ -28,6 +28,7 @@ import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.Overlay
+import com.naver.maps.map.overlay.OverlayImage
 import com.naver.maps.map.util.FusedLocationSource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.abs
@@ -86,7 +87,7 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
                 mNaverMap.uiSettings.isRotateGesturesEnabled = false
                 mNaverMap.uiSettings.isTiltGesturesEnabled = false
                 mNaverMap.setOnMapClickListener { _, _ ->
-                    selectedMarker?.iconTintColor = 0
+                    selectedMarker?.icon = OverlayImage.fromResource(R.drawable.ic_clover)
                     selectedMarker = null
                     viewModel.input.onMapClick()
                 }
@@ -177,12 +178,13 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
                     if (selectedMarker?.position?.latitude != store.y && selectedMarker?.position?.longitude != store.x) {
                         val marker = Marker().apply {
                             position = storeLocation
+                            icon = OverlayImage.fromResource(R.drawable.ic_clover)
                             map = mNaverMap
                             setOnClickListener {
                                 viewModel.input.onMarkerClick(store)
-                                selectedMarker?.iconTintColor = 0
+                                selectedMarker?.icon = OverlayImage.fromResource(R.drawable.ic_clover)
                                 selectedMarker = this
-                                this.iconTintColor = Color.RED
+                                selectedMarker?.icon = OverlayImage.fromResource(R.drawable.ic_lucky_clover_48x60)
                                 true
                             }
                         }

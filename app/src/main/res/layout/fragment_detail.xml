@@ -93,6 +93,7 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
+            android:fillViewport="true"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -120,15 +121,17 @@
                         android:layout_height="32dp"
                         android:layout_marginStart="32dp"
                         android:layout_marginTop="32dp"
+                        android:layout_marginBottom="32dp"
                         android:background="@drawable/bg_white_ring"
                         android:backgroundTint="@{output.lottery.drwtNo1Color}"
                         android:gravity="center"
                         android:text="@{String.valueOf(output.lottery.drwtNo1)}"
                         android:textColor="@color/white"
                         android:textSize="20dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/drwNum2"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_drwNo"
+                        app:layout_constraintTop_toTopOf="parent"
                         tools:text="17" />
 
                     <TextView
@@ -136,6 +139,7 @@
                         style="@style/Theme.Lotty.TextView.Bold"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:layout_marginBottom="2dp"
                         android:background="@drawable/bg_white_ring"
                         android:backgroundTint="@{output.lottery.drwtNo2Color}"
                         android:gravity="center"
@@ -238,14 +242,30 @@
                         app:layout_constraintTop_toTopOf="@+id/drwNum6"
                         app:srcCompat="@drawable/ic_plus_32x32" />
 
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="1dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+                    app:layout_constraintVertical_bias="0.0">
+
                     <TextView
                         android:id="@+id/tv_drwNo"
                         style="@style/Theme.Lotty.TextView.SemiBold"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="26dp"
                         android:text="@{@string/round_format(output.lottery.drwNo)}"
+                        android:textColor="@color/G900"
+                        android:textSize="18dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="1002회" />
@@ -255,30 +275,19 @@
                         style="@style/Theme.Lotty.TextView.SemiBold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="24dp"
+                        android:layout_marginEnd="16dp"
                         android:text="@{output.lottery.drwNoDate}"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_drwNo"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_drwNo"
                         tools:text="2022-2-19" />
-
-                    <TextView
-                        android:id="@+id/textView9"
-                        style="@style/Theme.Lotty.TextView.Regular"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="36dp"
-                        android:textColor="@color/G500"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/drwNum1" />
 
                     <TextView
                         android:id="@+id/textView10"
                         style="@style/Theme.Lotty.TextView.SemiBold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
+                        android:layout_marginStart="16dp"
                         android:text="1인 당첨 금액"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="@+id/textView14"
@@ -290,72 +299,26 @@
                         style="@style/Theme.Lotty.TextView.Regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="16dp"
                         android:text="총 당첨 금액"
                         android:textColor="@color/G500"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView15"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-                    <TextView
-                        android:id="@+id/textView12"
-                        style="@style/Theme.Lotty.TextView.Regular"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="16dp"
-                        android:text="총 복권 판매 금액"
-                        android:textColor="@color/G500"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
-                    <TextView
-                        android:id="@+id/textView13"
-                        style="@style/Theme.Lotty.TextView.Bold"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="24dp"
-                        android:ellipsize="end"
-                        android:gravity="end"
-                        android:text="@{@string/total_winner_format(output.lottery.firstPrzwnerCo)}"
-                        android:textColor="@color/black"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/textView12"
-                        app:layout_constraintTop_toBottomOf="@+id/bonus_num"
-                        tools:text="8명" />
-
-                    <TextView
-                        android:id="@+id/textView14"
-                        style="@style/Theme.Lotty.TextView.Bold"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="24dp"
-                        android:gravity="end"
-                        android:letterSpacing="-0.03"
-                        android:text="@{@string/won_format(output.lottery.firstWinamnt)}"
-                        android:textColor="@color/B500"
-                        android:textSize="18sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/textView13"
-                        app:layout_constraintTop_toBottomOf="@+id/textView13"
-                        tools:text="1,000,000,000 원" />
+                        app:layout_constraintTop_toTopOf="@+id/textView15" />
 
                     <TextView
                         android:id="@+id/textView15"
                         style="@style/Theme.Lotty.TextView.Bold"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="24dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="16dp"
                         android:gravity="end"
                         android:letterSpacing="-0.03"
                         android:text="@{@string/won_format(output.lottery.firstAccumamnt)}"
                         android:textColor="@color/black"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/textView14"
-                        app:layout_constraintTop_toTopOf="@+id/textView11"
+                        app:layout_constraintTop_toBottomOf="@+id/textView14"
                         tools:text="8,000,000,000 원" />
 
                     <TextView
@@ -363,63 +326,117 @@
                         style="@style/Theme.Lotty.TextView.Bold"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="24dp"
-                        android:layout_marginBottom="36dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="16dp"
                         android:gravity="end"
                         android:letterSpacing="-0.03"
                         android:text="@{@string/won_format(output.lottery.totSellamnt)}"
                         android:textColor="@color/black"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/textView13"
-                        app:layout_constraintTop_toTopOf="@+id/textView12"
+                        app:layout_constraintTop_toBottomOf="@+id/textView15"
                         tools:text="8,000,000,000,000 원" />
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        style="@style/Theme.Lotty.TextView.Bold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="end"
+                        android:letterSpacing="-0.03"
+                        android:text="@{@string/won_format(output.lottery.firstWinamnt)}"
+                        android:textColor="@color/B500"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView13"
+                        tools:text="1,000,000,000 원" />
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        style="@style/Theme.Lotty.TextView.Bold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:ellipsize="end"
+                        android:gravity="end"
+                        android:text="@{@string/total_winner_format(output.lottery.firstPrzwnerCo)}"
+                        android:textColor="@color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_date"
+                        tools:text="8명" />
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        style="@style/Theme.Lotty.TextView.Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="총 복권 판매 금액"
+                        android:textColor="@color/G500"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView16"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView16" />
+
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        style="@style/Theme.Lotty.TextView.SemiBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="24dp"
+                        android:text="최근 본 회차"
+                        android:textColor="@color/G900"
+                        android:textSize="16dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+                    <TextView
+                        android:id="@+id/btn_clear"
+                        style="@style/Theme.Lotty.TextView.Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/bg_white_ripple"
+                        android:drawableLeft="@drawable/ic_clear_12x12"
+                        android:drawablePadding="4dp"
+                        android:drawableTint="@color/G500"
+                        android:padding="4dp"
+                        android:text="전체 삭제"
+                        android:textColor="@color/G500"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView8"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_recent"
+                        list="@{output.recentLotteries}"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:focusable="false"
+                        android:nestedScrollingEnabled="false"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="당첨자 수"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView13"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView13" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/textView8"
-                    style="@style/Theme.Lotty.TextView.SemiBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:text="최근 본 회차"
-                    android:textColor="@color/G500"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
-                <TextView
-                    android:id="@+id/btn_clear"
-                    android:background="@drawable/bg_white_ripple"
-                    style="@style/Theme.Lotty.TextView.Regular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="12dp"
-                    android:drawableLeft="@drawable/ic_clear_12x12"
-                    android:drawablePadding="4dp"
-                    android:drawableTint="@color/G500"
-                    android:padding="4dp"
-                    android:text="전체 삭제"
-                    android:textColor="@color/G500"
-                    android:textSize="13sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView8"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textView8" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_recent"
-                    list="@{output.recentLotteries}"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:focusable="false"
-                    android:nestedScrollingEnabled="false"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

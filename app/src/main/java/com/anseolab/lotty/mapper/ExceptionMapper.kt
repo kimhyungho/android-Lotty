@@ -12,7 +12,7 @@ object ExceptionMapper: Mapper<Throwable, String> {
                     else -> "인터넷 연결을 확인해주세요."
                 }
             }
-            else -> "에러가 발생했습니다."
+            else -> "인터넷 연결을 확인해주세요."
         }
     }
 }

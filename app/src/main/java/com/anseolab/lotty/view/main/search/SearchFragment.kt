@@ -14,11 +14,9 @@ import com.anseolab.lotty.R
 import com.anseolab.lotty.databinding.FragmentSearchBinding
 import com.anseolab.lotty.providers.permissions.PermissionProvider
 import com.anseolab.lotty.view.adapter.LotteryListAdapter
-import com.anseolab.lotty.view.alert.scanner.ScannerAlertDialog
 import com.anseolab.lotty.view.base.FragmentLauncher
 import com.anseolab.lotty.view.base.ViewModelFragment
 import com.anseolab.lotty.view.main.MainFragmentDirections
-import com.gun0912.tedpermission.rx3.TedPermission
 import com.jakewharton.rxbinding4.swiperefreshlayout.refreshes
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -44,7 +42,7 @@ class SearchFragment : ViewModelFragment<FragmentSearchBinding, SearchViewModelT
 
                 val totalItemViewCount = recyclerView.adapter?.itemCount?.minus(1) ?: 0
 
-                if (newState == 2 && !recyclerView.canScrollVertically(1) && lastVisibleItem == totalItemViewCount) {
+                if (newState == 2 && !recyclerView.canScrollVertically(1) && lastVisibleItem == totalItemViewCount && recyclerView.adapter!!.itemCount > 0) {
                     val lastItemDrwNum = (recyclerView.adapter as LotteryListAdapter).getItemDrwNum(
                         totalItemViewCount
                     )
@@ -92,24 +90,24 @@ class SearchFragment : ViewModelFragment<FragmentSearchBinding, SearchViewModelT
                         true
                     }
 
-                    R.id.menu_qr -> {
-                        TedPermission.create()
-                            .setPermissions(Manifest.permission.CAMERA)
-                            .request()
-                            .subscribe { result ->
-                                if (result.isGranted) {
-                                    ScannerAlertDialog.getInstance()
-                                        .show(childFragmentManager, ScannerAlertDialog.name)
-                                } else {
-                                    Toast.makeText(
-                                        requireContext(),
-                                        "카메라 권한을 허가해주셔야 사용하실 수 있습니다.",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                            }
-                        true
-                    }
+//                    R.id.menu_qr -> {
+//                        TedPermission.create()
+//                            .setPermissions(Manifest.permission.CAMERA)
+//                            .request()
+//                            .subscribe { result ->
+//                                if (result.isGranted) {
+//                                    ScannerAlertDialog.getInstance()
+//                                        .show(childFragmentManager, ScannerAlertDialog.name)
+//                                } else {
+//                                    Toast.makeText(
+//                                        requireContext(),
+//                                        "카메라 권한을 허가해주셔야 사용하실 수 있습니다.",
+//                                        Toast.LENGTH_SHORT
+//                                    ).show()
+//                                }
+//                            }
+//                        true
+//                    }
                     else -> false
                 }
             }
@@ -123,7 +121,9 @@ class SearchFragment : ViewModelFragment<FragmentSearchBinding, SearchViewModelT
         }
 
         with(viewModel.output) {
-
+            showError.observe {
+                Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

@@ -47,7 +47,7 @@ abstract class BaseFragment<VD : ViewDataBinding>(
 
     @DrawableRes
     protected open val backButtonResId: Int = R.drawable.ic_back_24x24
-    protected open val showBackButton: Boolean = true
+    protected open val showBackButton: Boolean = false
 
     @MenuRes
     protected open val menuId: Int = 0

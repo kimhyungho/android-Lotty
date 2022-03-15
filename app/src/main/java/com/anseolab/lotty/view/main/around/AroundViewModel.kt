@@ -110,7 +110,7 @@ class AroundViewModel @Inject constructor(
                     .toObservable()
                     .onErrorResumeNext {
                         Observable.just(Mutation.SetThrowable(it))
-                    }
+                    }.takeUntil(this.action.filterAction<Action.CameraIdleChange>())
             }
 
             is Action.SearchButtonClick -> {
@@ -126,7 +126,7 @@ class AroundViewModel @Inject constructor(
                     .toObservable()
                     .onErrorResumeNext {
                         Observable.just(Mutation.SetThrowable(it))
-                    }
+                    }.takeUntil(this.action.filterAction<Action.SearchButtonClick>())
             }
 
             is Action.MarkerClick -> {
