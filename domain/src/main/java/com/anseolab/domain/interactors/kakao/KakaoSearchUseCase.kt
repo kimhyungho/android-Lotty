@@ -23,7 +23,7 @@ class KakaoSearchUseCase @Inject constructor(
     }
 
     data class Params(
-        val query: String,
+        val query: String?,
         val x: Double,
         val y: Double,
         val type: String

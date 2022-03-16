@@ -10,8 +10,9 @@ import javax.inject.Inject
 class KakaoRemoteDataSourceImpl @Inject constructor(
     private val kakaoApi: KakaoApi
 ) : KakaoRemoteDataSource {
-    override fun search(query: String, x: Double, y: Double): Single<List<KakaoStoreData>> {
-        return kakaoApi.getSearch(query, x, y, 15)
+    override fun search(query: String?, x: Double, y: Double): Single<List<KakaoStoreData>> {
+        val searchQuery = if(query == null) "복권 판매점" else "$query 복권 판매점"
+        return kakaoApi.getSearch(searchQuery , x, y, 15)
             .map(GetKakaoSearchMapper::mapToData)
     }
 }

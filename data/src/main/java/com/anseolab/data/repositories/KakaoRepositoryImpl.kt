@@ -14,13 +14,13 @@ class KakaoRepositoryImpl @Inject constructor(
     private val addressLocalDataSource: AddressLocalDataSource
 ) : KakaoRepository {
     override fun search(
-        query: String,
+        query: String?,
         x: Double,
         y: Double,
         type: String
     ): Single<List<KakaoStore>> {
         return kakaoRemoteDataSource.search(query, x, y)
-            .doOnSuccess { if (type == "search") addressLocalDataSource.set(query) }
+            .doOnSuccess { if (type == "search" && query != null) addressLocalDataSource.set(query) }
             .map(KakaoStoreMapper::mapToDomain)
     }
 

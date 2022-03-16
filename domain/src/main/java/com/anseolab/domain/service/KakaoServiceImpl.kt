@@ -9,7 +9,7 @@ import javax.inject.Inject
 class KakaoServiceImpl @Inject constructor(
     private val kakaoRepository: KakaoRepository
 ): KakaoService {
-    override fun search(query: String, x: Double, y: Double, type: String): Single<List<KakaoStore>> {
+    override fun search(query: String?, x: Double, y: Double, type: String): Single<List<KakaoStore>> {
         return kakaoRepository.search(query, x, y, type)
     }
 

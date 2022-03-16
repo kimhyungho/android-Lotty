@@ -120,7 +120,7 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
                 .throttle()
                 .bind {
                     SearchAddressDialogFragment.apply {
-                        listener = object : SearchAddressDialogFragment.Companion.Listener {
+                        mListener = object : SearchAddressDialogFragment.Companion.Listener {
                             override fun onSearchButtonClick(address: String) {
                                 viewModel.input.onSearchButtonClick(address)
                             }

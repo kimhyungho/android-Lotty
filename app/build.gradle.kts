@@ -160,8 +160,6 @@ dependencies {
     implementation ("nl.dionsegijn:konfetti-compose:2.0.2")
     implementation ("nl.dionsegijn:konfetti-xml:2.0.2")
 
-    implementation ("com.github.yuriy-budiyev:code-scanner:2.1.0")
-
 //    implementation("androidx.dynamicanimation:dynamicanimation-ktx:1.1.0-alpha03")\
 
     implementation ("com.robinhood.ticker:ticker:2.0.4")
@@ -170,6 +168,7 @@ dependencies {
 
     implementation("androidx.core:core-splashscreen:1.0.0-beta01")
 
+    implementation ("com.journeyapps:zxing-android-embedded:4.1.0")
 
-    implementation ("com.github.nisrulz:qreader:2.1.1")
+
 }

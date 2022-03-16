@@ -99,7 +99,7 @@ class AroundViewModel @Inject constructor(
         return when (action) {
             is Action.CameraIdleChange -> {
                 val params = KakaoSearchUseCase.Params(
-                    query = "복권 판매점",
+                    query = null,
                     x = action.x,
                     y = action.y,
                     type = "normal"
@@ -115,7 +115,7 @@ class AroundViewModel @Inject constructor(
 
             is Action.SearchButtonClick -> {
                 val params = KakaoSearchUseCase.Params(
-                    query = "${action.address} 복권 판매점",
+                    query = action.address,
                     x = 0.0,
                     y = 0.0,
                     type = "search"
@@ -168,7 +168,7 @@ class AroundViewModel @Inject constructor(
 
         class MarkerClick(val store: KakaoStore) : Action
 
-        class SearchButtonClick(val address: String): Action
+        class SearchButtonClick(val address: String) : Action
 
         object MapClick : Action
     }
@@ -176,11 +176,11 @@ class AroundViewModel @Inject constructor(
     interface Mutation : ReactorViewModel.Mutation {
         class SearchStoreSuccess(val response: List<KakaoStore>) : Mutation
 
-        class SearchWithDialogStoreSuccess(val response: List<KakaoStore>): Mutation
+        class SearchWithDialogStoreSuccess(val response: List<KakaoStore>) : Mutation
 
         class SetStore(val store: KakaoStore?) : Mutation
 
-        class SetThrowable (val throwable: Throwable): Mutation
+        class SetThrowable(val throwable: Throwable) : Mutation
     }
 
     data class State(
@@ -199,6 +199,6 @@ class AroundViewModel @Inject constructor(
         @Parcelize
         data class SavedState(
             val showStoreInfo: Boolean
-        ): Parcelable
+        ) : Parcelable
     }
 }

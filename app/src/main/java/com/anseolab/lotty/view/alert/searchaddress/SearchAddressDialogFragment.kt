@@ -1,5 +1,6 @@
 package com.anseolab.lotty.view.alert.searchaddress
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.viewModels
@@ -19,8 +20,16 @@ class SearchAddressDialogFragment:  ViewModelDialogFragment<FragmentSearchAddres
     private val _viewModel: SearchAddressViewModel by viewModels()
     override val viewModel: SearchAddressViewModelType get() = _viewModel
 
-    private val recentAddressListAdapter = RecentAddressListAdapter()
+    private val recentAddressListAdapter = RecentAddressListAdapter().apply {
+        listener = object : RecentAddressListAdapter.Listener {
+            override fun onClickItem(address: String) {
+                mListener?.onSearchButtonClick(address)
+                dismiss()
+            }
+        }
+    }
 
+    @SuppressLint("MissingSuperCall")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -44,14 +53,14 @@ class SearchAddressDialogFragment:  ViewModelDialogFragment<FragmentSearchAddres
             btnSearch.clicks()
                 .bind {
                     val address = _viewModel.currentState.address
-                    listener?.onSearchButtonClick(address)
+                    mListener?.onSearchButtonClick(address)
                     dismiss()
                 }
         }
     }
 
     override fun onDestroyView() {
-        listener = null
+        mListener = null
         super.onDestroyView()
     }
 
@@ -59,7 +68,7 @@ class SearchAddressDialogFragment:  ViewModelDialogFragment<FragmentSearchAddres
         override val fragmentClass: KClass<SearchAddressDialogFragment>
             get() = SearchAddressDialogFragment::class
 
-        var listener: Listener? = null
+        var mListener: Listener? = null
 
         interface Listener {
             fun onSearchButtonClick(address: String)
