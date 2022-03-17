@@ -15,15 +15,22 @@ class RecentAddressListAdapter : BaseRecyclerViewAdapter<RecentAddressUiModel>(
         super.onBindListener(viewHolder)
         when (val binding = viewHolder.viewDataBinding) {
             is ItemAddressBinding -> {
-                binding.root.setOnClickListener {
+                binding.tvAddress.setOnClickListener {
                     val address = getCurrentItem(viewHolder)?.address ?: ""
-                    listener?.onClickItem(address)
+                    listener?.onTextClick(address)
+                }
+
+                binding.ibDelete.setOnClickListener {
+                    val address = getCurrentItem(viewHolder)?.address ?: ""
+                    listener?.onRemoveButtonClick(address)
                 }
             }
         }
     }
 
     interface Listener {
-        fun onClickItem(address: String)
+        fun onTextClick(address: String)
+
+        fun onRemoveButtonClick(address: String)
     }
 }

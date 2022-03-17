@@ -20,6 +20,8 @@ interface DetailViewModelType: ViewModelType<DetailViewModelType.Input, DetailVi
         fun onDrwNoItemClick(drwNo: Long)
 
         fun onDeleteItemClick(drwNo: Long)
+
+        fun onTextClearButtonClick()
     }
 
     interface Output: ViewModelType.Output {

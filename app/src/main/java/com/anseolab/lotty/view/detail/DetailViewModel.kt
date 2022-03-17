@@ -51,6 +51,9 @@ class DetailViewModel @Inject constructor(
     override fun onDeleteItemClick(drwNo: Long) =
         createAction(Action.DeleteItemClick(drwNo))
 
+    override fun onTextClearButtonClick() =
+        createAction(Action.WordTextChange(""))
+
     private val _lottery: MutableLiveData<LotteryUiModel> = MutableLiveData()
     override val lottery: LiveData<LotteryUiModel> get() = _lottery
 

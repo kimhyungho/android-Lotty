@@ -90,4 +90,40 @@
         <item name="android:textColor">@color/G900</item>
     </style>
 
+    <style name="Theme.Lotty.ImageButton.BackButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_width">30dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:src">@drawable/ic_back_24x24</item>
+        <item name="android:background">@drawable/bg_white_oval_ripple</item>
+    </style>
+
+    <style name="Theme.Lotty.ImageButton.TextClear" parent="Widget.AppCompat.ImageButton">
+        <item name="android:src">@drawable/ic_clear_16x16</item>
+        <item name="android:tint">#999999</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:background">#00FFFFFF</item>
+    </style>
+
+    <style name="Theme.Lottiy.EditText.Search" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/G900</item>
+        <item name="android:textColorHint">#999999</item>
+        <item name="android:drawableTint">#999999</item>
+        <item name="fontFamily">@font/pretendard_medium</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:background">@drawable/bg_g100_rounded_10dp</item>
+        <item name="android:drawableStart">@drawable/ic_search_12x12</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:lines">1</item>
+        <item name="android:imeOptions">actionSearch</item>
+        <item name="android:inputType">text</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+    </style>
+
 </resources>

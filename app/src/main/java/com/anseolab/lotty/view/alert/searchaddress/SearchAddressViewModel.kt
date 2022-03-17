@@ -4,10 +4,14 @@ import android.os.Parcelable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
+import com.anseolab.domain.interactors.kakao.ClearAddressUseCase
 import com.anseolab.domain.interactors.kakao.FetchAddressUseCase
+import com.anseolab.domain.interactors.kakao.RemoveAddressUseCase
 import com.anseolab.domain.providers.SchedulerProvider
+import com.anseolab.lotty.mapper.ExceptionMapper
 import com.anseolab.lotty.view.alert.searchaddress.mapper.RecentAddressStateMapper
 import com.anseolab.lotty.view.base.ReactorViewModel
+import com.anseolab.lotty.view.lifecycle.SingleLiveData
 import com.anseolab.lotty.view.model.RecentAddressUiModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.core.Observable
@@ -19,13 +23,27 @@ class SearchAddressViewModel @Inject constructor(
     stateHandle: SavedStateHandle,
     schedulerProvider: SchedulerProvider,
 
-    private val fetchAddressUseCase: FetchAddressUseCase
+    private val fetchAddressUseCase: FetchAddressUseCase,
+    private val clearAddressUseCase: ClearAddressUseCase,
+    private val removeAddressUseCase: RemoveAddressUseCase
 ) : ReactorViewModel<SearchAddressViewModel.Action, SearchAddressViewModel.Mutation, SearchAddressViewModel.State>(
     stateHandle, schedulerProvider
 ), SearchAddressViewModelType, SearchAddressViewModelType.Input, SearchAddressViewModelType.Output {
 
     override fun onAddressTextChange(address: String) =
         createAction(Action.AddressTextChange(address))
+
+    override fun onAddressRemoveButtonClick(address: String) =
+        createAction(Action.AddressRemoveButtonClick(address))
+
+    override fun onAddressClearButtonClick() =
+        createAction(Action.AddressClearButtonClick)
+
+    override fun onTextClearButtonClick() =
+        createAction(Action.AddressTextChange(""))
+
+    private val _showError: MutableLiveData<String> = SingleLiveData()
+    override val showError: LiveData<String> get() = _showError
 
     private val _recentAddresses: MutableLiveData<List<RecentAddressUiModel>> = MutableLiveData()
     override val recentAddresses: LiveData<List<RecentAddressUiModel>> get() = _recentAddresses
@@ -43,6 +61,11 @@ class SearchAddressViewModel @Inject constructor(
         state.distinctUntilChanged(RecentAddressStateMapper::diff)
             .map(RecentAddressStateMapper::mapToView)
             .bind(_recentAddresses)
+
+        state.select(State::throwable)
+            .unwrapOptional()
+            .map(ExceptionMapper::mapToView)
+            .bind(_showError)
     }
 
     override fun createInitialState(savedState: Parcelable?): State {
@@ -62,10 +85,30 @@ class SearchAddressViewModel @Inject constructor(
                 fetchAddressUseCase.execute()
                     .map<Mutation>(Mutation::SetRecentAddresses)
                     .toObservable()
+                    .onErrorResumeNext {
+                        Observable.just(Mutation.SetThrowable(it))
+                    }.takeUntil(this.action.filterAction<Action.Init>())
             }
 
             is Action.AddressTextChange -> {
                 Observable.just(Mutation.SetAddress(action.address))
+            }
+
+            is Action.AddressClearButtonClick -> {
+                clearAddressUseCase.execute()
+                    .toObservable<Mutation>()
+                    .onErrorResumeNext {
+                        Observable.just(Mutation.SetThrowable(it))
+                    }.takeUntil(this.action.filterAction<Action.AddressClearButtonClick>())
+            }
+
+            is Action.AddressRemoveButtonClick -> {
+                val query = action.address
+                removeAddressUseCase.execute(query)
+                    .toObservable<Mutation?>()
+                    .onErrorResumeNext {
+                        Observable.just(Mutation.SetThrowable(it))
+                    }.takeUntil(this.action.filterAction<Action.AddressRemoveButtonClick>())
             }
 
             else -> Observable.empty()
@@ -82,6 +125,10 @@ class SearchAddressViewModel @Inject constructor(
                 state.copy(recentAddresses = mutation.response)
             }
 
+            is Mutation.SetThrowable -> {
+                state.copy(throwable = mutation.throwable)
+            }
+
             else -> state
         }
     }
@@ -89,18 +136,25 @@ class SearchAddressViewModel @Inject constructor(
     interface Action : ReactorViewModel.Action {
         object Init : Action
 
+        object AddressClearButtonClick : Action
+
         class AddressTextChange(val address: String) : Action
+
+        class AddressRemoveButtonClick(val address: String) : Action
     }
 
     interface Mutation : ReactorViewModel.Mutation {
         class SetRecentAddresses(val response: List<String>) : Mutation
 
         class SetAddress(val address: String) : Mutation
+
+        class SetThrowable(val throwable: Throwable) : Mutation
     }
 
     data class State(
         val recentAddresses: List<String> = listOf(),
-        val address: String
+        val address: String,
+        val throwable: Throwable? = null
     ) : ReactorViewModel.State {
         override fun toParcelable(): Parcelable? {
             return SavedState(

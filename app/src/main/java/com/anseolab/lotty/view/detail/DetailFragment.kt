@@ -1,6 +1,7 @@
 package com.anseolab.lotty.view.detail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
@@ -11,13 +12,14 @@ import com.anseolab.lotty.R
 import com.anseolab.lotty.databinding.FragmentDetailBinding
 import com.anseolab.lotty.view.adapter.LotteryListAdapter
 import com.anseolab.lotty.view.adapter.RecentLotteryListAdapter
+import com.anseolab.lotty.view.alert.searchaddress.SearchAddressDialogFragment
 import com.anseolab.lotty.view.base.ViewModelFragment
 import com.anseolab.lotty.view.main.MainFragmentDirections
 import com.jakewharton.rxbinding4.view.clicks
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DetailFragment: ViewModelFragment<FragmentDetailBinding, DetailViewModelType>(
+class DetailFragment : ViewModelFragment<FragmentDetailBinding, DetailViewModelType>(
     R.layout.fragment_detail
 ) {
 
@@ -57,10 +59,14 @@ class DetailFragment: ViewModelFragment<FragmentDetailBinding, DetailViewModelTy
                     viewModel.input.onClearButtonClick()
                 }
 
-            btnSearch.clicks()
-                .bind {
-                    viewModel.input.onEditorAction()
+            etWord.setOnEditorActionListener { _, actionId, _ ->
+                when (actionId) {
+                    EditorInfo.IME_ACTION_SEARCH -> {
+                        viewModel.input.onEditorAction()
+                    }
                 }
+                true
+            }
 
             with(rvRecent) {
                 adapter = recentLotteryListAdapter
@@ -70,15 +76,6 @@ class DetailFragment: ViewModelFragment<FragmentDetailBinding, DetailViewModelTy
                 .bind {
                     onBackPressed()
                 }
-
-            etWord.setOnEditorActionListener { _, actionId, _ ->
-                var handled = false
-                if(actionId == EditorInfo.IME_ACTION_DONE) {
-                    viewModel.input.onEditorAction()
-                    handled = true
-                }
-                handled
-            }
         }
 
         with(viewModel.output) {

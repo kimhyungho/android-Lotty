@@ -11,7 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.anseolab.lotty.R
 import com.anseolab.lotty.databinding.FragmentHomeBinding
-import com.anseolab.lotty.view.adapter.BannerPagerAdapter
 import com.anseolab.lotty.view.adapter.SlotMachinePagerAdapter
 import com.anseolab.lotty.view.base.FragmentLauncher
 import com.anseolab.lotty.view.base.ViewModelFragment
