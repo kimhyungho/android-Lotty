@@ -1,35 +1,18 @@
 package com.anseolab.lotty.view.main.random
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.anseolab.lotty.R
 import com.anseolab.lotty.databinding.FragmentRandomBinding
-import com.anseolab.lotty.extensions.getDrwNum
-import com.anseolab.lotty.extensions.getNextSaturday
-import com.anseolab.lotty.extensions.throttle
 import com.anseolab.lotty.providers.resource.ResourceProvider
-import com.anseolab.lotty.view.adapter.RecentDrwtNoListAdapter
 import com.anseolab.lotty.view.base.FragmentLauncher
 import com.anseolab.lotty.view.base.ViewModelFragment
-import com.jakewharton.rxbinding4.view.clicks
-import com.robinhood.ticker.TickerUtils
 import com.robinhood.ticker.TickerView
 import dagger.hilt.android.AndroidEntryPoint
-import nl.dionsegijn.konfetti.core.Party
-import nl.dionsegijn.konfetti.core.Position
-import nl.dionsegijn.konfetti.core.Rotation
-import nl.dionsegijn.konfetti.core.emitter.Emitter
-import nl.dionsegijn.konfetti.core.models.Shape
-import nl.dionsegijn.konfetti.core.models.Size
-import java.time.LocalDate
-import java.util.*
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import kotlin.reflect.KClass
 

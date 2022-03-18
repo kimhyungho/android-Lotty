@@ -26,7 +26,7 @@ data class LotteryUiModel(
     val drwtNo4Color: Int,
     val drwtNo5Color: Int,
     val drwtNo6Color: Int,
-    val bonusColor: Int
+    val bonusColor: Int,
     ): UiModel {
     override val identifier: Any
         get() = drwNo

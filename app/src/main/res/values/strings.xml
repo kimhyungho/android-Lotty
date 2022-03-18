@@ -4,7 +4,7 @@
     <string name="round_format">%d회</string>
     <string name="round_format2">제 %d 회</string>
     <string name="number_format">%,2d</string>
-    <string name="won_format">%,2d 원</string>
+    <string name="won_format">%,2d원</string>
     <string name="banner_format">%d / %d</string>
     <string name="total_winner_format">총 %d명 당첨</string>
     <string name="person_format">%d명</string>

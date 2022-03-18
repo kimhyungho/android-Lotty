@@ -31,13 +31,14 @@ object LotteryListStateMapper : StateMapper<SearchViewModel.State, List<LotteryU
                 drwtNo4Color = setColor(it.drwtNo4),
                 drwtNo5Color = setColor(it.drwtNo5),
                 drwtNo6Color = setColor(it.drwtNo6),
-                bonusColor = setColor(it.bnusNo)
+                bonusColor = setColor(it.bnusNo),
             )
+
         }
     }
 
     private fun setColor(drtwNo: Int?): Int {
-        return when(drtwNo) {
+        return when (drtwNo) {
             in 1..10 -> Color.parseColor("#FBC500")
             in 11..20 -> Color.parseColor("#69C8F2")
             in 21..30 -> Color.parseColor("#FF7272")

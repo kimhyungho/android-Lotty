@@ -42,8 +42,8 @@
             android:drawableTint="@color/G500"
             android:elevation="4dp"
             android:gravity="center_vertical"
-            android:paddingVertical="12dp"
             android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
             android:text="지역 이름으로 검색하세요"
             android:textColor="@color/G500"
             android:textSize="16dp"
@@ -62,7 +62,7 @@
             android:background="@drawable/bg_white_rounded_4dp_ripple"
             android:elevation="4dp"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/layout_limit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -99,12 +99,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="12dp"
                 android:ellipsize="end"
                 android:lines="1"
                 android:text="@{output.store.place_name}"
                 android:textColor="@color/G900"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 app:layout_constraintEnd_toStartOf="@+id/btn_navigation"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -119,6 +119,7 @@
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:text="@{output.store.road_address_name}"
+                android:textColor="@color/G500"
                 app:layout_constraintEnd_toEndOf="@+id/tv_place_name"
                 app:layout_constraintStart_toStartOf="@+id/tv_place_name"
                 app:layout_constraintTop_toBottomOf="@+id/tv_place_name"
@@ -153,97 +154,88 @@
             android:elevation="4dp"
             android:paddingHorizontal="8dp"
             android:paddingVertical="6dp"
-            android:textSize="14dp"
             android:text="내위치"
             android:textColor="@color/R500"
+            android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_search" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            visibleOrGone="@{output.showApiExceeded}"
+            android:id="@+id/layout_limit"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#55000000"
+            visibleOrGone="@{output.showApiExceeded}"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_top_rounded_24_dp"
             android:clickable="true"
             android:elevation="10dp"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/bg_gr600_rounded_8dp_ripple"
-                android:padding="12dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintEnd_toStartOf="@+id/imageButton2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_marker_48x64"
-                app:tint="#ffffff" />
-
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="36dp"
-                android:background="@drawable/bg_y400_rounded_8dp_ripple"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageButton"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_marker_48x64"
-                app:tint="@color/B500" />
-
-            <TextView
-                android:id="@+id/textView17"
-                style="@style/Theme.Lotty.TextView.SemiBold"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:gravity="center"
-                android:text="네이버맵으로 검색"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="@+id/imageButton"
-                app:layout_constraintStart_toStartOf="@+id/imageButton"
-                app:layout_constraintTop_toBottomOf="@+id/imageButton" />
-
-            <TextView
-                android:id="@+id/textView18"
-                style="@style/Theme.Lotty.TextView.SemiBold"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:gravity="center"
-                android:text="카카오맵으로 검색"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="@+id/imageButton2"
-                app:layout_constraintStart_toStartOf="@+id/imageButton2"
-                app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent">
 
             <TextView
                 android:id="@+id/textView19"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.SemiBold"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:gravity="center"
-                android:text="금일 검색회수를 초과했습니다. 아래 버튼을 눌러 네이버맵 혹은 카카오맵으로 주변 복권판매점을 검색할 수 있습니다. 불편을 드려 죄송합니다."
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@+id/imageButton"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:gravity="start"
+                android:text="죄송합니다"
+                android:textColor="@color/G900"
+                android:textSize="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView17"
+                style="@style/Theme.Lotty.TextView.Medium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:text="로또의 민족은 하루 30만회 검색 한도가 있습니다. 아래 버튼을 통해 카카오맵으로 주변 복권 판매점을 검색하실 수 있습니다. 불편을 드려서 정말 죄송합니다."
+                android:textColor="@color/G900"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+            <LinearLayout
+                android:id="@+id/btn_kakao_map"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/bg_y400_rounded_8dp_ripple"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingVertical="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView17">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_marker_24x24" />
+
+                <TextView
+                    style="@style/Theme.Lotty.TextView.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="kakaomap으로 검색하기"
+                    android:textColor="@color/G900"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

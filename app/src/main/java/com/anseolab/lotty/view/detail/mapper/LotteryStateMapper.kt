@@ -32,7 +32,7 @@ object LotteryStateMapper: StateMapper<DetailViewModel.State, LotteryUiModel> {
             drwtNo4Color = setColor(item?.drwtNo4),
             drwtNo5Color = setColor(item?.drwtNo5),
             drwtNo6Color = setColor(item?.drwtNo6),
-            bonusColor = setColor(item?.bnusNo)
+            bonusColor = setColor(item?.bnusNo),
         )
     }
 

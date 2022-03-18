@@ -10,7 +10,9 @@
 
 
     <color name="TRG600">#664A5470</color>
+    <color name="G50">#F5F5F5</color>
     <color name="G100">#EFEFF0</color>
+    <color name="G200">#CCCCCC</color>
     <color name="G300">#B3BBD3</color>
     <color name="G500">#AAAAAA</color>
     <color name="G600">#4A5470</color>

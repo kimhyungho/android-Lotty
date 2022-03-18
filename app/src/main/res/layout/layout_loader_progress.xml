@@ -8,6 +8,7 @@
         style="@style/Widget.AppCompat.ProgressBar"
         android:layout_width="36dp"
         android:layout_height="36dp"
+        android:indeterminateTint="@color/B500"
         android:layout_gravity="center"
         android:visibility="invisible" />
 </merge>

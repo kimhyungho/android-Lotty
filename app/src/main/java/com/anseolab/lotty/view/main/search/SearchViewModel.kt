@@ -92,7 +92,9 @@ class SearchViewModel @Inject constructor(
                     Observable.just(Mutation.SetRefreshing(true)),
                     Observable.just(Mutation.InitLotteryNumber),
                     fetchLotteriesNumber(Date().getDrwNum())
-                ).takeUntil(this.action.filterAction<Action.Refresh>())
+                ).onErrorResumeNext {
+                    Observable.just(Mutation.SetThrowable(it))
+                }.takeUntil(this.action.filterAction<Action.Refresh>())
             }
 
             is Action.Scroll -> {
@@ -148,7 +150,7 @@ class SearchViewModel @Inject constructor(
             }
 
             is Mutation.SetThrowable -> {
-                state.copy(throwable = mutation.throwable)
+                state.copy(isLoading = false, isRefreshing = false, throwable = mutation.throwable)
             }
 
             else -> state
@@ -158,51 +160,69 @@ class SearchViewModel @Inject constructor(
     interface Action : ReactorViewModel.Action {
         object Refresh : Action
 
-        class Scroll(val drwNo: Long): Action
+        class Scroll(val drwNo: Long) : Action
 
         class DrwNoClick(val drwNo: Long) : Action
     }
 
     interface Mutation : ReactorViewModel.Mutation {
-        object InitLotteryNumber: Mutation
+        object InitLotteryNumber : Mutation
 
         class FetchLotteryNumberSuccess(val response: Lottery) : Mutation
 
         class SetExpandedLotteries(val drwNo: Long) : Mutation
 
-        class SetRefreshing(val isRefreshing: Boolean): Mutation
+        class SetRefreshing(val isRefreshing: Boolean) : Mutation
 
         class SetLoading(val isLoading: Boolean) : Mutation
 
-        class SetThrowable(val throwable: Throwable): Mutation
+        class SetThrowable(val throwable: Throwable) : Mutation
     }
 
     private fun fetchLotteriesNumber(firstDrwNum: Long): Observable<Mutation> {
-        return Observable.concat(
-            Observable.concat(
-                fetchLotteryNumber(firstDrwNum),
-                fetchLotteryNumber(firstDrwNum - 1),
-                fetchLotteryNumber(firstDrwNum - 2),
-                fetchLotteryNumber(firstDrwNum - 3),
-            ),
-            Observable.concat(
-                fetchLotteryNumber(firstDrwNum - 4),
-                fetchLotteryNumber(firstDrwNum - 5),
-                fetchLotteryNumber(firstDrwNum - 6),
-                fetchLotteryNumber(firstDrwNum - 7),
-            ),
-            Observable.concat(
-                fetchLotteryNumber(firstDrwNum - 8),
-                fetchLotteryNumber(firstDrwNum - 9),
-                fetchLotteryNumber(firstDrwNum - 10),
-                fetchLotteryNumber(firstDrwNum - 11),
-            ),
+        return Observable.concatArray(
+            fetchLotteryNumber(firstDrwNum),
+            fetchLotteryNumber(firstDrwNum - 1),
+            fetchLotteryNumber(firstDrwNum - 2),
+            fetchLotteryNumber(firstDrwNum - 3),
+            fetchLotteryNumber(firstDrwNum - 4),
+            fetchLotteryNumber(firstDrwNum - 5),
+            fetchLotteryNumber(firstDrwNum - 6),
+            fetchLotteryNumber(firstDrwNum - 7),
+            fetchLotteryNumber(firstDrwNum - 8),
+            fetchLotteryNumber(firstDrwNum - 9),
+            fetchLotteryNumber(firstDrwNum - 10),
+            fetchLotteryNumber(firstDrwNum - 11),
+            fetchLotteryNumber(firstDrwNum - 12),
+            fetchLotteryNumber(firstDrwNum - 13),
+            fetchLotteryNumber(firstDrwNum - 14),
             Observable.just(Mutation.SetRefreshing(false))
         )
+//        Observable.concat(
+//            Observable.concat(
+//                fetchLotteryNumber(firstDrwNum),
+//                fetchLotteryNumber(firstDrwNum - 1),
+//                fetchLotteryNumber(firstDrwNum - 2),
+//                fetchLotteryNumber(firstDrwNum - 3),
+//            ),
+//            Observable.concat(
+//                fetchLotteryNumber(firstDrwNum - 4),
+//                fetchLotteryNumber(firstDrwNum - 5),
+//                fetchLotteryNumber(firstDrwNum - 6),
+//                fetchLotteryNumber(firstDrwNum - 7),
+//            ),
+//            Observable.concat(
+//                fetchLotteryNumber(firstDrwNum - 8),
+//                fetchLotteryNumber(firstDrwNum - 9),
+//                fetchLotteryNumber(firstDrwNum - 10),
+//                fetchLotteryNumber(firstDrwNum - 11),
+//            ),
+//            Observable.just(Mutation.SetRefreshing(false))
+//        )
     }
 
     private fun fetchLotteryNumber(drwNum: Long): Observable<Mutation> {
-        return if(drwNum > 0) {
+        return if (drwNum > 0) {
             fetchLotteryNumberUseCase.execute(drwNum)
                 .map<Mutation>(Mutation::FetchLotteryNumberSuccess)
                 .toObservable()
@@ -216,7 +236,7 @@ class SearchViewModel @Inject constructor(
         val lotteries: MutableList<Lottery> = mutableListOf(),
         val expandedLotteries: Set<Long>,
         val isRefreshing: Boolean = false,
-        val isLoading : Boolean = false,
+        val isLoading: Boolean = false,
         val throwable: Throwable? = null
     ) : ReactorViewModel.State {
         override fun toParcelable(): Parcelable? {

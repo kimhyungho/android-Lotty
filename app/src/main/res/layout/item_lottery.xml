@@ -19,7 +19,7 @@
             style="@style/Theme.Lotty.TextView.SemiBold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="#F4F5F8"
+            android:background="#F0F0F5"
             android:checked="@{item.isExpanded()}"
             android:drawableRight="@drawable/selector_arrow_down_up"
             android:gravity="center_vertical"
@@ -27,7 +27,9 @@
             android:paddingVertical="12dp"
             android:text="@{item.drwNo == 0 ? `오늘` : @string/round_format(item.drwNo)}"
             android:textColor="#0D0F14"
+            android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="997회" />
@@ -46,88 +48,64 @@
 
             <TextView
                 android:id="@+id/textView"
+                style="@style/Theme.Lotty.TextView.Regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginTop="12dp"
                 android:ellipsize="end"
                 android:text="@{item.drwNoDate}"
-                android:textColor="@color/G600"
+                android:textColor="@color/G500"
                 android:textSize="14dp"
-                app:layout_constraintBottom_toBottomOf="@+id/view2"
-                app:layout_constraintEnd_toStartOf="@+id/view2"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/btn_detail"
-                app:layout_constraintTop_toTopOf="@+id/view2" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="2022-03-12" />
 
-            <View
-                android:id="@+id/view2"
-                android:layout_width="1dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="6dp"
-                android:background="@color/G600"
-                app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
-                app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
-                app:layout_constraintStart_toEndOf="@+id/textView"
-                app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
+            <!--            <TextView-->
+            <!--                android:id="@+id/textView3"-->
+            <!--                style="@style/Theme.Lotty.TextView.Bold"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginEnd="24dp"-->
+            <!--                android:drawableLeft="@drawable/ic_coin_24x24"-->
+            <!--                android:drawablePadding="4dp"-->
+            <!--                android:gravity="center"-->
+            <!--                android:letterSpacing="-0.02"-->
+            <!--                android:paddingHorizontal="8dp"-->
+            <!--                android:paddingVertical="4dp"-->
+            <!--                android:text="28억"-->
+            <!--                android:textColor="@color/G900"-->
+            <!--                android:textSize="32dp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/textView6"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/textView"-->
+            <!--                tools:text="21억" />-->
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout"
+
+            <TextView
+                android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                app:layout_constraintEnd_toEndOf="@+id/btn_detail"
-                app:layout_constraintStart_toEndOf="@+id/view2"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/textView3"
-                    style="@style/Theme.Lotty.TextView.Bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:letterSpacing="-0.02"
-                    android:text="@{@string/number_format(item.firstWinamnt)}"
-                    android:textColor="@color/B500"
-                    android:textSize="20dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    style="@style/Theme.Lotty.TextView.SemiBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:text="원"
-                    android:textColor="@color/G600"
-                    android:textSize="12dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView3"
-                    app:layout_constraintStart_toEndOf="@+id/textView3" />
-
-                <TextView
-                    android:id="@+id/textView6"
-                    style="@style/Theme.Lotty.TextView.Regular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{@string/total_winner_format(item.firstPrzwnerCo)}"
-                    android:textColor="@color/G600"
-                    android:textSize="14dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/bm_dohyeon"
+                android:letterSpacing="-0.02"
+                android:text="@{@string/won_format(item.firstWinamnt)}"
+                android:textColor="@color/B500"
+                android:textSize="26dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.505"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                tools:text="21억" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/btn_detail"
+                android:id="@+id/layout"
                 android:layout_width="0dp"
-                android:background="@drawable/bg_white_ripple"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="28dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view2">
+                app:layout_constraintTop_toBottomOf="@+id/textView4">
 
                 <TextView
                     android:id="@+id/drwNum1"
@@ -135,12 +113,16 @@
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_marginStart="32dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"
                     android:background="@drawable/bg_white_ring"
                     android:backgroundTint="@{item.drwtNo1Color}"
+                    android:elevation="4dp"
                     android:gravity="center"
                     android:text="@{String.valueOf(item.drwtNo1)}"
                     android:textColor="@color/white"
                     android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/drwNum2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -153,6 +135,7 @@
                     android:layout_height="32dp"
                     android:background="@drawable/bg_white_ring"
                     android:backgroundTint="@{item.drwtNo2Color}"
+                    android:elevation="4dp"
                     android:gravity="center"
                     android:text="@{String.valueOf(item.drwtNo2)}"
                     android:textColor="@color/white"
@@ -169,6 +152,7 @@
                     android:layout_height="32dp"
                     android:background="@drawable/bg_white_ring"
                     android:backgroundTint="@{item.drwtNo3Color}"
+                    android:elevation="4dp"
                     android:gravity="center"
                     android:text="@{String.valueOf(item.drwtNo3)}"
                     android:textColor="@color/white"
@@ -185,6 +169,7 @@
                     android:layout_height="32dp"
                     android:background="@drawable/bg_white_ring"
                     android:backgroundTint="@{item.drwtNo4Color}"
+                    android:elevation="4dp"
                     android:gravity="center"
                     android:text="@{String.valueOf(item.drwtNo4)}"
                     android:textColor="@color/white"
@@ -201,6 +186,7 @@
                     android:layout_height="32dp"
                     android:background="@drawable/bg_white_ring"
                     android:backgroundTint="@{item.drwtNo5Color}"
+                    android:elevation="4dp"
                     android:gravity="center"
                     android:text="@{String.valueOf(item.drwtNo5)}"
                     android:textColor="@color/white"
@@ -217,6 +203,7 @@
                     android:layout_height="32dp"
                     android:background="@drawable/bg_white_ring"
                     android:backgroundTint="@{item.drwtNo6Color}"
+                    android:elevation="4dp"
                     android:gravity="center"
                     android:text="@{String.valueOf(item.drwtNo6)}"
                     android:textColor="@color/white"
@@ -234,6 +221,7 @@
                     android:layout_marginEnd="32dp"
                     android:background="@drawable/bg_white_ring"
                     android:backgroundTint="@{item.bonusColor}"
+                    android:elevation="4dp"
                     android:gravity="center"
                     android:text="@{String.valueOf(item.bnusNo)}"
                     android:textColor="@color/white"
@@ -253,22 +241,62 @@
                     app:layout_constraintTop_toTopOf="@+id/drwNum6"
                     app:srcCompat="@drawable/ic_plus_32x32" />
 
-                <TextView
-                    android:id="@+id/textView2"
-                    style="@style/Theme.Lotty.TextView.SemiBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginBottom="4dp"
-                    android:text="자세히 보기"
-                    android:textColor="@color/G600"
-                    android:textSize="12dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/drwNum4" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/btn_detail"
+                style="@style/Theme.Lotty.TextView.SemiBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@drawable/bg_white_ripple"
+                android:padding="14dp"
+                android:text="자세히 보기"
+                android:textColor="@color/G600"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view9" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/ic_medal_24x24"
+                android:fontFamily="@font/bm_yeonsung"
+                android:gravity="center"
+                android:text="@{@string/total_winner_format(item.firstPrzwnerCo)}"
+                android:textColor="@color/G900"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout"
+                tools:text="10명 당첨" />
+
+            <View
+                android:id="@+id/view9"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/G100"
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                tools:layout_editor_absoluteX="49dp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                style="@style/Theme.Lotty.TextView.SemiBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="당첨번호"
+                android:textColor="@color/G900"
+                android:textSize="14dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -276,11 +304,11 @@
             visibleOrGone="@{!item.returnValue}"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:orientation="vertical"
-            android:gravity="center"
             android:background="@color/white"
             android:clickable="true"
-            android:visibility="visible"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -294,15 +322,16 @@
                 android:src="@drawable/ic_gray_logo" />
 
             <TextView
-                android:layout_marginTop="4dp"
                 android:id="@+id/textView7"
                 style="@style/Theme.Lotty.TextView.SemiBold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:gravity="center"
-                android:textColor="#CCCCCC"
                 android:text="아직 회차가 업데이트 되지 않았습니다.\n잠시 후 다시 시도해 주세요."
+                android:textColor="#CCCCCC"
                 android:textSize="14dp" />
         </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

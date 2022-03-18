@@ -1,16 +1,7 @@
 package com.anseolab.lotty.view.main.around
 
-import android.Manifest
-import android.content.Context
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.graphics.Color
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
@@ -19,20 +10,18 @@ import androidx.fragment.app.viewModels
 import com.anseolab.lotty.R
 import com.anseolab.lotty.databinding.FragmentAroundBinding
 import com.anseolab.lotty.extensions.throttle
+import com.anseolab.lotty.utils.kakaomap.KakaoMapUtils
 import com.anseolab.lotty.view.alert.searchaddress.SearchAddressDialogFragment
 import com.anseolab.lotty.view.base.FragmentLauncher
 import com.anseolab.lotty.view.base.ViewModelFragment
-import com.anseolab.lotty.view.main.MainFragmentDirections
 import com.jakewharton.rxbinding4.view.clicks
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
 import com.naver.maps.map.overlay.Marker
-import com.naver.maps.map.overlay.Overlay
 import com.naver.maps.map.overlay.OverlayImage
 import com.naver.maps.map.util.FusedLocationSource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.abs
-import kotlin.properties.Delegates
 import kotlin.reflect.KClass
 
 @AndroidEntryPoint
@@ -70,7 +59,8 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
+        requireActivity().window.statusBarColor =
+            ContextCompat.getColor(requireContext(), R.color.white)
     }
 
     override fun onWillAttachViewModel(
@@ -127,6 +117,22 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
                         }
                     }.getInstance().show(childFragmentManager, SearchAddressDialogFragment.name)
                 }
+            btnKakaoMap.clicks()
+                .throttle()
+                .bind {
+                    val startPoint = mNaverMap.locationOverlay.position
+
+                    if (KakaoMapUtils.checkInstalledKakaoMap(requireContext())) {
+                        KakaoMapUtils.openKakaoMapForSearch(
+                            requireContext(),
+                            "복권 판매점",
+                            startPoint.latitude,
+                            startPoint.longitude
+                        )
+                    } else {
+                        KakaoMapUtils.openPlayStoreForKakaoMap(requireContext())
+                    }
+                }
 
             btnNavigation.clicks()
                 .throttle()
@@ -140,12 +146,16 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
                         return@bind
                     }
 
-                    if (checkInstalledKakaoMap()) {
-                        val url =
-                            Uri.parse("kakaomap://route?sp=${startPoint.latitude},${startPoint.longitude}&ep=${destPoint.y},${destPoint.x}&by=CAR")
-                        startActivity(Intent(Intent.ACTION_VIEW, url))
+                    if (KakaoMapUtils.checkInstalledKakaoMap(requireContext())) {
+                        KakaoMapUtils.openKakaoMapForRoute(
+                            requireContext(),
+                            startPoint.latitude,
+                            startPoint.longitude,
+                            destPoint.y,
+                            destPoint.x
+                        )
                     } else {
-                        openKakaoMapPlayStore()
+                        KakaoMapUtils.openPlayStoreForKakaoMap(requireContext())
                     }
                 }
         }
@@ -182,9 +192,11 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
                             map = mNaverMap
                             setOnClickListener {
                                 viewModel.input.onMarkerClick(store)
-                                selectedMarker?.icon = OverlayImage.fromResource(R.drawable.ic_clover)
+                                selectedMarker?.icon =
+                                    OverlayImage.fromResource(R.drawable.ic_clover)
                                 selectedMarker = this
-                                selectedMarker?.icon = OverlayImage.fromResource(R.drawable.ic_lucky_clover_48x60)
+                                selectedMarker?.icon =
+                                    OverlayImage.fromResource(R.drawable.ic_lucky_clover_48x60)
                                 true
                             }
                         }
@@ -197,7 +209,8 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
-        if(!hidden) requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
+        if (!hidden) requireActivity().window.statusBarColor =
+            ContextCompat.getColor(requireContext(), R.color.white)
     }
 
     private fun hideStoreInformation() {
@@ -207,21 +220,6 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
     private fun showStoreInformation() {
         viewDataBinding.layoutStoreInfo.visibility = View.VISIBLE
         viewDataBinding.layoutStoreInfo.startAnimation(slideUpAnim)
-    }
-
-    private fun checkInstalledKakaoMap(): Boolean {
-        val pm = requireContext().packageManager
-
-        return try {
-            pm.getPackageInfo(KAKAO_MAP_PACKAGE_NAME, 0)
-            true
-        } catch (e: PackageManager.NameNotFoundException) {
-            false
-        }
-    }
-
-    private fun openKakaoMapPlayStore() {
-        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(KAKAO_MAP_DOWNLOAD_PAGE)))
     }
 
     override fun onRequestPermissionsResult(
@@ -243,9 +241,6 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
     }
 
     companion object : FragmentLauncher<AroundFragment>() {
-        const val KAKAO_MAP_PACKAGE_NAME = "net.daum.android.map"
-        const val KAKAO_MAP_DOWNLOAD_PAGE =
-            "https://play.google.com/store/apps/details?id=net.daum.android.map"
         const val PERMISSION_REQUEST_CODE = 99
 
         override val fragmentClass: KClass<AroundFragment>
