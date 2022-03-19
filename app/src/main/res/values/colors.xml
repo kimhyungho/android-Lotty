@@ -16,6 +16,7 @@
     <color name="G300">#B3BBD3</color>
     <color name="G500">#AAAAAA</color>
     <color name="G600">#4A5470</color>
+    <color name="G700">#292C31</color>
     <color name="G900">#0D0F14</color>
     <color name="R500">#FF7272</color>
     <color name="Y400">#F7E600</color>
@@ -27,5 +28,5 @@
     <color name="TRB600">#66447BFE</color>
     <color name="GR500">#AFD840</color>
     <color name="GR600">#2db400</color>
-    <color name="DarkBG">#292929</color>
+    <color name="DarkBG">#1D2025</color>
 </resources>

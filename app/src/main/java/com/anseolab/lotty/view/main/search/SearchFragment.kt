@@ -66,11 +66,6 @@ class SearchFragment : ViewModelFragment<FragmentSearchBinding, SearchViewModelT
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
-    }
-
     override fun onWillAttachViewModel(
         viewDataBinding: FragmentSearchBinding,
         viewModel: SearchViewModelType
@@ -125,11 +120,6 @@ class SearchFragment : ViewModelFragment<FragmentSearchBinding, SearchViewModelT
                 Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
             }
         }
-    }
-
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        if(!hidden) requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
     }
 
     override fun onDestroyView() {

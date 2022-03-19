@@ -15,14 +15,15 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/Theme.Lotty.Layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <WebView
                     android:id="@+id/web_view"
+                    style="@style/Theme.Lotty.Layout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -31,7 +32,7 @@
                     android:id="@+id/layout_caution"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="56dp"
                     android:gravity="center"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"

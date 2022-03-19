@@ -18,7 +18,7 @@ object Versions {
     const val junit = "4.+"
     const val testJunit = "1.1.3"
     const val espresso = "3.4.0"
-    const val leakCanary = "2.7"
+    const val leakCanary = "2.8.1"
     const val navigation = "2.4.0"
     const val rxAndroid = "3.0.0"
     const val rxJava = "3.0.12"

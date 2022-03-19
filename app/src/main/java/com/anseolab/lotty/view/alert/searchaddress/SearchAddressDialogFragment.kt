@@ -62,7 +62,7 @@ class SearchAddressDialogFragment :
                     dismiss()
                 }
 
-            etAddress.setOnEditorActionListener { v, actionId, event ->
+            etAddress.setOnEditorActionListener { _, actionId, _ ->
                 when (actionId) {
                     EditorInfo.IME_ACTION_SEARCH -> {
                         val address = _viewModel.currentState.address

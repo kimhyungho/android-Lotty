@@ -1,19 +1,15 @@
 package com.anseolab.data.repositories
 
-import android.util.Log
 import androidx.annotation.WorkerThread
-import com.anseolab.data.cache.CacheManager
 import com.anseolab.data.datasources.DhLotteryRemoteDataSource
 import com.anseolab.data.datasources.local.LotteryLocalDataSource
 import com.anseolab.data.mapper.LotteriesMapper
 import com.anseolab.data.mapper.LotteryMapper
-import com.anseolab.data.model.LotteryData
 import com.anseolab.domain.model.Lottery
 import com.anseolab.domain.repositories.DhLotteryRepository
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.core.Single
-import java.util.*
 import javax.inject.Inject
 
 class DhLotteryRepositoryImpl @Inject constructor(

@@ -16,6 +16,11 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="buttonStyle">@style/Theme.Lotty.Button</item>
+        <item name="android:toolbarStyle">@style/Theme.Lotty.Toolbar</item>
+    </style>
+
+    <style name="Theme.Lotty.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="background">@color/white</item>
     </style>
 
     <style name="Theme.Lotty.Button" parent="Widget.AppCompat.Button">
@@ -36,31 +41,37 @@
         <item name="android:fontFamily">@font/pretendard_medium</item>
         <item name="fontFamily">@font/pretendard_medium</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/G900</item>
     </style>
 
     <style name="Theme.Lotty.TextView.Regular" parent="Widget.AppCompat.TextView">
         <item name="android:fontFamily">@font/pretendard_regular</item>
         <item name="fontFamily">@font/pretendard_regular</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/G900</item>
     </style>
 
     <style name="Theme.Lotty.TextView.SemiBold" parent="Widget.AppCompat.TextView">
         <item name="android:fontFamily">@font/pretendard_semibold</item>
         <item name="fontFamily">@font/pretendard_semibold</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/G900</item>
     </style>
 
     <style name="Theme.Lotty.TextView.Bold" parent="Widget.AppCompat.TextView">
         <item name="android:fontFamily">@font/pretendard_bold</item>
         <item name="fontFamily">@font/pretendard_bold</item>
+        <item name="android:textColor">@color/G900</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="Theme.Lotty.Dialog" parent="Theme.AppCompat.Dialog">
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowSoftInputMode">adjustResize</item>
-        <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:toolbarStyle">@style/Theme.Lotty.Toolbar</item>
         <item name="android:windowBackground">#33000000</item>
     </style>
 
@@ -74,20 +85,19 @@
     </style>
 
     <style name="Theme.Lotty.Layout">
-        <item name="background">@color/white</item>
-    </style>
-
-    <style name="Theme.Lotty.Button.3D" parent="Theme.AppCompat">
-        <item name="android:elevation">2dp</item>
-        <item name="android:background">@drawable/bg_white_rounded_10dp</item>
+        <item name="android:background">@color/white</item>
     </style>
 
     <style name="Theme.Lotty.ImageView.Basic" parent="Theme.AppCompat">
-        <item name="android:tint">@color/black</item>
+        <item name="android:tint">@color/G900</item>
     </style>
     
-    <style name="Theme.Lotty.TextView.Button" parent="Theme.Lotty.TextView.SemiBold">
+    <style name="Theme.Lotty.TextView.Button.Flat" parent="Theme.Lotty.TextView.SemiBold">
         <item name="android:textColor">@color/G900</item>
+        <item name="android:background">@drawable/bg_white_ripple</item>
+        <item name="android:padding">14dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16dp</item>
     </style>
 
     <style name="Theme.Lotty.ImageButton.BackButton" parent="Widget.AppCompat.ImageButton">
@@ -124,6 +134,134 @@
         <item name="android:paddingEnd">16dp</item>
         <item name="android:paddingTop">12dp</item>
         <item name="android:paddingBottom">12dp</item>
+    </style>
+
+
+    <style name="Theme.Lottiy.TextView.Search" parent="Widget.AppCompat.TextView">
+        <item name="android:drawableLeft">@drawable/ic_search_24x24</item>
+        <item name="android:drawableTint">@color/G500</item>
+        <item name="android:textColor">@color/G500</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:background">@drawable/bg_white_rounded_4dp_ripple</item>
+        <item name="fontFamily">@font/pretendard_regular</item>
+        <item name="android:fontFamily">@font/pretendard_regular</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Theme.Lotty.Button.MyLocation" parent="Theme.Lotty.Button">
+        <item name="fontFamily">@font/pretendard_semibold</item>
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/R500</item>
+        <item name="android:background">@drawable/bg_white_ripple</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+
+    <style name="Theme.Lotty.TextView.ToolbarTitle" parent="Theme.Lotty.TextView.SemiBold">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/G900</item>
+    </style>
+
+    <style name="Theme.Lotty.TextView.Drawer" parent="Theme.Lotty.TextView.Medium">
+        <item name="android:textColor">@color/G900</item>
+        <item name="android:background">@color/G100</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:drawableRight">@drawable/selector_arrow_down_up</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="Theme.Lotty.TextView.Winner" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/bm_yeonsung</item>
+        <item name="android:fontFamily">@font/bm_yeonsung</item>
+        <item name="android:textColor">@color/G900</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:drawableLeft">@drawable/ic_medal_24x24</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Theme.Lotty.TextView.WinningNumber" parent="Theme.Lotty.TextView.SemiBold">
+        <item name="android:textColor">@color/G900</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="Theme.Lotty.ImageView.Logo" parent="Theme.AppCompat">
+        <item name="android:src">@drawable/ic_splash_logo</item>
+    </style>
+
+    <style name="Theme.Lotty.TextView.Dohyeon" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/bm_dohyeon</item>
+        <item name="android:fontFamily">@font/bm_dohyeon</item>
+        <item name="android:textColor">@color/G900</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Theme.Lotty.View.DashLine" parent="Theme.AppCompat">
+        <item name="android:background">@drawable/bg_dash_line</item>
+        <item name="android:backgroundTint">@color/G900</item>
+    </style>
+
+    <style name="Theme.Lotty.TextView.RandomNumber" parent="Theme.AppCompat">
+        <item name="android:textColor">@color/G900</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="Theme.Lotty.Button.Draw" parent="Theme.Lotty.Button">
+        <item name="fontFamily">@font/pretendard_medium</item>
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:background">@drawable/bg_b500_rounded_10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+
+    <style name="Theme.Lotty.TextView.RecentItem" parent="Theme.Lotty.TextView.Regular">
+        <item name="android:drawableLeft">@drawable/ic_clock_12x12</item>
+        <item name="android:background">@drawable/bg_white_ripple</item>
+        <item name="android:drawablePadding">6dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:textColor">@color/G900</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+    </style>
+
+    <style name="Theme.Lotty.ImageButton.Remove" parent="Theme.AppCompat">
+        <item name="android:tint">@color/G900</item>
+        <item name="android:background">@drawable/bg_white_oval_ripple</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:src">@drawable/ic_close_16x16</item>
+    </style>
+
+    <style name="Theme.Lotty.TextView.Clear" parent="Theme.Lotty.TextView.Medium">
+        <item name="android:textSize">14dp</item>
+        <item name="android:background">@drawable/bg_white_ripple</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:drawableLeft">@drawable/ic_clear_12x12</item>
+        <item name="android:drawableTint">@color/G500</item>
+        <item name="android:textColor">@color/G500</item>
+        <item name="android:drawablePadding">4dp</item>
+    </style>
+
+    <style name="Theme.Lotty.Layout.Tint" parent="Theme.AppCompat">
+        <item name="android:backgroundTint">@color/white</item>
     </style>
 
 </resources>

@@ -15,9 +15,9 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/Theme.Lotty.Layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_start"
@@ -119,18 +119,11 @@
 
                 <TextView
                     android:id="@+id/btn_clear"
-                    style="@style/Theme.Lotty.TextView.Regular"
+                    style="@style/Theme.Lotty.TextView.Clear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:background="@drawable/bg_white_ripple"
-                    android:drawableLeft="@drawable/ic_clear_12x12"
-                    android:drawablePadding="4dp"
-                    android:drawableTint="@color/G500"
-                    android:padding="4dp"
                     android:text="전체 삭제"
-                    android:textColor="@color/G500"
-                    android:textSize="14dp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView8"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textView8" />

@@ -8,8 +8,13 @@
         <entry key="app/src/main/res/drawable/bg_b500_bottom_rounded_10dp.xml" value="0.3507692307692308" />
         <entry key="app/src/main/res/drawable/bg_b600_bottom_rounded_10dp.xml" value="0.3765" />
         <entry key="app/src/main/res/drawable/bg_b600_rounded_4dp_ripple.xml" value="0.159375" />
+        <entry key="app/src/main/res/drawable/bg_darkbg_ripple.xml" value="0.21" />
         <entry key="app/src/main/res/drawable/bg_dash_line.xml" value="0.205" />
         <entry key="app/src/main/res/drawable/bg_g100_rounded_10dp.xml" value="0.2328125" />
+        <entry key="app/src/main/res/drawable/bg_g700_oval_ripple.xml" value="0.21" />
+        <entry key="app/src/main/res/drawable/bg_g700_rounded_10dp.xml" value="0.21" />
+        <entry key="app/src/main/res/drawable/bg_g700_rounded_4dp_ripple.xml" value="0.21" />
+        <entry key="app/src/main/res/drawable/bg_g700_rounded_8dp.xml" value="0.21" />
         <entry key="app/src/main/res/drawable/bg_gr600_rounded_8dp_ripple.xml" value="0.3507692307692308" />
         <entry key="app/src/main/res/drawable/bg_gradient_b300_b600_rounded_10dp.xml" value="0.3507692307692308" />
         <entry key="app/src/main/res/drawable/bg_gradient_white_transparent.xml" value="0.1865" />
@@ -37,7 +42,10 @@
         <entry key="app/src/main/res/drawable/ic_clear_16x16.xml" value="0.183" />
         <entry key="app/src/main/res/drawable/ic_clock_12x12.xml" value="0.183" />
         <entry key="app/src/main/res/drawable/ic_clover.xml" value="0.188" />
+        <entry key="app/src/main/res/drawable/ic_clover_32x32.xml" value="0.21" />
         <entry key="app/src/main/res/drawable/ic_coin_24x24.xml" value="0.21" />
+        <entry key="app/src/main/res/drawable/ic_coin_36x36.xml" value="0.21" />
+        <entry key="app/src/main/res/drawable/ic_diamond_32x32.xml" value="0.21" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.205" />
         <entry key="app/src/main/res/drawable/ic_home_32x32.xml" value="0.205" />
         <entry key="app/src/main/res/drawable/ic_logo_128x130.xml" value="0.3484375" />
@@ -47,24 +55,27 @@
         <entry key="app/src/main/res/drawable/ic_medal_24x24.xml" value="0.187" />
         <entry key="app/src/main/res/drawable/ic_medal_48x48.xml" value="0.21" />
         <entry key="app/src/main/res/drawable/ic_navigation_32x32.xml" value="0.159375" />
+        <entry key="app/src/main/res/drawable/ic_qr_24x24.xml" value="0.21" />
         <entry key="app/src/main/res/drawable/ic_search_12x12.xml" value="0.183" />
         <entry key="app/src/main/res/drawable/ic_splash.xml" value="0.205" />
         <entry key="app/src/main/res/drawable/ic_splash_logo.xml" value="0.187" />
+        <entry key="app/src/main/res/drawable/ic_splash_logo_dark.xml" value="0.21" />
         <entry key="app/src/main/res/drawable/item_slot_machine.xml" value="0.205" />
         <entry key="app/src/main/res/drawable/lc_logo_128x130.xml" value="0.33240740740740743" />
         <entry key="app/src/main/res/drawable/selector_arrow_down_up.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/drawable/selector_blue_button.xml" value="0.1921875" />
         <entry key="app/src/main/res/drawable/selector_white_button_10dp.xml" value="0.1921875" />
         <entry key="app/src/main/res/drawable/splash_inset.xml" value="0.187" />
+        <entry key="app/src/main/res/drawable/splash_inset_dark.xml" value="0.21" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18229166666666666" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_address_search.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_around.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.5501263689974726" />
+        <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_qr.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_random.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_qr.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_random.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_scanner_dialog.xml" value="0.33177083333333335" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_search_address_dialog.xml" value="0.33" />

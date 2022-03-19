@@ -15,17 +15,11 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:background="@drawable/bg_white_ripple"
             android:id="@+id/tv_drwNo"
-            style="@style/Theme.Lotty.TextView.Regular"
+            style="@style/Theme.Lotty.TextView.RecentItem"
             android:layout_width="0dp"
             android:text="@{@string/round_format(item.drwNo)}"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_clock_12x12"
-            android:drawablePadding="6dp"
-            android:paddingVertical="12dp"
-            android:paddingHorizontal="16dp"
-            android:textColor="@color/G900"
             app:layout_constraintEnd_toStartOf="@+id/ib_delete"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -35,11 +29,9 @@
             android:id="@+id/ib_delete"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:background="@drawable/bg_white_oval_ripple"
-            android:padding="16dp"
+            style="@style/Theme.Lotty.ImageButton.Remove"
             app:layout_constraintBottom_toBottomOf="@+id/tv_drwNo"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_drwNo"
-            app:srcCompat="@drawable/ic_close_16x16" />
+            app:layout_constraintTop_toTopOf="@+id/tv_drwNo" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

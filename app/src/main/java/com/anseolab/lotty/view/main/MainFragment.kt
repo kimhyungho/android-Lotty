@@ -1,5 +1,7 @@
 package com.anseolab.lotty.view.main
 
+import android.util.Log
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.anseolab.lotty.R
@@ -18,14 +20,21 @@ class MainFragment : ViewModelFragment<FragmentMainBinding, MainViewModelType>(
     R.layout.fragment_main
 ) {
 
+    private var backKeyPressedTime: Long = 0
+
     private val _viewModel: MainViewModel by viewModels()
     override val viewModel: MainViewModelType get() = _viewModel
+
+    override fun onBackPressed() {
+        viewModel.input.onBackPressed()
+    }
 
     override fun onWillAttachViewModel(
         viewDataBinding: FragmentMainBinding,
         viewModel: MainViewModelType
     ) {
         with(viewModel.output) {
+            isBackPressDispatcherEnabled = true
 
             selectedPage.observe {
                 when (it) {
@@ -34,6 +43,14 @@ class MainFragment : ViewModelFragment<FragmentMainBinding, MainViewModelType>(
                     2 -> changeFragment(RandomFragment.fragmentClass, RandomFragment.name)
                     3 -> changeFragment(QrFragment.fragmentClass, QrFragment.name)
                 }
+            }
+
+            showBackPress.observe {
+                Toast.makeText(requireContext(), "뒤로가기 버튼을 한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show()
+            }
+
+            finish.observe {
+                requireActivity().finish()
             }
         }
     }

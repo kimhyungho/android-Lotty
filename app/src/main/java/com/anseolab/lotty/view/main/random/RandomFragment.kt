@@ -26,11 +26,6 @@ class RandomFragment : ViewModelFragment<FragmentRandomBinding, RandomViewModelT
     @Inject
     lateinit var resourceProvider: ResourceProvider
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
-    }
-
     @SuppressLint("ClickableViewAccessibility")
     override fun onWillAttachViewModel(
         viewDataBinding: FragmentRandomBinding,
@@ -148,11 +143,6 @@ class RandomFragment : ViewModelFragment<FragmentRandomBinding, RandomViewModelT
                 }
             }
         }
-    }
-
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        if(!hidden) requireActivity().window.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
     }
 
     private fun TickerView.setting() {

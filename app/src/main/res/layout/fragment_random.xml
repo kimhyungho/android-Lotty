@@ -15,6 +15,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/Theme.Lotty.Layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -71,10 +72,10 @@
 
         <ImageView
             android:id="@+id/linearLayout2"
+            style="@style/Theme.Lotty.ImageView.Logo"
             android:layout_width="132dp"
             android:layout_height="62dp"
             android:layout_marginTop="64dp"
-            android:src="@drawable/ic_splash_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -98,12 +99,11 @@
 
         <TextView
             android:id="@+id/tv_round"
+            style="@style/Theme.Lotty.TextView.Dohyeon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:fontFamily="@font/bm_dohyeon"
             android:text="@{@string/round_format2(output.round)}"
-            android:textColor="@color/G900"
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -112,6 +112,7 @@
 
         <ImageView
             android:id="@+id/imageButton3"
+            style="@style/Theme.Lotty.ImageView.Basic"
             android:layout_width="52dp"
             android:layout_height="52dp"
             android:layout_marginStart="4dp"
@@ -123,37 +124,34 @@
 
         <TextView
             android:id="@+id/tv_published_date"
+            style="@style/Theme.Lotty.TextView.Dohyeon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginTop="4dp"
-            android:fontFamily="@font/bm_dohyeon"
             android:text="@{output.publishedDate}"
-            android:textColor="@color/G900"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_round"
             tools:text="발  행  일 : 2022/03/11 (금) 11:59:02" />
 
         <TextView
             android:id="@+id/tv_draw_date"
+            style="@style/Theme.Lotty.TextView.Dohyeon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:fontFamily="@font/bm_dohyeon"
             android:text="@{output.drawDate}"
-            android:textColor="@color/G900"
             app:layout_constraintStart_toStartOf="@+id/tv_published_date"
             app:layout_constraintTop_toBottomOf="@+id/tv_published_date"
             tools:text="추  첨  일 : 2022/03/12 (토) 20:43:00" />
 
         <TextView
             android:id="@+id/textView31"
+            style="@style/Theme.Lotty.TextView.Dohyeon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:fontFamily="@font/bm_dohyeon"
             android:text="@{output.dueDate}"
-            android:textColor="@color/G900"
             app:layout_constraintStart_toStartOf="@+id/tv_draw_date"
             app:layout_constraintTop_toBottomOf="@+id/tv_draw_date"
             tools:text="지급기한  : 2022/03/13" />
@@ -161,109 +159,97 @@
 
         <View
             android:id="@+id/view"
+            style="@style/Theme.Lotty.View.DashLine"
             android:layout_width="0dp"
             android:layout_height="2dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="12dp"
-            android:background="@drawable/bg_dash_line"
             app:layout_constraintEnd_toStartOf="@+id/linearLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
         <TextView
             android:id="@+id/tv_a"
+            style="@style/Theme.Lotty.TextView.Dohyeon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:fontFamily="@font/bm_yeonsung"
             android:text="A 자  동"
-            android:textColor="@color/G900"
-            android:textSize="16dp"
             app:layout_constraintStart_toStartOf="@+id/view"
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
 
         <TextView
             android:id="@+id/tv_b"
+            style="@style/Theme.Lotty.TextView.Dohyeon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:fontFamily="@font/bm_yeonsung"
             android:text="B 자  동"
-            android:textColor="@color/G900"
-            android:textSize="16dp"
             app:layout_constraintStart_toStartOf="@+id/view"
             app:layout_constraintTop_toBottomOf="@+id/tv_a" />
 
         <TextView
             android:id="@+id/tv_c"
+            style="@style/Theme.Lotty.TextView.Dohyeon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:fontFamily="@font/bm_yeonsung"
             android:text="C 자  동"
-            android:textColor="@color/G900"
-            android:textSize="16dp"
             app:layout_constraintStart_toStartOf="@+id/view"
             app:layout_constraintTop_toBottomOf="@+id/tv_b" />
 
         <TextView
             android:id="@+id/tv_d"
+            style="@style/Theme.Lotty.TextView.Dohyeon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:fontFamily="@font/bm_yeonsung"
             android:text="D 자  동"
-            android:textColor="@color/G900"
-            android:textSize="16dp"
             app:layout_constraintStart_toStartOf="@+id/view"
             app:layout_constraintTop_toBottomOf="@+id/tv_c" />
 
         <TextView
             android:id="@+id/tv_e"
+            style="@style/Theme.Lotty.TextView.Dohyeon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:fontFamily="@font/bm_yeonsung"
             android:text="E 자  동"
-            android:textColor="@color/G900"
-            android:textSize="16dp"
             app:layout_constraintStart_toStartOf="@+id/view"
             app:layout_constraintTop_toBottomOf="@+id/tv_d" />
 
         <View
             android:id="@+id/view2"
+            style="@style/Theme.Lotty.View.DashLine"
             android:layout_width="0dp"
             android:layout_height="2dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="12dp"
-            android:background="@drawable/bg_dash_line"
             app:layout_constraintEnd_toStartOf="@+id/linearLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_e" />
 
         <TextView
             android:id="@+id/textView33"
+            style="@style/Theme.Lotty.TextView.Dohyeon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/bm_dohyeon"
             android:text="₩ 5, 000"
-            android:textColor="@color/G900"
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="@+id/view2"
             app:layout_constraintTop_toBottomOf="@+id/view2" />
 
         <TextView
             android:id="@+id/textView34"
+            style="@style/Theme.Lotty.TextView.Dohyeon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/bm_dohyeon"
             android:text="금액"
-            android:textColor="@color/G900"
             android:textSize="16dp"
             app:layout_constraintStart_toStartOf="@+id/view2"
             app:layout_constraintTop_toBottomOf="@+id/view2" />
@@ -280,63 +266,49 @@
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_a_1"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textColor="@color/G900"
                 android:textSize="16dp" />
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_a_2"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:gravity="center" />
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_a_3"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:gravity="center" />
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_a_4"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1" />
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_a_5"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1" />
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_a_6"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
@@ -350,63 +322,45 @@
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_b_1"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1" />
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_b_2"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1" />
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_b_3"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1" />
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_b_4"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1" />
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_b_5"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1" />
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_b_6"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1"/>
         </LinearLayout>
 
 
@@ -422,63 +376,45 @@
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_c_1"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1" />
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_c_2"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1" />
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_c_3"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1" />
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_c_4"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1"/>
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_c_5"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1" />
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_c_6"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1"/>
         </LinearLayout>
 
 
@@ -494,63 +430,45 @@
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_d_1"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1"/>
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_d_2"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1"/>
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_d_3"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1" />
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_d_4"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1"/>
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_d_5"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1" />
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_d_6"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1" />
         </LinearLayout>
 
 
@@ -565,78 +483,55 @@
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_e_1"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1" />
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_e_2"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1" />
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_e_3"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1"/>
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_e_4"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1" />
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_e_5"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1"/>
 
             <com.robinhood.ticker.TickerView
                 android:id="@+id/tv_e_6"
-                style="@style/Theme.Lotty.TextView.Bold"
+                style="@style/Theme.Lotty.TextView.RandomNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/G900"
-                android:textSize="16dp" />
+                android:layout_weight="1" />
         </LinearLayout>
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_draw"
-            style="@style/Theme.Lotty.TextView.SemiBold"
+            style="@style/Theme.Lotty.Button.Draw"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="12dp"
-            android:background="@drawable/bg_white_rounded_10dp"
-            android:elevation="4dp"
-            android:gravity="center"
-            android:padding="16dp"
             android:text="뽑기"
-            android:textColor="@color/G900"
             app:layout_constraintEnd_toEndOf="@+id/textView33"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView34" />

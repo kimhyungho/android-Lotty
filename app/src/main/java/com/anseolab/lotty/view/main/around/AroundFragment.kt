@@ -1,11 +1,9 @@
 package com.anseolab.lotty.view.main.around
 
-import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.anseolab.lotty.R
 import com.anseolab.lotty.databinding.FragmentAroundBinding
@@ -37,7 +35,7 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
     private var selectedMarker: Marker? = null
     private val currentMarkers: MutableList<Marker> = mutableListOf()
 
-    private lateinit var mNaverMap: NaverMap
+    private var mNaverMap: NaverMap? = null
     private val mLocationSource = FusedLocationSource(this, PERMISSION_REQUEST_CODE)
 
     private val slideUpAnim by lazy {
@@ -57,12 +55,6 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        requireActivity().window.statusBarColor =
-            ContextCompat.getColor(requireContext(), R.color.white)
-    }
-
     override fun onWillAttachViewModel(
         viewDataBinding: FragmentAroundBinding,
         viewModel: AroundViewModelType
@@ -72,29 +64,34 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
         (childFragmentManager.findFragmentById(R.id.map) as? MapFragment)?.run {
             getMapAsync { naverMap ->
                 mNaverMap = naverMap
-                mNaverMap.locationSource = mLocationSource
-                mNaverMap.locationTrackingMode = LocationTrackingMode.Follow
-                mNaverMap.uiSettings.isRotateGesturesEnabled = false
-                mNaverMap.uiSettings.isTiltGesturesEnabled = false
-                mNaverMap.setOnMapClickListener { _, _ ->
-                    selectedMarker?.icon = OverlayImage.fromResource(R.drawable.ic_clover)
-                    selectedMarker = null
-                    viewModel.input.onMapClick()
-                }
-                mNaverMap.addOnCameraIdleListener {
-                    if (oldLong == null) oldLong = mNaverMap.cameraPosition.target.longitude
-                    if (oldLat == null) oldLat = mNaverMap.cameraPosition.target.longitude
 
-                    if (abs(oldLong!!.minus(mNaverMap.cameraPosition.target.longitude)) > 0.001 ||
-                        abs(oldLat!!.minus(mNaverMap.cameraPosition.target.latitude)) > 0.001
-                    ) {
-                        viewModel.input.onCameraIdleChange(
-                            mNaverMap.cameraPosition.target.longitude,
-                            mNaverMap.cameraPosition.target.latitude
-                        )
-                        oldLong = mNaverMap.cameraPosition.target.longitude
-                        oldLat = mNaverMap.cameraPosition.target.latitude
+                with(mNaverMap!!) {
+                    locationSource = mLocationSource
+                    locationTrackingMode = LocationTrackingMode.Follow
+                    uiSettings.isRotateGesturesEnabled = false
+                    uiSettings.isTiltGesturesEnabled = false
+                    setOnMapClickListener { _, _ ->
+                        selectedMarker?.icon = OverlayImage.fromResource(R.drawable.ic_clover)
+                        selectedMarker = null
+                        viewModel.input.onMapClick()
                     }
+
+                    addOnCameraIdleListener {
+                        if (oldLong == null) oldLong = this.cameraPosition.target.longitude
+                        if (oldLat == null) oldLat = this.cameraPosition.target.longitude
+
+                        if (abs(oldLong!!.minus(this.cameraPosition.target.longitude)) > 0.001 ||
+                            abs(oldLat!!.minus(this.cameraPosition.target.latitude)) > 0.001
+                        ) {
+                            viewModel.input.onCameraIdleChange(
+                                this.cameraPosition.target.longitude,
+                                this.cameraPosition.target.latitude
+                            )
+                            oldLong = this.cameraPosition.target.longitude
+                            oldLat = this.cameraPosition.target.latitude
+                        }
+                    }
+
                 }
             }
         }
@@ -102,8 +99,8 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
         with(viewDataBinding) {
             btnMyLocation.clicks()
                 .bind {
-                    val myLocation = mNaverMap.locationOverlay.position
-                    mNaverMap.cameraPosition = CameraPosition(myLocation, 13.0)
+                    val myLocation = mNaverMap!!.locationOverlay.position
+                    mNaverMap!!.cameraPosition = CameraPosition(myLocation, 13.0)
                 }
 
             tvSearch.clicks()
@@ -120,7 +117,7 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
             btnKakaoMap.clicks()
                 .throttle()
                 .bind {
-                    val startPoint = mNaverMap.locationOverlay.position
+                    val startPoint = mNaverMap!!.locationOverlay.position
 
                     if (KakaoMapUtils.checkInstalledKakaoMap(requireContext())) {
                         KakaoMapUtils.openKakaoMapForSearch(
@@ -137,7 +134,7 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
             btnNavigation.clicks()
                 .throttle()
                 .bind {
-                    val startPoint = mNaverMap.locationOverlay.position
+                    val startPoint = mNaverMap!!.locationOverlay.position
                     val destPoint = _viewModel.currentState.store
 
                     if (destPoint?.x == null) {
@@ -173,7 +170,7 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
             stores.observe { stores ->
                 val fistStore = stores.firstOrNull()
 
-                if (fistStore != null && _viewModel.currentState.showStoreLocation) mNaverMap.cameraPosition =
+                if (fistStore != null && _viewModel.currentState.showStoreLocation) mNaverMap!!.cameraPosition =
                     CameraPosition(LatLng(fistStore.y, fistStore.x), 13.0)
 
                 for (marker in currentMarkers) {
@@ -207,12 +204,6 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
         }
     }
 
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        if (!hidden) requireActivity().window.statusBarColor =
-            ContextCompat.getColor(requireContext(), R.color.white)
-    }
-
     private fun hideStoreInformation() {
         viewDataBinding.layoutStoreInfo.startAnimation(slideDownAnim)
     }
@@ -231,12 +222,13 @@ class AroundFragment : ViewModelFragment<FragmentAroundBinding, AroundViewModelT
             if (!mLocationSource.isActivated) {
                 return
             }
-            mNaverMap.locationTrackingMode = LocationTrackingMode.Follow
+            mNaverMap!!.locationTrackingMode = LocationTrackingMode.Follow
         }
     }
 
     override fun onDestroyView() {
-        mNaverMap.removeOnCameraChangeListener { _, _ -> }
+        mNaverMap?.removeOnCameraIdleListener {  }
+        mNaverMap = null
         super.onDestroyView()
     }
 
