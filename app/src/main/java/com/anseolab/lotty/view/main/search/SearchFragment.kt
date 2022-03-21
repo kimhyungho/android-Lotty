@@ -1,23 +1,20 @@
 package com.anseolab.lotty.view.main.search
 
-import android.Manifest
-import android.graphics.Color
-import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.anseolab.domain.model.Lottery
 import com.anseolab.lotty.R
 import com.anseolab.lotty.databinding.FragmentSearchBinding
+import com.anseolab.lotty.extensions.throttle
 import com.anseolab.lotty.providers.permissions.PermissionProvider
 import com.anseolab.lotty.view.adapter.LotteryListAdapter
 import com.anseolab.lotty.view.base.FragmentLauncher
 import com.anseolab.lotty.view.base.ViewModelFragment
 import com.anseolab.lotty.view.main.MainFragmentDirections
 import com.jakewharton.rxbinding4.swiperefreshlayout.refreshes
+import com.jakewharton.rxbinding4.view.clicks
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import kotlin.reflect.KClass
@@ -42,17 +39,18 @@ class SearchFragment : ViewModelFragment<FragmentSearchBinding, SearchViewModelT
 
                 val totalItemViewCount = recyclerView.adapter?.itemCount?.minus(1) ?: 0
 
-                if (newState == 2 && !recyclerView.canScrollVertically(1) && lastVisibleItem == totalItemViewCount && recyclerView.adapter!!.itemCount > 0) {
+                if (newState == 2 && !recyclerView.canScrollVertically(1) &&
+                    lastVisibleItem == totalItemViewCount &&
+                    recyclerView.adapter!!.itemCount > 0
+                ) {
                     val lastItemDrwNum = (recyclerView.adapter as LotteryListAdapter).getItemDrwNum(
                         totalItemViewCount
                     )
 
                     viewModel.input.onScroll(lastItemDrwNum - 1)
                 }
-
             }
         }
-
 
     private val lotteryListAdapter = LotteryListAdapter().apply {
         listener = object : LotteryListAdapter.Listener {
@@ -78,41 +76,16 @@ class SearchFragment : ViewModelFragment<FragmentSearchBinding, SearchViewModelT
                 this.adapter = lotteryListAdapter
             }
 
-            toolbar.setOnMenuItemClickListener {
-                when (it.itemId) {
-                    R.id.menu_search -> {
-                        navController.navigate(MainFragmentDirections.actionDestMainToDestDetail())
-                        true
-                    }
-
-//                    R.id.menu_qr -> {
-//                        TedPermission.create()
-//                            .setPermissions(Manifest.permission.CAMERA)
-//                            .request()
-//                            .subscribe { result ->
-//                                if (result.isGranted) {
-//                                    ScannerAlertDialog.getInstance()
-//                                        .show(childFragmentManager, ScannerAlertDialog.name)
-//                                } else {
-//                                    Toast.makeText(
-//                                        requireContext(),
-//                                        "카메라 권한을 허가해주셔야 사용하실 수 있습니다.",
-//                                        Toast.LENGTH_SHORT
-//                                    ).show()
-//                                }
-//                            }
-//                        true
-//                    }
-                    else -> false
+            ibDetail.clicks()
+                .bind {
+                    navController.navigate(MainFragmentDirections.actionDestMainToDestDetail())
                 }
-            }
 
             srlLottery.refreshes()
+                .throttle()
                 .bind {
                     viewModel.input.refresh()
                 }
-
-
         }
 
         with(viewModel.output) {

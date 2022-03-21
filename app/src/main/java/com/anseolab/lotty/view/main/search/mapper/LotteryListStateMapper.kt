@@ -49,6 +49,6 @@ object LotteryListStateMapper : StateMapper<SearchViewModel.State, List<LotteryU
     }
 
     override fun diff(old: SearchViewModel.State, new: SearchViewModel.State): Boolean {
-        return old.lotteries === new.lotteries && old.lotteryTrigger === new.lotteryTrigger && old.expandedLotteries == new.expandedLotteries
+        return old.lotteries === new.lotteries && old.expandedLotteries == new.expandedLotteries
     }
 }

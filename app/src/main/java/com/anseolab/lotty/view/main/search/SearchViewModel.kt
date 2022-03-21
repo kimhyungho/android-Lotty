@@ -1,8 +1,6 @@
 package com.anseolab.lotty.view.main.search
 
-import android.icu.util.LocaleData
 import android.os.Parcelable
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
@@ -13,7 +11,6 @@ import com.anseolab.lotty.extensions.getDrwNum
 import com.anseolab.lotty.mapper.ExceptionMapper
 import com.anseolab.lotty.view.base.ReactorViewModel
 import com.anseolab.lotty.view.lifecycle.SingleLiveData
-import com.anseolab.lotty.view.main.around.AroundViewModelType
 import com.anseolab.lotty.view.main.search.mapper.LotteryListStateMapper
 import com.anseolab.lotty.view.model.LotteryUiModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -80,7 +77,6 @@ class SearchViewModel @Inject constructor(
     override fun createInitialState(savedState: Parcelable?): State {
         val defaultState = savedState as? State.SavedState
         return State(
-            lotteryTrigger = defaultState?.lotteryTrigger ?: false,
             expandedLotteries = defaultState?.expandedLotteries ?: setOf(0L, Date().getDrwNum()),
         )
     }
@@ -91,7 +87,8 @@ class SearchViewModel @Inject constructor(
                 Observable.concat(
                     Observable.just(Mutation.SetRefreshing(true)),
                     Observable.just(Mutation.InitLotteryNumber),
-                    fetchLotteriesNumber(Date().getDrwNum())
+                    fetchLotteriesNumber(Date().getDrwNum()),
+                    Observable.just(Mutation.SetRefreshing(false))
                 ).onErrorResumeNext {
                     Observable.just(Mutation.SetThrowable(it))
                 }.takeUntil(this.action.filterAction<Action.Refresh>())
@@ -100,7 +97,8 @@ class SearchViewModel @Inject constructor(
             is Action.Scroll -> {
                 Observable.concat(
                     Observable.just(Mutation.SetLoading(true)),
-                    fetchLotteriesNumber(action.drwNo)
+                    fetchLotteriesNumber(action.drwNo),
+                    Observable.just(Mutation.SetLoading(false))
                 ).onErrorResumeNext {
                     Observable.just(Mutation.SetThrowable(it))
                 }.takeUntil(this.action.filterAction<Action.Scroll>())
@@ -118,21 +116,21 @@ class SearchViewModel @Inject constructor(
         return when (mutation) {
             is Mutation.InitLotteryNumber -> {
                 state.copy(
-                    lotteryTrigger = !currentState.lotteryTrigger,
-                    lotteries = mutableListOf()
+                    lotteries = emptyList()
                 )
             }
 
             is Mutation.FetchLotteryNumberSuccess -> {
                 state.copy(
-                    lotteryTrigger = !currentState.lotteryTrigger,
-                    lotteries = currentState.lotteries.apply {
+                    lotteries = mutableListOf<Lottery>().apply {
+                        addAll(currentState.lotteries)
                         add(mutation.response)
-                    })
+                    }
+                )
             }
 
             is Mutation.SetRefreshing -> {
-                state.copy(isLoading = false, isRefreshing = mutation.isRefreshing)
+                state.copy(isRefreshing = mutation.isRefreshing)
             }
 
             is Mutation.SetLoading -> {
@@ -195,30 +193,8 @@ class SearchViewModel @Inject constructor(
             fetchLotteryNumber(firstDrwNum - 11),
             fetchLotteryNumber(firstDrwNum - 12),
             fetchLotteryNumber(firstDrwNum - 13),
-            fetchLotteryNumber(firstDrwNum - 14),
-            Observable.just(Mutation.SetRefreshing(false))
+            fetchLotteryNumber(firstDrwNum - 14)
         )
-//        Observable.concat(
-//            Observable.concat(
-//                fetchLotteryNumber(firstDrwNum),
-//                fetchLotteryNumber(firstDrwNum - 1),
-//                fetchLotteryNumber(firstDrwNum - 2),
-//                fetchLotteryNumber(firstDrwNum - 3),
-//            ),
-//            Observable.concat(
-//                fetchLotteryNumber(firstDrwNum - 4),
-//                fetchLotteryNumber(firstDrwNum - 5),
-//                fetchLotteryNumber(firstDrwNum - 6),
-//                fetchLotteryNumber(firstDrwNum - 7),
-//            ),
-//            Observable.concat(
-//                fetchLotteryNumber(firstDrwNum - 8),
-//                fetchLotteryNumber(firstDrwNum - 9),
-//                fetchLotteryNumber(firstDrwNum - 10),
-//                fetchLotteryNumber(firstDrwNum - 11),
-//            ),
-//            Observable.just(Mutation.SetRefreshing(false))
-//        )
     }
 
     private fun fetchLotteryNumber(drwNum: Long): Observable<Mutation> {
@@ -232,8 +208,7 @@ class SearchViewModel @Inject constructor(
     }
 
     data class State(
-        val lotteryTrigger: Boolean,
-        val lotteries: MutableList<Lottery> = mutableListOf(),
+        val lotteries: List<Lottery> = emptyList(),
         val expandedLotteries: Set<Long>,
         val isRefreshing: Boolean = false,
         val isLoading: Boolean = false,
@@ -241,14 +216,12 @@ class SearchViewModel @Inject constructor(
     ) : ReactorViewModel.State {
         override fun toParcelable(): Parcelable? {
             return SavedState(
-                this.lotteryTrigger,
                 this.expandedLotteries,
             )
         }
 
         @Parcelize
         data class SavedState(
-            val lotteryTrigger: Boolean,
             val expandedLotteries: Set<Long>,
         ) : Parcelable
     }

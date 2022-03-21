@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.Lotty" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimary">@color/B500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -99,6 +99,16 @@
         <item name="android:gravity">center</item>
         <item name="android:textSize">16dp</item>
     </style>
+
+    <style name="Theme.Lotty.ImageButton.SearchButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_width">30dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:tint">@color/G900</item>
+        <item name="android:src">@drawable/ic_search_24x24</item>
+        <item name="android:background">@drawable/bg_white_oval_ripple</item>
+    </style>
+
 
     <style name="Theme.Lotty.ImageButton.BackButton" parent="Widget.AppCompat.ImageButton">
         <item name="android:layout_height">30dp</item>
@@ -239,8 +249,8 @@
         <item name="android:paddingTop">12dp</item>
         <item name="android:textColor">@color/G900</item>
         <item name="android:paddingBottom">12dp</item>
-        <item name="android:paddingStart">16dp</item>
-        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
     </style>
 
     <style name="Theme.Lotty.ImageButton.Remove" parent="Theme.AppCompat">
