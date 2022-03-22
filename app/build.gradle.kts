@@ -10,8 +10,8 @@ plugins {
 }
 
 android {
-    compileSdkVersion(31)
-    buildToolsVersion("30.0.3")
+    compileSdk = 31
+    buildToolsVersion = "30.0.3"
 
     signingConfigs {
         getOrCreate("lotty.debug") {
@@ -39,7 +39,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    flavorDimensions("environment")
+    flavorDimensions.add("environment")
     productFlavors {
         getOrCreate("dev") {
             dimension = "environment"
@@ -66,11 +66,8 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
-            signingConfig = signingConfigs.getByName("debug")
-            isJniDebuggable = false
-        }
         getOrCreate("debug") {
+            signingConfig = signingConfigs.getByName("lotty.debug")
             aaptOptions.cruncherEnabled = false
 
             splits.abi.isEnable = false
@@ -87,6 +84,8 @@ android {
         }
 
         getOrCreate("release") {
+            signingConfig = signingConfigs.getByName("lotty")
+
             splits.abi.isEnable = true
 
             isDebuggable = false
@@ -139,7 +138,7 @@ dependencies {
 
     implementation(Libs.rxAndroid)
 
-    implementation (Libs.glide)
+    implementation(Libs.glide)
     implementation(Libs.glideTransformations)
 
     kapt(KaptLibs.glide)
@@ -151,24 +150,22 @@ dependencies {
 
     implementation(Libs.naverMap)
 
-    implementation (Libs.tedPermission)
+    implementation(Libs.tedPermission)
 
     coreLibraryDesugaring(CoreLibs.coreDesugaring)
 
     implementation(Libs.gmsLocation)
 
-    implementation ("nl.dionsegijn:konfetti-compose:2.0.2")
-    implementation ("nl.dionsegijn:konfetti-xml:2.0.2")
+    implementation("nl.dionsegijn:konfetti-compose:2.0.2")
+    implementation("nl.dionsegijn:konfetti-xml:2.0.2")
 
-//    implementation("androidx.dynamicanimation:dynamicanimation-ktx:1.1.0-alpha03")\
-
-    implementation ("com.robinhood.ticker:ticker:2.0.4")
+    implementation("com.robinhood.ticker:ticker:2.0.4")
 
     implementation("xyz.pinaki.android:wheelticker:1.0.1")
 
     implementation("androidx.core:core-splashscreen:1.0.0-beta01")
 
-    implementation ("com.journeyapps:zxing-android-embedded:4.1.0")
+    implementation("com.journeyapps:zxing-android-embedded:4.1.0")
 
 
 }
