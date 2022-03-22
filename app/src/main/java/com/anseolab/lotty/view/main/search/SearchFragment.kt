@@ -34,6 +34,10 @@ class SearchFragment : ViewModelFragment<FragmentSearchBinding, SearchViewModelT
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
 
+//                val range = viewDataBinding.rvLottery.computeVerticalScrollRange()
+//                val extent = viewDataBinding.rvLottery.computeVerticalScrollExtent()
+//                val offset = viewDataBinding.rvLottery.computeVerticalScrollOffset()
+
                 val lastVisibleItem =
                     (recyclerView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
 
@@ -41,7 +45,7 @@ class SearchFragment : ViewModelFragment<FragmentSearchBinding, SearchViewModelT
 
                 if (newState == 2 && !recyclerView.canScrollVertically(1) &&
                     lastVisibleItem == totalItemViewCount &&
-                    recyclerView.adapter!!.itemCount > 0
+                    recyclerView.adapter!!.itemCount >= 20
                 ) {
                     val lastItemDrwNum = (recyclerView.adapter as LotteryListAdapter).getItemDrwNum(
                         totalItemViewCount

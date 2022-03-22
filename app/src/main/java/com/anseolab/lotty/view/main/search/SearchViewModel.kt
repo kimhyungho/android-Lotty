@@ -193,7 +193,12 @@ class SearchViewModel @Inject constructor(
             fetchLotteryNumber(firstDrwNum - 11),
             fetchLotteryNumber(firstDrwNum - 12),
             fetchLotteryNumber(firstDrwNum - 13),
-            fetchLotteryNumber(firstDrwNum - 14)
+            fetchLotteryNumber(firstDrwNum - 14),
+            fetchLotteryNumber(firstDrwNum - 15),
+            fetchLotteryNumber(firstDrwNum - 16),
+            fetchLotteryNumber(firstDrwNum - 17),
+            fetchLotteryNumber(firstDrwNum - 18),
+            fetchLotteryNumber(firstDrwNum - 19)
         )
     }
 
