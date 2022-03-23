@@ -4,7 +4,6 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import android.webkit.WebChromeClient
 import android.widget.Toast
 import com.anseolab.lotty.R
 import com.anseolab.lotty.databinding.FragmentQrBinding
@@ -34,8 +33,7 @@ class QrFragment : BaseFragment<FragmentQrBinding>(
             with(webView) {
 
                 settings.javaScriptCanOpenWindowsAutomatically = true
-                webViewClient = WebViewClient()
-                webChromeClient = WebChromeClient()
+                webViewClient = WebViewClient(requireContext())
                 settings.loadWithOverviewMode = true
                 settings.useWideViewPort = true
                 settings.javaScriptEnabled = true
