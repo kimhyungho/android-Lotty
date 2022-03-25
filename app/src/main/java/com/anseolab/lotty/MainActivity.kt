@@ -11,11 +11,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(
     R.layout.activity_main
 ) {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         navController.setGraph(R.navigation.nav_main)
-
     }
 }
