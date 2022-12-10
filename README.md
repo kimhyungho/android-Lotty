@@ -17,11 +17,11 @@ width="200" hspace="10" vspace="10">
         src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" />
 </a>
 
-<img src="/lotty-images/1.png" width="180px" title="1" alt="1"></img>
-<img src="/lotty-images/2.png" width="180px" title="2" alt="2"></img>
-<img src="/lotty-images/3.png" width="180px" title="3" alt="3"></img>
-<img src="/lotty-images/4.png" width="180px" title="4" alt="4"></img>
-<img src="/lotty-images/5.png" width="180px" title="5" alt="5"></img>
+<img src="/lotty-images/1.png" width="160px" title="1" alt="1"></img>
+<img src="/lotty-images/2.png" width="160px" title="2" alt="2"></img>
+<img src="/lotty-images/3.png" width="160px" title="3" alt="3"></img>
+<img src="/lotty-images/4.png" width="160px" title="4" alt="4"></img>
+<img src="/lotty-images/5.png" width="160px" title="5" alt="5"></img>
 
 ## 개발환경 / Application Version
 - Android Studio @Dolphin 2021.3.1
@@ -54,8 +54,8 @@ ios1, android1
 
 ## Screenshots
 
-<img src="/lotty-images/Screenshot_1.png" width="180px" title="1" alt="1"></img>
-<img src="/lotty-images/Screenshot_2.png" width="180px" title="2" alt="2"></img>
-<img src="/lotty-images/Screenshot_3.png" width="180px" title="3" alt="3"></img>
-<img src="/lotty-images/Screenshot_4.png" width="180px" title="4" alt="4"></img>
-<img src="/lotty-images/Screenshot_5.png" width="180px" title="5" alt="5"></img>
+<img src="/lotty-images/Screenshot_1.png" width="160px" title="1" alt="1"></img>
+<img src="/lotty-images/Screenshot_2.png" width="160px" title="2" alt="2"></img>
+<img src="/lotty-images/Screenshot_3.png" width="160px" title="3" alt="3"></img>
+<img src="/lotty-images/Screenshot_4.png" width="160px" title="4" alt="4"></img>
+<img src="/lotty-images/Screenshot_5.png" width="160px" title="5" alt="5"></img>
