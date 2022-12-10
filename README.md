@@ -45,6 +45,8 @@ ios1, android1
 - RxBinding을 사용해 사용자의 입력을 비동기로 처리합니다.
 - ACC ViewModel을 사용해 ACC MVVM 디자인 패턴을 구현하려고 노력했습니다.
 - Module을 Presentation, Domain, Data, Remote, Local로 나눴습니다.
+- Naver Map을 사용하였습니다.
+- Kakao Map 길찾기 Scheme을 사용했습니다.
 
 ## APIs
 - 동행복권 당첨정보 조회 Api
