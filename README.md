@@ -31,6 +31,7 @@ width="200" hspace="10" vspace="10">
 ## android tech
 - language : Kotlin
 - architecture : ACC MVVM
+- di : hilt
 - async library : RxJava3, RxBinding
 - image library : Glide
 - network library : Retrofit2, Gson, OkHttp
