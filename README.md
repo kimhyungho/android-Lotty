@@ -42,7 +42,7 @@ ios1, android1
 - Slack
 
 ## 특징
-- RxJava3를 사용하여 비동기 네트워크 통신을 합니다.
+- RxJava3를 사용하여 비동기 프로그래밍을 구현했습니다.
 - RxBinding을 사용해 사용자의 입력을 비동기로 처리합니다.
 - ACC ViewModel을 사용해 ACC MVVM 디자인 패턴을 구현하려고 노력했습니다.
 - Module을 Presentation, Domain, Data, Remote, Local로 나눴습니다.
